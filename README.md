@@ -95,13 +95,77 @@ https://www.figma.com/file/06wK69DFoCKtWoQrf5ChPn/Cycleshare?node-id=0%3A1
 https://www.figma.com/proto/06wK69DFoCKtWoQrf5ChPn/Cycleshare?node-id=1%3A2&scaling=min-zoom
 
 ## Schema 
-[This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+
+Bike Post
+
+| Property | Type     | Description |
+| -------- | -------- | -------- |
+| objectId| String| unique id for user post|
+|author | pointer to user|tells who created the post|
+|profilePicture |pointer to user|displays profile picture|
+|image |file | picture of the bike|
+|createdAt|DateTime|date when post is created (default field)|
+|updatedAt|DateTime|date when post is updated (default field)|
+|Location|String|Location of the bike|
+|Price|Number|price of the bike|
+|Description|String|Details about the bike|
+
+User
+| Property  | Type     | Description |
+| --------  | -------- | -------- |
+| objectId| String| unique id for user post|
+| email     | String     | email unique to a user     |
+|profilePicture| File| Profile picture unique to user|
+|password|String|password for login|
+|createdAt|DateTime|date when post is created (default field)|
+|updatedAt|DateTime|date when post is updated (default field)|
+
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+
+[Add list of network requests by screen ]
+- Login 
+    - (Read/CHECK) if user credientials are authorized
+- Signup
+    - (Create) new User with user credentials
+- Home 
+    - (Read/GET) all posts
+    
+> [let query = PFQuery(className:"Post")
+    query.order(byDescending: "createdAt")
+    query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+    if let error = error { 
+        print(error.localizedDescription)
+    } 
+    else if let posts = posts {
+        print("Successfully retrieved \(posts.count) posts.")
+        //display posts in recycler view 
+    }
+    }]
+- Create Post Screen
+    - (Create/POST) Create a new post object
+- Detail View
+    - (Create) User can email other users
+- Search
+    - (Read/Get) Search for entries based on location (Complex Algo)
+> [let query = PFQuery(className:"Post")
+    query.whereKey("location", equalTo: current location) //obtained through API 
+    query.order(byDescending: "createdAt")
+    query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+    if let error = error { 
+        print(error.localizedDescription)
+    } 
+    else if let posts = posts {
+        print("Successfully retrieved \(posts.count) posts.")
+        //display search resultsby location
+   }
+}]
+
+
+[OPTIONAL: List endpoints if using existing API such as Yelp]
+- Google Maps API Base URL https://www.google.com/maps/@?api=1&map_action=map[api_key] (displaying a map)
+    - 
+- Google Maps API Base URL https://www.google.com/maps/search/?api=1[api_key] (displaying )
 
 
 -----
