@@ -31,14 +31,6 @@ public class LoginActivity extends AppCompatActivity {
         etPassword=findViewById(R.id.etPassword);
         btnLogin=findViewById(R.id.btnLogin);
 
-        //Allows user to be persistent when they logout of the app
-        ParseUser currentUser = ParseUser.getCurrentUser();
-        if (currentUser != null) {
-            Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
-            finish();
-        }
-
         //Sets an onclicklistener on the login button
         btnLogin.setOnClickListener(new View.OnClickListener(){
 
