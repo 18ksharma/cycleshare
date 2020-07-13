@@ -21,8 +21,7 @@ public class InitialActivity extends AppCompatActivity {
         btnLogin=findViewById(R.id.btnLogin);
         btnSignup=findViewById(R.id.btnSignup);
 
-        //Setting on click listeners to determine if user wants to login or
-        //sign up
+        //Setting on click listeners to determine if user wants to login or sign up
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,7 +36,7 @@ public class InitialActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Intent to open SignupActivity
-                Intent intent = new Intent();
+                Intent intent = new Intent(InitialActivity.this, SignupActivity.class);
                 startActivity(intent);
                 finish();
             }

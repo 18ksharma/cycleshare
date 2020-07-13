@@ -5,4 +5,6 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="forgot">Forgot Password?</string>
+    <string name="create">Create an account</string>
+    <string name="add_picture">Add a profile picture</string>
 </resources>
