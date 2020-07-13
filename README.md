@@ -53,6 +53,7 @@ Original App Design Project - README Template
 * Internal Messaging Tool
 * Instruction page on how to use the app after user signs up
 * Users can add ratings for people who have posts
+* user cannot set username as someone else's username
 
 ### 2. Screen Archetypes
 
