@@ -12,20 +12,20 @@ Original App Design Project - README Template
 ## Overview
 ### Description
 #### Airbnb for bikes & scooters:
-- **Description:** Bike owners and scooter owners can put their bike/scooter up for sale and users can rent the bike/scooter from them 
+- **Description:** Bike owners and scooter owners can put their bike/scooter up for sale and users can rent the bike/scooter from them
 
-#### Student Matching App: 
+#### Student Matching App:
 - **Description**: Connects incoming college freshmen to other incoming freshmen in their area so that students can get to know each other before they begin college
- 
+
 
 ### App Evaluation
 [Evaluation of your app across the following attributes]
 
 #### Airbnb for bikes & scooters:
-- **Category**: Lifestyle 
+- **Category**: Lifestyle
 - **Mobile**: Users are able to browse available bikes and scooters in close proximity to them, organizing the layout by location, price, seller reputation
 - **Story**: Connects people who need eco friendly transportation to people who are willing to rent theirs
-- **Market**: The market for this would be very large, as a lot of people use bikes and scooters on the daily, especially on large college campuses. 
+- **Market**: The market for this would be very large, as a lot of people use bikes and scooters on the daily, especially on large college campuses.
 - **Habit:** This app is not necessarily addictive, but rather the need for transportation and the addictiveness of biking will cause users to use this app. Users can save money by avoiding to purchase a bike or scooter. Bike owners will use this to make more money off of their bike or scooter
 - **Scope**: V1 would allow bike owners and bike seekers to make a profile. V2 would allow bike seekers to view bike owners bikes in the area. V3 would incorporate some third party messaging tool (opens email). V4 would incorporate an internal messaging tool
 
@@ -57,7 +57,7 @@ Original App Design Project - README Template
 * Register
    * User can register & create an account
 * Stream
-    * User can see available bikes in their area 
+    * User can see available bikes in their area
 * Compose
     * User can create a post for putting a bike for rent (bike price, details, availability, contact information, upload bike pic)
 
@@ -94,7 +94,7 @@ https://www.figma.com/file/06wK69DFoCKtWoQrf5ChPn/Cycleshare?node-id=0%3A1
 ### [BONUS] Interactive Prototype
 https://www.figma.com/proto/06wK69DFoCKtWoQrf5ChPn/Cycleshare?node-id=1%3A2&scaling=min-zoom
 
-## Schema 
+## Schema
 ### Models
 
 Bike Post
@@ -124,22 +124,22 @@ User
 ### Networking
 
 [Add list of network requests by screen ]
-- Login 
+- Login
     - (Read/CHECK) if user credientials are authorized
 - Signup
     - (Create) new User with user credentials
-- Home 
+- Home
     - (Read/GET) all posts
-    
+
 > [let query = PFQuery(className:"Post")
     query.order(byDescending: "createdAt")
     query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
-    if let error = error { 
+    if let error = error {
         print(error.localizedDescription)
-    } 
+    }
     else if let posts = posts {
         print("Successfully retrieved \(posts.count) posts.")
-        //display posts in recycler view 
+        //display posts in recycler view
     }
     }]
 - Create Post Screen
@@ -149,12 +149,12 @@ User
 - Search
     - (Read/Get) Search for entries based on location (Complex Algo)
 > [let query = PFQuery(className:"Post")
-    query.whereKey("location", equalTo: current location) //obtained through API 
+    query.whereKey("location", equalTo: current location) //obtained through API
     query.order(byDescending: "createdAt")
     query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
-    if let error = error { 
+    if let error = error {
         print(error.localizedDescription)
-    } 
+    }
     else if let posts = posts {
         print("Successfully retrieved \(posts.count) posts.")
         //display search resultsby location
@@ -164,7 +164,7 @@ User
 
 [OPTIONAL: List endpoints if using existing API such as Yelp]
 - Google Maps API Base URL https://www.google.com/maps/@?api=1&map_action=map[api_key] (displaying a map)
-    - 
+    -
 - Google Maps API Base URL https://www.google.com/maps/search/?api=1[api_key] (displaying )
 
 
@@ -178,7 +178,7 @@ User
 1. [Wireframes](#Wireframes)
 2. [Schema](#Schema)
 
-#### Workout Social Media: 
+#### Workout Social Media:
 - **Description**: Friends can connect and compete to see who has the highest workout score for a day
 #### Workout Social Media
 - **Category**: Lifestyle & Social
@@ -186,7 +186,7 @@ User
 - **Story**: Allows people to discover new workouts based on what their friends like to do and encourages friendly competition as a source of motivation
 - **Market**: Anyone interested in friendly competition with friends
 - **Habit:** Allows friends to compete with one another, wanting them to work out more
-- **Scope**: V1 would allow users to make an account and share their workout. V2 would display details about the profile 
+- **Scope**: V1 would allow users to make an account and share their workout. V2 would display details about the profile
 
 
 ## Product Spec
@@ -195,8 +195,8 @@ User
 
 **Required Must-have Stories**
 
-* User can make account 
-* User can login 
+* User can make account
+* User can login
 * User can upload a workout description
 * User can see feed of their followers workouts
 
@@ -214,7 +214,7 @@ User
     * User can register
 * Compose
     * User can upload a workout description
-* Stream 
+* Stream
     * User can see feed of their followers workouts
 * User details [Optional]
     * Details about profile
@@ -225,7 +225,7 @@ User
 **Tab Navigation** (Tab to Screen)
 
 * Compose
-* Stream 
+* Stream
 * [Optional] User details
 
 **Flow Navigation** (Screen to Screen)
@@ -252,7 +252,7 @@ User
 
 ### [BONUS] Interactive Prototype
 
-## Schema 
+## Schema
 [This section will be completed in Unit 9]
 ### Models
 [Add table of models]
