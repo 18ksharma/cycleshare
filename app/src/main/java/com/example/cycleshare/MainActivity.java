@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.cycleshare.fragments.ComposeFragment;
 import com.example.cycleshare.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -33,9 +34,12 @@ public class MainActivity extends AppCompatActivity {
                         fragment=new ProfileFragment();
                         break;
                     case R.id.action_compose:
-                        fragment=new ProfileFragment();
+                        fragment=new ComposeFragment();
                         break;
                     case R.id.action_profile:
+                        fragment=new ProfileFragment();
+                        break;
+                    case R.id.action_search:
                         fragment=new ProfileFragment();
                         break;
                 }
