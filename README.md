@@ -40,6 +40,7 @@ Original App Design Project - README Template
 * User can create a new account
     *  User can take a picture and set it as their profile picture
 * User can login
+    * User is still logged in when they close app
 * User can see a stream of bikes
 * User can create a post for putting a bike for rent (bike price, details, availability, contact information, upload bike pic)
 * User can logout and see their posts on the profile Fragment
@@ -54,6 +55,7 @@ Original App Design Project - README Template
 * Instruction page on how to use the app after user signs up
 * Users can add ratings for people who have posts
 * user cannot set username as someone else's username
+* Settings page where user can change their username
 
 ### 2. Screen Archetypes
 

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ProfileFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:id="@+id/ivProfilePicture"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        tools:src="@tools:sample/avatars"
+        android:layout_margin="8dp" />
+
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="kanika22"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@+id/ivProfilePicture"/>
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/logout"
+        android:layout_below="@+id/btnChangeProfilePicture"
+        android:layout_toRightOf="@id/ivProfilePicture"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvUserPoses"
+        android:layout_below="@id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"/>
+
+    <Button
+        android:id="@+id/btnChangeProfilePicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/change"
+        android:layout_below="@id/tvUsername"
+        android:layout_toRightOf="@+id/ivProfilePicture"/>
+
+</RelativeLayout>
