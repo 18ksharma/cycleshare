@@ -42,11 +42,17 @@ Original App Design Project - README Template
 * User can login
 * User can see a stream of bikes
 * User can create a post for putting a bike for rent (bike price, details, availability, contact information, upload bike pic)
+* User can logout and see their posts on the profile Fragment
+* User can filter specific bikes using search Fragment (complex algo)
+* User can click on a post to see a detail view)
+
 
 **Optional Nice-to-have Stories**
 
 * Forget password button
 * Internal Messaging Tool
+* Instruction page on how to use the app after user signs up
+* Users can add ratings for people who have posts
 
 ### 2. Screen Archetypes
 
@@ -60,14 +66,22 @@ Original App Design Project - README Template
     * User can see available bikes in their area
 * Compose
     * User can create a post for putting a bike for rent (bike price, details, availability, contact information, upload bike pic)
+* Detail View
+    * User can see bike details, bike picture, and bike location (from GoogleMaps API), and has a button in which user can click to contact owner
+* Profile View
+    * User can logout
+* Search View
+    * User can filter posts
 
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* Tab at top of screen
-* Navigates to Compose screen
+* Bottom Navigation
+    * Home View
+    * Search View
+    * Compose View
 
 **Flow Navigation** (Screen to Screen)
 
@@ -165,98 +179,4 @@ User
 [OPTIONAL: List endpoints if using existing API such as Yelp]
 - Google Maps API Base URL https://www.google.com/maps/@?api=1&map_action=map[api_key] (displaying a map)
     -
-- Google Maps API Base URL https://www.google.com/maps/search/?api=1[api_key] (displaying )
-
-
------
-
-# Workout Social Media
-
-## Table of Contents
-1. [Overview](#Overview)
-1. [Product Spec](#Product-Spec)
-1. [Wireframes](#Wireframes)
-2. [Schema](#Schema)
-
-#### Workout Social Media:
-- **Description**: Friends can connect and compete to see who has the highest workout score for a day
-#### Workout Social Media
-- **Category**: Lifestyle & Social
-- **Mobile**: Users can share the workout they completed that day
-- **Story**: Allows people to discover new workouts based on what their friends like to do and encourages friendly competition as a source of motivation
-- **Market**: Anyone interested in friendly competition with friends
-- **Habit:** Allows friends to compete with one another, wanting them to work out more
-- **Scope**: V1 would allow users to make an account and share their workout. V2 would display details about the profile
-
-
-## Product Spec
-
-### 1. User Stories (Required and Optional)
-
-**Required Must-have Stories**
-
-* User can make account
-* User can login
-* User can upload a workout description
-* User can see feed of their followers workouts
-
-**Optional Nice-to-have Stories**
-
-* Can see details about profile (favorite exercises, youtubers, tips)
-
-### 2. Screen Archetypes
-
-* Initial screen
-   * User selects to login or register
-* Login
-   * User can login
-* Register
-    * User can register
-* Compose
-    * User can upload a workout description
-* Stream
-    * User can see feed of their followers workouts
-* User details [Optional]
-    * Details about profile
-
-
-### 3. Navigation
-
-**Tab Navigation** (Tab to Screen)
-
-* Compose
-* Stream
-* [Optional] User details
-
-**Flow Navigation** (Screen to Screen)
-
-* Initial
-   * Login
-   * Register
-* Login
-   * Stream
-* Register
-    * Stream
-* Compose
-    * Stream
-* Stream
-    * None
-* User Details
-    * None
-
-## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
-
-### [BONUS] Digital Wireframes & Mockups
-
-### [BONUS] Interactive Prototype
-
-## Schema
-[This section will be completed in Unit 9]
-### Models
-[Add table of models]
-### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+- Google Maps API Base URL https://www.google.com/maps/search/?api=1[api_key]
