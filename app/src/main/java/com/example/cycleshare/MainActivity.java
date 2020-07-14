@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.cycleshare.fragments.ComposeFragment;
+import com.example.cycleshare.fragments.HomeFragment;
 import com.example.cycleshare.fragments.ProfileFragment;
+import com.example.cycleshare.fragments.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (menuItem.getItemId()) {
                     case R.id.action_home:
-                        fragment=new ProfileFragment();
+                        fragment=new HomeFragment();
                         break;
                     case R.id.action_compose:
                         fragment=new ComposeFragment();
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                         fragment=new ProfileFragment();
                         break;
                     case R.id.action_search:
-                        fragment=new ProfileFragment();
+                        fragment=new SearchFragment();
                         break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();

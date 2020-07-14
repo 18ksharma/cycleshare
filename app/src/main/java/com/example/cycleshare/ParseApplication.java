@@ -2,6 +2,7 @@ package com.example.cycleshare;
 
 import android.app.Application;
 
+import com.example.cycleshare.models.Post;
 import com.parse.Parse;
 import com.parse.ParseObject;
 
@@ -10,6 +11,9 @@ public class ParseApplication extends Application {
     public void onCreate(){
         super.onCreate();
         Parse.setLogLevel(Parse.LOG_LEVEL_DEBUG);
+
+        //Register parse models
+        ParseObject.registerSubclass(Post.class);
 
         // set applicationId, and server server based on the values in the Heroku settings.
         // clientKey is not needed unless explicitly configured

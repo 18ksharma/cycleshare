@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.cycleshare.R;
+import com.example.cycleshare.models.Post;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
@@ -146,23 +147,33 @@ public class ComposeFragment extends Fragment {
     }
 
     private void savePost(String condition, String price, String availability, String description, ParseUser currentUser,
-                          File photoFile) {/*
+                          File photoFile) {
+        final ParseFile img = new ParseFile(photoFile);
+
         Post post = new Post();
         post.setDescription(description);
-        post.setImage(new ParseFile(photoFile));
+        post.setAvailability(availability);
+        post.setCondition(condition);
+        post.setPrice(price);
+        post.setImage(img);
         post.setUser(currentUser);
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
                 if(e!=null){
+                    Log.i(TAG, img.toString());
                     Log.e(TAG, "Error while saving", e);
                     Toast.makeText(getContext(), "Error while saving!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 Log.i(TAG, "Post save was successful");
                 etDescription.setText("");
+                etPrice.setText("");
+                etAvailability.setText("");
+                etCondition.setText("");
                 ivPostImage.setImageResource(0);
             }
-        });*/
+        });
 
     }
 

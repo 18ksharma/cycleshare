@@ -15,6 +15,16 @@ public class Post extends ParseObject {
     public static final String KEY_CREATEDAT = "createdAt";
     public static final String KEY_CONDITION = "condition";
     public static final String KEY_PRICE = "price";
+    public static final String KEY_AVAILABILITY = "availability";
+
+    public String getAvailability() {
+        return getString(KEY_AVAILABILITY);
+    }
+
+    public void setAvailability(String availability){
+        put(KEY_AVAILABILITY, availability);
+    }
+
 
     public String getPrice() {
         return getString(KEY_PRICE);

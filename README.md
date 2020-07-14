@@ -56,6 +56,7 @@ Original App Design Project - README Template
 * Users can add ratings for people who have posts
 * user cannot set username as someone else's username
 * Settings page where user can change their username
+* User can edit a post that they have made
 
 ### 2. Screen Archetypes
 

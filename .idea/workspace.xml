@@ -6,10 +6,16 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="composefragment" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="info" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a67bb00-0382-483b-a707-d3c7a5a40cdb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_base_17_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_17_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_maps_17_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_tasks_17_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -20,9 +26,18 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/ParseApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/ParseApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ComposeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ComposeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/models/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/models/Post.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_compose.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_compose.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,6 +62,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="layoutResourceFile" />
         <option value="resourceFile" />
       </list>
     </option>
@@ -154,36 +170,61 @@
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state x="454" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.814@0.23.1440.814" timestamp="1594673184373" />
+    <state x="887" y="265" key="#xdebugger.evaluate" timestamp="1594763317153">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state x="887" y="265" key="#xdebugger.evaluate/0.23.1440.821@0.23.1440.821" timestamp="1594763317153" />
     <state x="304" y="189" key="AndroidCreateResourceDirectoryDialog" timestamp="1594753282654">
       <screen x="0" y="23" width="1440" height="821" />
     </state>
     <state x="304" y="187" key="AndroidCreateResourceDirectoryDialog/0.23.1440.814@0.23.1440.814" timestamp="1594673140118" />
     <state x="304" y="189" key="AndroidCreateResourceDirectoryDialog/0.23.1440.821@0.23.1440.821" timestamp="1594753282654" />
     <state x="304" y="189" key="AndroidCreateResourceDirectoryDialog/0.23.1440.822@0.23.1440.822" timestamp="1594676850878" />
-    <state x="304" y="187" key="AndroidCreateResourceFileDialog" timestamp="1594753311314">
-      <screen x="0" y="23" width="1440" height="821" />
+    <state x="304" y="186" key="AndroidCreateResourceFileDialog" timestamp="1594764005790">
+      <screen x="0" y="23" width="1440" height="816" />
     </state>
-    <state x="304" y="187" key="AndroidCreateResourceFileDialog/0.23.1440.821@0.23.1440.821" timestamp="1594753311314" />
+    <state x="304" y="186" key="AndroidCreateResourceFileDialog/0.23.1440.816@0.23.1440.816" timestamp="1594764005790" />
+    <state x="304" y="187" key="AndroidCreateResourceFileDialog/0.23.1440.821@0.23.1440.821" timestamp="1594759462923" />
     <state x="571" y="279" key="AndroidCreateXmlResourceDialog" timestamp="1594676454801">
       <screen x="0" y="23" width="1440" height="821" />
     </state>
     <state x="571" y="279" key="AndroidCreateXmlResourceDialog/0.23.1440.821@0.23.1440.821" timestamp="1594676454801" />
-    <state width="1358" height="206" key="GridCell.Tab.0.bottom" timestamp="1594754395793">
+    <state width="1358" height="3" key="GridCell.Tab.0.bottom" timestamp="1594766243652">
       <screen x="0" y="23" width="1440" height="821" />
     </state>
-    <state width="1358" height="206" key="GridCell.Tab.0.bottom/0.23.1440.821@0.23.1440.821" timestamp="1594754395793" />
-    <state width="1358" height="206" key="GridCell.Tab.0.center" timestamp="1594754395791">
+    <state width="1358" height="3" key="GridCell.Tab.0.bottom/0.23.1440.821@0.23.1440.821" timestamp="1594766243652" />
+    <state width="1358" height="206" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1594756150571" />
+    <state width="1358" height="3" key="GridCell.Tab.0.center" timestamp="1594766243651">
       <screen x="0" y="23" width="1440" height="821" />
     </state>
-    <state width="1358" height="206" key="GridCell.Tab.0.center/0.23.1440.821@0.23.1440.821" timestamp="1594754395791" />
-    <state width="1358" height="206" key="GridCell.Tab.0.left" timestamp="1594754395790">
+    <state width="1358" height="3" key="GridCell.Tab.0.center/0.23.1440.821@0.23.1440.821" timestamp="1594766243651" />
+    <state width="1358" height="206" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1594756150571" />
+    <state width="1358" height="3" key="GridCell.Tab.0.left" timestamp="1594766243651">
       <screen x="0" y="23" width="1440" height="821" />
     </state>
-    <state width="1358" height="206" key="GridCell.Tab.0.left/0.23.1440.821@0.23.1440.821" timestamp="1594754395790" />
-    <state width="1358" height="206" key="GridCell.Tab.0.right" timestamp="1594754395792">
+    <state width="1358" height="3" key="GridCell.Tab.0.left/0.23.1440.821@0.23.1440.821" timestamp="1594766243651" />
+    <state width="1358" height="206" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1594756150569" />
+    <state width="1358" height="3" key="GridCell.Tab.0.right" timestamp="1594766243652">
       <screen x="0" y="23" width="1440" height="821" />
     </state>
-    <state width="1358" height="206" key="GridCell.Tab.0.right/0.23.1440.821@0.23.1440.821" timestamp="1594754395792" />
+    <state width="1358" height="3" key="GridCell.Tab.0.right/0.23.1440.821@0.23.1440.821" timestamp="1594766243652" />
+    <state width="1358" height="206" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1594756150571" />
+    <state width="1358" height="192" key="GridCell.Tab.1.bottom" timestamp="1594763466634">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state width="1358" height="192" key="GridCell.Tab.1.bottom/0.23.1440.821@0.23.1440.821" timestamp="1594763466634" />
+    <state width="1358" height="192" key="GridCell.Tab.1.center" timestamp="1594763466634">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state width="1358" height="192" key="GridCell.Tab.1.center/0.23.1440.821@0.23.1440.821" timestamp="1594763466634" />
+    <state width="1358" height="192" key="GridCell.Tab.1.left" timestamp="1594763466634">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state width="1358" height="192" key="GridCell.Tab.1.left/0.23.1440.821@0.23.1440.821" timestamp="1594763466634" />
+    <state width="1358" height="192" key="GridCell.Tab.1.right" timestamp="1594763466634">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state width="1358" height="192" key="GridCell.Tab.1.right/0.23.1440.821@0.23.1440.821" timestamp="1594763466634" />
     <state x="116" y="123" width="1200" height="605" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1594674681537">
       <screen x="0" y="23" width="1440" height="821" />
     </state>
@@ -196,5 +237,43 @@
       <screen x="0" y="23" width="1440" height="816" />
     </state>
     <state width="600" height="738" key="javadoc.popup/0.23.1440.816@0.23.1440.816" timestamp="1594679619125" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ComposeFragment.java</url>
+          <line>157</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ComposeFragment.java</url>
+          <line>159</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ComposeFragment.java</url>
+          <line>165</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ComposeFragment.java</url>
+          <line>164</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-method">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ComposeFragment.java</url>
+          <line>148</line>
+          <properties class="com.example.cycleshare.fragments.ComposeFragment" method="savePost" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-method">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ComposeFragment.java</url>
+          <line>161</line>
+          <properties method="done" />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
