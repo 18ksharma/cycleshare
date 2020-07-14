@@ -8,6 +8,13 @@
     tools:context=".fragments.ComposeFragment">
 
     <EditText
+        android:id="@+id/etCondition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Bike condition" />
+
+    <EditText
     android:id="@+id/etPrice"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -28,6 +35,13 @@
         android:ems="10"
         android:hint="Describe your bike"
         android:lines="4" />
+
+    <EditText
+        android:id="@+id/etLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Your current location"/>
 
     <Button
     android:id="@+id/btnCaptureImage"
