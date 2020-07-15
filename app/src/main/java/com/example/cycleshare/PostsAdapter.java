@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.cycleshare.models.Post;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -62,7 +63,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
         @Override
         public void onClick(View view) {
-            //TODO: Implement if a post is clicked on
+            //TODO: Implement if a post is clicked on with timestamp
 
         }
 
@@ -70,8 +71,10 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvUser.setText(post.getUser().getUsername());
             tvDescription.setText(post.getDescription());
             ParseFile pic = post.getImage();
-            //TODO: Add about profile picture
             ParseFile profilePic = post.getUser().getParseFile("profilePic");
+
+            Glide.with(context).load(pic.getUrl()).placeholder(R.drawable.ic_baseline_person_24).into(ivPicture);
+            Glide.with(context).load(profilePic.getUrl()).placeholder(R.drawable.ic_baseline_person_24).into(ivProfilePic);
 
         }
     }

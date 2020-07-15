@@ -16,12 +16,17 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ComposeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ComposeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/PostsAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/PostsAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/HomeFragment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,14 +235,19 @@
       <screen x="0" y="23" width="1440" height="822" />
     </state>
     <state width="720" height="410" key="XDebugger.FullValuePopup/0.23.1440.822@0.23.1440.822" timestamp="1594829573953" />
-    <state x="116" y="123" width="1200" height="605" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1594674681537">
-      <screen x="0" y="23" width="1440" height="821" />
+    <state x="116" y="123" width="1200" height="607" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1594840256844">
+      <screen x="0" y="23" width="1440" height="822" />
     </state>
     <state x="116" y="123" width="1200" height="605" key="com.android.tools.idea.avdmanager.AvdListDialog/0.23.1440.821@0.23.1440.821" timestamp="1594674681537" />
+    <state x="116" y="123" width="1200" height="607" key="com.android.tools.idea.avdmanager.AvdListDialog/0.23.1440.822@0.23.1440.822" timestamp="1594840256844" />
     <state x="365" y="258" key="com.intellij.ide.util.TipDialog" timestamp="1594672909295">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state x="365" y="258" key="com.intellij.ide.util.TipDialog/0.23.1440.814@0.23.1440.814" timestamp="1594672909295" />
+    <state x="500" y="371" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594840449822">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state x="500" y="371" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.823@0.23.1440.823" timestamp="1594840449822" />
     <state width="600" height="738" key="javadoc.popup" timestamp="1594679619125">
       <screen x="0" y="23" width="1440" height="816" />
     </state>
