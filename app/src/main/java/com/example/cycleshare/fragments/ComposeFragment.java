@@ -3,6 +3,8 @@ package com.example.cycleshare.fragments;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -29,6 +31,7 @@ import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 import static android.app.Activity.RESULT_OK;
@@ -146,9 +149,15 @@ public class ComposeFragment extends Fragment {
 
     }
 
-    private void savePost(String condition, String price, String availability, String description, ParseUser currentUser,
+    private void savePost(final String condition, final String price, final String availability, final String description, final ParseUser currentUser,
                           File photoFile) {
-        final ParseFile img = new ParseFile(photoFile);
+        Drawable d = ivPostImage.getDrawable();
+        Bitmap bitmap = ((BitmapDrawable) d).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] bitmapdata = stream.toByteArray();
+        final ParseFile img = new ParseFile(bitmapdata);
+        //final ParseFile img = new ParseFile(photoFile);
 
         Post post = new Post();
         post.setDescription(description);
@@ -160,8 +169,8 @@ public class ComposeFragment extends Fragment {
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
-                if(e!=null){
-                    Log.i(TAG, img.toString());
+                if (e != null) {
+                    Log.e(TAG, img.toString());
                     Log.e(TAG, "Error while saving", e);
                     Toast.makeText(getContext(), "Error while saving!", Toast.LENGTH_SHORT).show();
                     return;
@@ -174,8 +183,9 @@ public class ComposeFragment extends Fragment {
                 ivPostImage.setImageResource(0);
             }
         });
-
     }
+
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

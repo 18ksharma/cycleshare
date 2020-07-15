@@ -57,6 +57,7 @@ Original App Design Project - README Template
 * user cannot set username as someone else's username
 * Settings page where user can change their username
 * User can edit a post that they have made
+* Refresh Feature on home feed
 
 ### 2. Screen Archetypes
 
