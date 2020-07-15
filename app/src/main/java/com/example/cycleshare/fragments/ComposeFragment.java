@@ -151,13 +151,13 @@ public class ComposeFragment extends Fragment {
 
     private void savePost(final String condition, final String price, final String availability, final String description, final ParseUser currentUser,
                           File photoFile) {
-        Drawable d = ivPostImage.getDrawable();
+        /*Drawable d = ivPostImage.getDrawable();
         Bitmap bitmap = ((BitmapDrawable) d).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
         byte[] bitmapdata = stream.toByteArray();
-        final ParseFile img = new ParseFile(bitmapdata);
-        //final ParseFile img = new ParseFile(photoFile);
+        final ParseFile img = new ParseFile(bitmapdata);*/
+        final ParseFile img = new ParseFile(photoFile);
 
         Post post = new Post();
         post.setDescription(description);

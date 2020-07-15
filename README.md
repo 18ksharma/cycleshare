@@ -58,6 +58,7 @@ Original App Design Project - README Template
 * Settings page where user can change their username
 * User can edit a post that they have made
 * Refresh Feature on home feed
+* Infinite scroll on home feed
 
 ### 2. Screen Archetypes
 
