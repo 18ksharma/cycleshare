@@ -2,8 +2,11 @@ package com.example.cycleshare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.format.DateUtils;
+import android.view.View;
 import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -41,6 +44,7 @@ public class PostDetailsActivity extends AppCompatActivity {
     private String condition;
     private String price;
     private String availability;
+    private String email;
 
     private String relativeDate;
 
@@ -58,6 +62,7 @@ public class PostDetailsActivity extends AppCompatActivity {
         tvDescription=findViewById(R.id.tvDescription);
         ivPostImage=findViewById(R.id.ivPicture);
         tvTimestamp=findViewById(R.id.tvTimestamp);
+        btnContact=findViewById(R.id.btnContact);
         //TODO: figure out how to link the map
 
         description = getIntent().getStringExtra("description");
@@ -68,6 +73,7 @@ public class PostDetailsActivity extends AppCompatActivity {
         condition = getIntent().getStringExtra("condition");
         price=getIntent().getStringExtra("price");
         availability=getIntent().getStringExtra("availability");
+        email=getIntent().getStringExtra("email");
 
         relativeDate=getRelativeTimeAgo(createdAt.toString());
 
@@ -81,6 +87,19 @@ public class PostDetailsActivity extends AppCompatActivity {
 
         Glide.with(this).load(profilePic).transform(new CircleCrop())
                 .placeholder(R.drawable.ic_baseline_person_24).into(ivProfilePicture);
+
+        btnContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Intent to open mail app
+                //Intent intent = new Intent(Intent.ACTION_MAIN);
+                //intent.addCategory(Intent.CATEGORY_APP_EMAIL);
+                Intent intent = new Intent (Intent.ACTION_VIEW , Uri.parse("mailto:" + email));
+                intent.putExtra(Intent.EXTRA_SUBJECT, "CycleShare Bike Inquiry");
+                //intent.putExtra(Intent.EXTRA_TEXT, "your_text");
+                startActivity(intent);
+            }
+        });
     }
 
     //Gets Relative time
