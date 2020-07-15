@@ -80,9 +80,9 @@ public class PostDetailsActivity extends AppCompatActivity {
         tvUser.setText(username);
         tvDescription.setText(description);
         tvTimestamp.setText(relativeDate);
-        tvCondition.setText(condition);
-        tvPrice.setText(price);
-        tvAvailability.setText(availability);
+        tvCondition.setText("Condition: "+condition);
+        tvPrice.setText("Price: "+price);
+        tvAvailability.setText("Availability: "+availability);
         Glide.with(this).load(image.getUrl()).placeholder(R.drawable.ic_baseline_person_24).into(ivPostImage);
 
         Glide.with(this).load(profilePic).transform(new CircleCrop())
@@ -98,6 +98,7 @@ public class PostDetailsActivity extends AppCompatActivity {
                 intent.putExtra(Intent.EXTRA_SUBJECT, "CycleShare Bike Inquiry");
                 //intent.putExtra(Intent.EXTRA_TEXT, "your_text");
                 startActivity(intent);
+                finish();
             }
         });
     }

@@ -29,7 +29,7 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
-    public static final String TAG = "PostsFragment";
+    public static final String TAG = "HomeFragment";
     private RecyclerView rvPosts;
     protected PostsAdapter adapter;
     protected List<Post> allposts;

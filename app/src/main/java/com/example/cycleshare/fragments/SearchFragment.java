@@ -2,9 +2,13 @@ package com.example.cycleshare.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.cycleshare.PostsAdapter;
 import com.example.cycleshare.R;
 import com.example.cycleshare.models.Post;
 import com.parse.FindCallback;
@@ -21,6 +26,7 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,15 +35,12 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class SearchFragment extends Fragment {
+    public static final String TAG = "SearchFragment";
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private RecyclerView rvSearchPosts;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    protected PostsAdapter adapter;
+    protected List<Post> allposts;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -55,8 +58,6 @@ public class SearchFragment extends Fragment {
     public static SearchFragment newInstance(String param1, String param2) {
         SearchFragment fragment = new SearchFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -66,8 +67,6 @@ public class SearchFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);//Make sure you have this line of code.
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -76,6 +75,19 @@ public class SearchFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_search, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        rvSearchPosts=view.findViewById(R.id.rvSearchPosts);
+
+        allposts= new ArrayList<>();
+        adapter=new PostsAdapter(getContext(), allposts);
+
+
+        rvSearchPosts.setAdapter(adapter);
+        rvSearchPosts.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
     //Search appears when search fragment opens
@@ -108,6 +120,8 @@ public class SearchFragment extends Fragment {
 
     protected void queryposts(String query) {
         ParseQuery<Post> queries = ParseQuery.getQuery(Post.class);
+        queries.include(Post.KEY_DESCRIPTION);
+        queries.include(Post.KEY_USER);
         queries.whereContains(Post.KEY_DESCRIPTION, query);
         queries.setLimit(20);
         queries.findInBackground(new FindCallback<Post>() {
@@ -120,8 +134,8 @@ public class SearchFragment extends Fragment {
                 for (Post post : posts){
 //                    Log.i(TAG, "Posts: "+post.getDescription()+", username: "+post.getUser().getUsername());
                 }
-                //allposts.addAll(posts);
-                //adapter.notifyDataSetChanged();
+                allposts.addAll(posts);
+                adapter.notifyDataSetChanged();
             }
         });
     }

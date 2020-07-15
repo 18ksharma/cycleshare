@@ -95,11 +95,11 @@ public class ProfileFragment extends Fragment {
 
         ParseUser user = ParseUser.getCurrentUser();
         tvUsername.setText(user.getUsername());
-        Glide.with(getContext()).load(user.getParseFile("profilePic").getUrl())
+        Glide.with(view.getContext()).load(user.getParseFile("profilePic").getUrl())
                 .placeholder(R.drawable.ic_baseline_person_24).into(ivProfilePicture);
 
         allposts= new ArrayList<>();
-        adapter=new PostsAdapter(getContext(), allposts);
+        adapter=new PostsAdapter(view.getContext(), allposts);
 
         rvUserPosts.setAdapter(adapter);
         rvUserPosts.setLayoutManager(new LinearLayoutManager(getContext()));

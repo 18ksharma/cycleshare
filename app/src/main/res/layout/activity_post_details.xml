@@ -20,7 +20,7 @@
         android:layout_height="150dp"
         android:padding="8dp"
         android:layout_centerHorizontal="true"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         tools:srcCompat="@tools:sample/avatars"
         android:layout_below="@id/tvDescription" />
 
