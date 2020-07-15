@@ -59,6 +59,8 @@ Original App Design Project - README Template
 * User can edit a post that they have made
 * Refresh Feature on home feed
 * Infinite scroll on home feed
+* ProfileFragment shows posts in grid format
+    * User wont see their username and profile in each individual post in recyclerview
 
 ### 2. Screen Archetypes
 
@@ -88,6 +90,7 @@ Original App Design Project - README Template
     * Home View
     * Search View
     * Compose View
+    * Profile View
 
 **Flow Navigation** (Screen to Screen)
 
@@ -102,6 +105,10 @@ Original App Design Project - README Template
     * None
 * Compose
     * Stream
+* Profile
+    * None
+* Search
+    * None
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]

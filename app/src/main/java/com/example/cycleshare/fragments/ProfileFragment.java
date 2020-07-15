@@ -143,9 +143,6 @@ public class ProfileFragment extends Fragment {
                     Log.e(TAG, "Issue with getting posts", e);
                     return ;
                 }
-                for(Post post: posts){
-//                    Log.i(TAG, "Posts: "+post.getDescription()+", username: "+post.getUser().getUsername());
-                }
                 allposts.addAll(posts);
                 adapter.notifyDataSetChanged();
             }

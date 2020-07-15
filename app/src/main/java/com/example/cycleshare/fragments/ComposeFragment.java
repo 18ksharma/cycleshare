@@ -24,6 +24,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.cycleshare.MainActivity;
 import com.example.cycleshare.R;
 import com.example.cycleshare.models.Post;
 import com.parse.ParseException;
@@ -180,7 +181,10 @@ public class ComposeFragment extends Fragment {
                 etPrice.setText("");
                 etAvailability.setText("");
                 etCondition.setText("");
+                etLocation.setText("");
                 ivPostImage.setImageResource(0);
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
     }
