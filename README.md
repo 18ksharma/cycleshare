@@ -61,6 +61,10 @@ Original App Design Project - README Template
 * Infinite scroll on home feed
 * ProfileFragment shows posts in grid format
     * User wont see their username and profile in each individual post in recyclerview
+* Implement Likes on a specific bike
+* Add rating to other users
+* Directions to get to the bike
+* Bike is in radius
 
 ### 2. Screen Archetypes
 

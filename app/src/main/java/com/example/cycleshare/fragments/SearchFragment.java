@@ -123,6 +123,9 @@ public class SearchFragment extends Fragment {
         queries.include(Post.KEY_DESCRIPTION);
         queries.include(Post.KEY_USER);
         queries.whereContains(Post.KEY_DESCRIPTION, query);
+        queries.whereContains(Post.KEY_CONDITION, query);
+        queries.whereContains(Post.KEY_AVAILABILITY, query);
+        queries.whereContains(Post.KEY_PRICE, query);
         queries.setLimit(20);
         queries.findInBackground(new FindCallback<Post>() {
             @Override
@@ -130,9 +133,6 @@ public class SearchFragment extends Fragment {
                 if(e!=null){
                     Log.e("SearchFragment", "Issue with getting posts", e);
                     return ;
-                }
-                for (Post post : posts){
-//                    Log.i(TAG, "Posts: "+post.getDescription()+", username: "+post.getUser().getUsername());
                 }
                 allposts.addAll(posts);
                 adapter.notifyDataSetChanged();
