@@ -121,6 +121,10 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
             Glide.with(this).load(profilePic.getUrl()).transform(new CircleCrop())
                     .placeholder(R.drawable.ic_baseline_person_24).into(ivProfilePicture);
         }
+        else{
+            Glide.with(this).load("http://img.freepik.com/free-vector/abstract-geometric-lines-seamless-pattern_144290-8.jpg?size=626&ext=jpg")
+                    .transform(new CircleCrop()).into(ivProfilePicture);
+        }
 
         btnContact.setOnClickListener(new View.OnClickListener() {
             @Override
