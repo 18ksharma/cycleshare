@@ -3,6 +3,7 @@ package com.example.cycleshare;
 import android.content.Context;
 import android.content.Intent;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -99,6 +100,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                 intent.putExtra("availability", post.getAvailability());
                 intent.putExtra("profilePic", post.getUser().getParseFile("profilePic"));
                 intent.putExtra("email", post.getUser().getEmail());
+                intent.putExtra("latitude", post.getLatitude());
+                intent.putExtra("longitude", post.getLongitude());
 
                 // shows activity
                 context.startActivity(intent);
@@ -112,12 +115,17 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             ParseFile pic = post.getImage();
             ParseFile profilePic = post.getUser().getParseFile("profilePic");
             tvTimestamp.setText(getRelativeTimeAgo(post.getCreatedAt().toString()));
-
             Glide.with(context).load(pic.getUrl()).placeholder(R.drawable.ic_baseline_person_24).into(ivPicture);
-            //Circle crops profile pic
-            Glide.with(context).load(profilePic.getUrl()).placeholder(R.drawable.ic_baseline_person_24)
-                    .transform(new CircleCrop()).into(ivProfilePic);
+            if(profilePic!=null) {
+                //Circle crops profile pic
+                Glide.with(context).load(profilePic.getUrl()).placeholder(R.drawable.ic_baseline_person_24)
+                        .transform(new CircleCrop()).into(ivProfilePic);
+            }
+            else{
+                Glide.with(context).load("http://img.freepik.com/free-vector/abstract-geometric-lines-seamless-pattern_144290-8.jpg?size=626&ext=jpg")
+                        .placeholder(R.drawable.ic_baseline_person_24).transform(new CircleCrop()).into(ivProfilePic);
 
+            }
         }
 
         public String getRelativeTimeAgo(String rawJsonDate) {

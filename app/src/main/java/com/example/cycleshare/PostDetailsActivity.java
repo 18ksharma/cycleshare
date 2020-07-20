@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.os.SystemClock;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewParent;
 import android.view.animation.BounceInterpolator;
@@ -64,6 +65,9 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
 
     private String relativeDate;
 
+    private double lat;
+    private double lon;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +103,9 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         price = getIntent().getStringExtra("price");
         availability = getIntent().getStringExtra("availability");
         email = getIntent().getStringExtra("email");
+        lat = getIntent().getExtras().getDouble("latitude");
+        lon = getIntent().getExtras().getDouble("longitude");
+
 
         relativeDate = getRelativeTimeAgo(createdAt.toString());
 
@@ -110,8 +117,10 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         tvAvailability.setText("Availability: " + availability);
         Glide.with(this).load(image.getUrl()).placeholder(R.drawable.ic_baseline_person_24).into(ivPostImage);
 
-        Glide.with(this).load(profilePic).transform(new CircleCrop())
-                .placeholder(R.drawable.ic_baseline_person_24).into(ivProfilePicture);
+        if(profilePic!=null){
+            Glide.with(this).load(profilePic.getUrl()).transform(new CircleCrop())
+                    .placeholder(R.drawable.ic_baseline_person_24).into(ivProfilePicture);
+        }
 
         btnContact.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,9 +169,9 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        Marker marker = googleMap.addMarker(new MarkerOptions().position(new LatLng(0,0)).title("marker"));
+        Marker marker = googleMap.addMarker(new MarkerOptions().position(new LatLng(lat,lon)).title("marker"));
         dropPinEffect(marker);
-        LatLng latLng = new LatLng(0,0);
+        LatLng latLng = new LatLng(lat, lon);
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
     }
 

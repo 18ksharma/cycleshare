@@ -95,8 +95,13 @@ public class ProfileFragment extends Fragment {
 
         ParseUser user = ParseUser.getCurrentUser();
         tvUsername.setText(user.getUsername());
-        Glide.with(view.getContext()).load(user.getParseFile("profilePic").getUrl())
-                .placeholder(R.drawable.ic_baseline_person_24).into(ivProfilePicture);
+        if(user.getParseFile("profilePic")!=null) {
+            Glide.with(view.getContext()).load(user.getParseFile("profilePic").getUrl())
+                    .placeholder(R.drawable.ic_baseline_person_24).into(ivProfilePicture);
+        }
+        else{
+            Glide.with(view.getContext()).load("http://img.freepik.com/free-vector/abstract-geometric-lines-seamless-pattern_144290-8.jpg?size=626&ext=jpg").into(ivProfilePicture);
+        }
 
         allposts= new ArrayList<>();
         adapter=new PostsAdapter(view.getContext(), allposts);

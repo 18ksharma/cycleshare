@@ -114,6 +114,7 @@ public class ComposeFragment extends Fragment /*implements GoogleMap.OnMyLocatio
     private double lon;
     private double lat;
     private FusedLocationProviderClient fusedLocationClient;
+    private LatLng latLng;
 
     private LocationCallback locationCallback;
 
@@ -228,7 +229,7 @@ public class ComposeFragment extends Fragment /*implements GoogleMap.OnMyLocatio
                 //If description is valid
                 ParseUser currentUser = ParseUser.getCurrentUser();
 
-                savePost(condition, price, availability, description, currentUser, photoFile);
+                savePost(condition, price, availability, description, currentUser, photoFile, lat, lon);
             }
         });
         if(checkPermissions()==false){
@@ -267,12 +268,10 @@ public class ComposeFragment extends Fragment /*implements GoogleMap.OnMyLocatio
 
     private void onLocationChanged(Location location) {
         // New location has now been determined
-        String msg = "Updated Location: " +
-                Double.toString(location.getLatitude()) + "," +
-                Double.toString(location.getLongitude());
-        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
         // You can now create a LatLng Object for use with maps
-        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+        latLng = new LatLng(location.getLatitude(), location.getLongitude());
+        lat=location.getLatitude();
+        lon=location.getLongitude();
     }
 
     private void launchgallery() {
@@ -296,19 +295,9 @@ public class ComposeFragment extends Fragment /*implements GoogleMap.OnMyLocatio
     }
 
 
-    /*@Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        //ComposeFragmentPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
-    }
-
-    private void getmyLocation() {
-
-    }*/
-
 
     private void savePost(final String condition, final String price, final String availability, final String description, final ParseUser currentUser,
-                          File photoFile) {
+                          File photoFile, double lat, double lon) {
         /*Drawable d = ivPostImage.getDrawable();
         Bitmap bitmap = ((BitmapDrawable) d).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -324,6 +313,8 @@ public class ComposeFragment extends Fragment /*implements GoogleMap.OnMyLocatio
         post.setPrice(price);
         post.setImage(img);
         post.setUser(currentUser);
+        post.setLatitude(lat);
+        post.setLongitude(lon);
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
@@ -400,26 +391,5 @@ public class ComposeFragment extends Fragment /*implements GoogleMap.OnMyLocatio
 
         return file;
     }
-
-    /*@Override
-    public boolean onMyLocationButtonClick() {
-        return false;
-    }
-
-    @Override
-    public void onMyLocationClick(@NonNull Location location) {
-
-    }
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        map = googleMap;
-        map.setOnMyLocationButtonClickListener(this);
-        map.setOnMyLocationClickListener(this);
-        enableMyLocation();
-    }
-
-    private void enableMyLocation() {
-    }*/
 
 }
