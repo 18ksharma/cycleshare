@@ -37,15 +37,15 @@ Original App Design Project - README Template
 
 **Required Must-have Stories**
 
-* User can create a new account
+* [X] User can create a new account
     *  User can take a picture and set it as their profile picture
-* User can login
-    * User is still logged in when they close app
-* User can see a stream of bikes
-* User can create a post for putting a bike for rent (bike price, details, availability, contact information, upload bike pic)
-* User can logout and see their posts on the profile Fragment
-* User can filter specific bikes using search Fragment (complex algo)
-* User can click on a post to see a detail view)
+* [X] User can login
+    * [X] User is still logged in when they close app
+* [X] User can see a stream of bikes
+* [X] User can create a post for putting a bike for rent (bike price, details, availability, contact information, upload bike pic)
+* [X] User can logout and see their posts on the profile Fragment
+* [X] User can filter specific bikes using search Fragment (complex algo)
+* [X] User can click on a post to see a detail view)
 
 
 **Optional Nice-to-have Stories**
@@ -65,6 +65,8 @@ Original App Design Project - README Template
 * Add rating to other users
 * Directions to get to the bike
 * Bike is in radius
+* Use spinner for displaying condition of the bike
+* Swipe up to open GoogleMaps displaying location of bike
 
 ### 2. Screen Archetypes
 

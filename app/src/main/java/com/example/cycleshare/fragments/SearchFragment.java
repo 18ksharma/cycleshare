@@ -119,13 +119,15 @@ public class SearchFragment extends Fragment {
     }
 
     protected void queryposts(String query) {
+        adapter.clear();
+        adapter.notifyDataSetChanged();
         ParseQuery<Post> queries = ParseQuery.getQuery(Post.class);
         queries.include(Post.KEY_DESCRIPTION);
         queries.include(Post.KEY_USER);
         queries.whereContains(Post.KEY_DESCRIPTION, query);
-        queries.whereContains(Post.KEY_CONDITION, query);
-        queries.whereContains(Post.KEY_AVAILABILITY, query);
-        queries.whereContains(Post.KEY_PRICE, query);
+        //queries.whereContains(Post.KEY_CONDITION, query);
+        //queries.whereContains(Post.KEY_AVAILABILITY, query);
+        //queries.whereContains(Post.KEY_PRICE, query);
         queries.setLimit(20);
         queries.findInBackground(new FindCallback<Post>() {
             @Override

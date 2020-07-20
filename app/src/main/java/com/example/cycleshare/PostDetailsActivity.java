@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -161,6 +162,8 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
     public void onMapReady(GoogleMap googleMap) {
         Marker marker = googleMap.addMarker(new MarkerOptions().position(new LatLng(0,0)).title("marker"));
         dropPinEffect(marker);
+        LatLng latLng = new LatLng(0,0);
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
     }
 
     private void dropPinEffect(final Marker marker) {

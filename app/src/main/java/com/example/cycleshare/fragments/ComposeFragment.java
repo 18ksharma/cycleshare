@@ -1,19 +1,30 @@
 package com.example.cycleshare.fragments;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
 import android.os.Environment;
+import android.os.Looper;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,23 +38,54 @@ import android.widget.Toast;
 import com.example.cycleshare.MainActivity;
 import com.example.cycleshare.R;
 import com.example.cycleshare.models.Post;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.SettingsClient;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.parse.LocationCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+
+import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.PermissionUtils;
+import permissions.dispatcher.RuntimePermissions;
+
+
 import static android.app.Activity.RESULT_OK;
+import static android.content.Context.LOCATION_SERVICE;
+import static androidx.core.content.ContextCompat.getSystemService;
+
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ComposeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ComposeFragment extends Fragment {
-    public static final String TAG="ComposeFragment";
+
+@RuntimePermissions
+public class ComposeFragment extends Fragment /*implements GoogleMap.OnMyLocationButtonClickListener,
+        GoogleMap.OnMyLocationClickListener,
+        OnMapReadyCallback,
+        ActivityCompat.OnRequestPermissionsResultCallback */ {
+    public static final String TAG = "ComposeFragment";
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
     private EditText etDescription;
     private Button btnCaptureImage;
@@ -53,10 +95,37 @@ public class ComposeFragment extends Fragment {
     private EditText etLocation;
     private EditText etAvailability;
     private EditText etCondition;
+    private Button btnChoose;
+
+    private LocationRequest mLocationRequest;
+
+    private long UPDATE_INTERVAL = 10 * 1000;  /* 10 secs */
+    private long FASTEST_INTERVAL = 2000; /* 2 sec */
+    public final static int REQUEST_FINE_LOCATION = 1;
+
+    private GoogleApiClient mGoogleApiClient;
+    private Location mLocation;
+    private LocationManager locationManager;
+
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+    private boolean permissionDenied = false;
+
+    private GoogleMap map;
+    private double lon;
+    private double lat;
+    private FusedLocationProviderClient fusedLocationClient;
+
+    private LocationCallback locationCallback;
+
+
+    private static final String MAPVIEW_BUNDLE_KEY = "MapViewBundleKey";
 
     //Variable for image
     private File photoFile;
     public String photoFileName = "photo.jpg";
+
+
+    //private MapView map;
 
     public ComposeFragment() {
         // Required empty public constructor
@@ -79,6 +148,7 @@ public class ComposeFragment extends Fragment {
     }
 
     @Override
+    @NeedsPermission({Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
@@ -95,14 +165,18 @@ public class ComposeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        etDescription=view.findViewById(R.id.etDescription);
-        btnCaptureImage=view.findViewById(R.id.btnCaptureImage);
-        ivPostImage=view.findViewById(R.id.ivPostImage);
-        btnSubmit=view.findViewById(R.id.btnSubmit);
-        etPrice=view.findViewById(R.id.etPrice);
-        etLocation=view.findViewById(R.id.etLocation);
-        etAvailability=view.findViewById(R.id.etAvailability);
-        etCondition=view.findViewById(R.id.etCondition);
+        etDescription = view.findViewById(R.id.etDescription);
+        btnCaptureImage = view.findViewById(R.id.btnCaptureImage);
+        ivPostImage = view.findViewById(R.id.ivPostImage);
+        btnSubmit = view.findViewById(R.id.btnSubmit);
+        etPrice = view.findViewById(R.id.etPrice);
+        etLocation = view.findViewById(R.id.etLocation);
+        etAvailability = view.findViewById(R.id.etAvailability);
+        etCondition = view.findViewById(R.id.etCondition);
+        btnChoose = view.findViewById(R.id.btnChoose);
+
+        startLocationUpdates();
+
 
         //onclicklistener on btnCaptureImage
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +185,14 @@ public class ComposeFragment extends Fragment {
                 launchcamera();
             }
         });
+
+        btnChoose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchgallery();
+            }
+        });
+
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,33 +204,108 @@ public class ComposeFragment extends Fragment {
                 String condition = etCondition.getText().toString();
 
                 //Description cannot be empty
-                if(description.isEmpty()){
+                if (description.isEmpty()) {
                     Toast.makeText(getContext(), "Description cannot be empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(price.isEmpty()){
+                if (price.isEmpty()) {
                     Toast.makeText(getContext(), "Price cannot be empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(availability.isEmpty()){
+                if (availability.isEmpty()) {
                     Toast.makeText(getContext(), "Availability cannot be empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(photoFile == null ||ivPostImage.getDrawable()==null){
+                if (photoFile == null || ivPostImage.getDrawable() == null) {
                     Toast.makeText(getContext(), "There is no image!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
+
                 //If description is valid
                 ParseUser currentUser = ParseUser.getCurrentUser();
+
                 savePost(condition, price, availability, description, currentUser, photoFile);
             }
         });
-
+        if(checkPermissions()==false){
+            requestPermissions();
+        }
     }
+
+    //@NeedsPermission({Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
+    void startLocationUpdates() {
+
+        //Creates location request for receiving updates
+        mLocationRequest = new LocationRequest();
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        mLocationRequest.setInterval(UPDATE_INTERVAL);
+        mLocationRequest.setFastestInterval(FASTEST_INTERVAL);
+
+        // Create LocationSettingsRequest object using location request
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder();
+        builder.addLocationRequest(mLocationRequest);
+        LocationSettingsRequest locationSettingsRequest = builder.build();
+
+        // Check whether location settings are satisfied
+        SettingsClient settingsClient = LocationServices.getSettingsClient(getContext());
+        settingsClient.checkLocationSettings(locationSettingsRequest);
+
+
+        getFusedLocationProviderClient(getContext()).requestLocationUpdates(mLocationRequest, new com.google.android.gms.location.LocationCallback() {
+                    @Override
+                    public void onLocationResult(LocationResult locationResult) {
+                        onLocationChanged(locationResult.getLastLocation());
+                    }
+                },
+                Looper.myLooper());
+    }
+
+
+    private void onLocationChanged(Location location) {
+        // New location has now been determined
+        String msg = "Updated Location: " +
+                Double.toString(location.getLatitude()) + "," +
+                Double.toString(location.getLongitude());
+        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+        // You can now create a LatLng Object for use with maps
+        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+    }
+
+    private void launchgallery() {
+        //TODO: Intent to open gallery
+    }
+
+    private boolean checkPermissions() {
+        if (ContextCompat.checkSelfPermission(getContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        } else {
+            requestPermissions();
+            return false;
+        }
+    }
+
+    private void requestPermissions() {
+        ActivityCompat.requestPermissions((Activity) getContext(),
+                new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                REQUEST_FINE_LOCATION);
+    }
+
+
+    /*@Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        //ComposeFragmentPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+    }
+
+    private void getmyLocation() {
+
+    }*/
+
 
     private void savePost(final String condition, final String price, final String availability, final String description, final ParseUser currentUser,
                           File photoFile) {
@@ -243,4 +400,26 @@ public class ComposeFragment extends Fragment {
 
         return file;
     }
+
+    /*@Override
+    public boolean onMyLocationButtonClick() {
+        return false;
+    }
+
+    @Override
+    public void onMyLocationClick(@NonNull Location location) {
+
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        map = googleMap;
+        map.setOnMyLocationButtonClickListener(this);
+        map.setOnMyLocationClickListener(this);
+        enableMyLocation();
+    }
+
+    private void enableMyLocation() {
+    }*/
+
 }
