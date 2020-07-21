@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -26,6 +27,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.example.cycleshare.fragments.ComposeFragment;
+import com.example.cycleshare.models.Post;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.google.android.gms.maps.CameraUpdate;
@@ -38,6 +41,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.ParseFile;
+import com.parse.ParseUser;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -56,6 +60,8 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
     private GoogleMap gMap;
     private Button btnContact;
     private TextView tvTimestamp;
+    private ImageView ivDelete;
+    private ImageView ivEdit;
 
     private String description;
     private ParseFile image;
@@ -66,6 +72,8 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
     private String price;
     private String availability;
     private String email;
+    private ParseUser user;
+    public Post post;
 
     private static final String MAPVIEW_BUNDLE_KEY = "MapViewBundleKey";
 
@@ -88,6 +96,8 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         ivPostImage = (PhotoView) findViewById(R.id.ivPicture);
         tvTimestamp = findViewById(R.id.tvTimestamp);
         btnContact = findViewById(R.id.btnContact);
+        ivEdit = findViewById(R.id.ivEdit);
+        ivDelete = findViewById(R.id.ivDelete);
 
         Bundle mapViewBundle=null;
 
@@ -111,6 +121,19 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         email = getIntent().getStringExtra("email");
         lat = getIntent().getExtras().getDouble("latitude");
         lon = getIntent().getExtras().getDouble("longitude");
+        user = (ParseUser) getIntent().getExtras().get("user");
+        post = (Post) getIntent().getExtras().get("post");
+
+        if(username.equals(ParseUser.getCurrentUser().getUsername())){
+            ivDelete.setVisibility(View.VISIBLE);
+            ivEdit.setVisibility(View.VISIBLE);
+
+        }
+        else{
+            ivDelete.setVisibility(View.GONE);
+            ivEdit.setVisibility(View.GONE);
+        }
+
 
 
         relativeDate = getRelativeTimeAgo(createdAt.toString());
@@ -148,6 +171,23 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
                 //intent.putExtra(Intent.EXTRA_TEXT, "your_text");
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        ivEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*Intent intent = new Intent(PostDetailsActivity.this, ComposeFragment.class);
+                intent.putExtra("post", post);
+                startActivity(intent);*/
+
+            }
+        });
+
+        ivDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }

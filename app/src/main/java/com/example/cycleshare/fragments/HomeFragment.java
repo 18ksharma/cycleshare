@@ -9,6 +9,7 @@ import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,6 +39,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView rvPosts;
     protected PostsAdapter adapter;
     protected List<Post> allposts;
+    private SwipeRefreshLayout swipeContainer;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -119,6 +121,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rvPosts=view.findViewById(R.id.rvPosts);
+        swipeContainer=view.findViewById(R.id.swipeContainer);
 
         allposts= new ArrayList<>();
         adapter=new PostsAdapter(getContext(), allposts);
@@ -127,6 +130,21 @@ public class HomeFragment extends Fragment {
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
 
         queryPosts(null);
+
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                allposts.clear();
+                adapter.clear();
+                adapter.addAll(allposts);
+                queryPosts(null);
+                swipeContainer.setRefreshing(false);
+            }
+        });
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
     }
 
     protected void queryPosts(String search){

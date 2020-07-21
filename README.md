@@ -46,30 +46,28 @@ Original App Design Project - README Template
 * [X] User can logout and see their posts on the profile Fragment
 * [X] User can filter specific bikes using search Fragment (complex algo)
 * [X] User can click on a post to see a detail view)
+* [X] User can zoom in on bike images in PostDetails
 
 
 **Optional Nice-to-have Stories**
 
-* Forget password button
-* Internal Messaging Tool
-* Instruction page on how to use the app after user signs up
-* Users can add ratings for people who have posts
-* user cannot set username as someone else's username
+* [X] ProfileFragment shows posts in grid format
+    * [X] User wont see their username and profile in each individual post in recyclerview
+* [X] get rid of searchfragment and add it into the home
 * Settings page where user can change their username
 * User can edit a post that they have made
+* User can delete their post
 * Refresh Feature on home feed
 * Infinite scroll on home feed
-* ProfileFragment shows posts in grid format
-    * User wont see their username and profile in each individual post in recyclerview
-* Implement Likes on a specific bike
-* Add rating to other users
-* Directions to get to the bike
-* Bike is in radius
 * Use spinner for displaying condition of the bike
 * Relative distance
 * Swipe to switch views
-* get rid of searchfragment and add it into the home
 * Swipe up to open GoogleMaps displaying location of bike
+* Forget password button
+* Internal Messaging Tool
+* Users can add ratings for people who have posts
+* Implement Likes on a specific bike
+* Add rating to other users
 
 ### 2. Screen Archetypes
 

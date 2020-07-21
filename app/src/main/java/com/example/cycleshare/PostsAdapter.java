@@ -61,6 +61,11 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         notifyDataSetChanged();
     }
 
+    public void addAll(List<Post> allposts) {
+        posts.addAll(allposts);
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private ImageView ivProfilePic;
         private TextView tvUser;
@@ -102,6 +107,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                 intent.putExtra("email", post.getUser().getEmail());
                 intent.putExtra("latitude", post.getLatitude());
                 intent.putExtra("longitude", post.getLongitude());
+                intent.putExtra("user", post.getUser());
+                intent.putExtra("post", post);
 
                 // shows activity
                 context.startActivity(intent);

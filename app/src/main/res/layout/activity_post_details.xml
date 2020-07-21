@@ -99,4 +99,23 @@
         android:text="Contact Seller"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/mapView"/>
+
+    <ImageView
+        android:id="@+id/ivDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        app:srcCompat="@drawable/ic_baseline_delete_24"
+        android:layout_below="@id/tvTimestamp"
+        android:padding="8dp"/>
+
+    <ImageView
+        android:id="@+id/ivEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_baseline_edit_24"
+        android:layout_below="@id/tvTimestamp"
+        android:layout_toLeftOf="@id/ivDelete"
+        android:padding="8dp"/>
+
 </RelativeLayout>
