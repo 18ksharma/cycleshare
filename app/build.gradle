@@ -72,4 +72,6 @@ dependencies {
     //Google Play SDK
     implementation 'com.google.android.gms:play-services-location:17.0.0'
 
+    //Photoview dependency
+    implementation 'com.github.chrisbanes:PhotoView:2.1.4'
 }

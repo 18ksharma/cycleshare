@@ -110,7 +110,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         }
 
         public void bind(Post post) {
-            tvUser.setText(post.getUser().getUsername());
+            tvUser.setText("@"+post.getUser().getUsername());
             tvDescription.setText(post.getDescription());
             ParseFile pic = post.getImage();
             ParseFile profilePic = post.getUser().getParseFile("profilePic");

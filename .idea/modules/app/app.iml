@@ -163,5 +163,6 @@
     <orderEntry type="library" name="Gradle: jp.wasabeef:glide-transformations:4.1.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: jp.co.cyberagent.android:gpuimage:2.0.4@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.maps.android:android-maps-utils:0.5@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.chrisbanes:PhotoView:2.1.4@aar" level="project" />
   </component>
 </module>

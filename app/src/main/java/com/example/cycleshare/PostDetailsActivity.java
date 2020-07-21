@@ -3,10 +3,14 @@ package com.example.cycleshare;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -22,6 +26,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.github.chrisbanes.photoview.PhotoView;
+import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -45,7 +51,7 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
     private TextView tvPrice;
     private TextView tvAvailability;
     private TextView tvDescription;
-    private ImageView ivPostImage;
+    private PhotoView ivPostImage;
     private MapView map;
     private GoogleMap gMap;
     private Button btnContact;
@@ -79,7 +85,7 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         tvPrice = findViewById(R.id.tvPrice);
         tvAvailability = findViewById(R.id.tvAvailability);
         tvDescription = findViewById(R.id.tvDescription);
-        ivPostImage = findViewById(R.id.ivPicture);
+        ivPostImage = (PhotoView) findViewById(R.id.ivPicture);
         tvTimestamp = findViewById(R.id.tvTimestamp);
         btnContact = findViewById(R.id.btnContact);
 
@@ -109,13 +115,18 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
 
         relativeDate = getRelativeTimeAgo(createdAt.toString());
 
-        tvUser.setText(username);
+        tvUser.setText("@"+username);
         tvDescription.setText(description);
         tvTimestamp.setText(relativeDate);
         tvCondition.setText("Condition: " + condition);
         tvPrice.setText("Price: " + price);
         tvAvailability.setText("Availability: " + availability);
         Glide.with(this).load(image.getUrl()).placeholder(R.drawable.ic_baseline_person_24).into(ivPostImage);
+
+
+        Drawable d = ivPostImage.getDrawable();
+        ivPostImage.setImageDrawable(d);
+        PhotoViewAttacher mAttacher = new PhotoViewAttacher(ivPostImage);
 
         if(profilePic!=null){
             Glide.with(this).load(profilePic.getUrl()).transform(new CircleCrop())
