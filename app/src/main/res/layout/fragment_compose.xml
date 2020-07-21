@@ -36,13 +36,6 @@
         android:hint="Describe your bike"
         android:lines="4" />
 
-    <EditText
-        android:id="@+id/etLocation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Your current location"/>
-
     <Button
     android:id="@+id/btnCaptureImage"
     android:layout_width="wrap_content"

@@ -81,10 +81,7 @@ import static androidx.core.content.ContextCompat.getSystemService;
  */
 
 @RuntimePermissions
-public class ComposeFragment extends Fragment /*implements GoogleMap.OnMyLocationButtonClickListener,
-        GoogleMap.OnMyLocationClickListener,
-        OnMapReadyCallback,
-        ActivityCompat.OnRequestPermissionsResultCallback */ {
+public class ComposeFragment extends Fragment {
     public static final String TAG = "ComposeFragment";
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
     private EditText etDescription;
@@ -92,7 +89,6 @@ public class ComposeFragment extends Fragment /*implements GoogleMap.OnMyLocatio
     private ImageView ivPostImage;
     private Button btnSubmit;
     private EditText etPrice;
-    private EditText etLocation;
     private EditText etAvailability;
     private EditText etCondition;
     private Button btnChoose;
@@ -171,7 +167,6 @@ public class ComposeFragment extends Fragment /*implements GoogleMap.OnMyLocatio
         ivPostImage = view.findViewById(R.id.ivPostImage);
         btnSubmit = view.findViewById(R.id.btnSubmit);
         etPrice = view.findViewById(R.id.etPrice);
-        etLocation = view.findViewById(R.id.etLocation);
         etAvailability = view.findViewById(R.id.etAvailability);
         etCondition = view.findViewById(R.id.etCondition);
         btnChoose = view.findViewById(R.id.btnChoose);
@@ -329,7 +324,6 @@ public class ComposeFragment extends Fragment /*implements GoogleMap.OnMyLocatio
                 etPrice.setText("");
                 etAvailability.setText("");
                 etCondition.setText("");
-                etLocation.setText("");
                 ivPostImage.setImageResource(0);
                 Intent intent = new Intent(getContext(), MainActivity.class);
                 startActivity(intent);

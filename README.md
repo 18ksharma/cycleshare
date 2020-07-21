@@ -66,6 +66,9 @@ Original App Design Project - README Template
 * Directions to get to the bike
 * Bike is in radius
 * Use spinner for displaying condition of the bike
+* Relative distance
+* Swipe to switch views
+* get rid of searchfragment and add it into the home
 * Swipe up to open GoogleMaps displaying location of bike
 
 ### 2. Screen Archetypes
