@@ -54,10 +54,10 @@ Original App Design Project - README Template
 * [X] ProfileFragment shows posts in grid format
     * [X] User wont see their username and profile in each individual post in recyclerview
 * [X] get rid of searchfragment and add it into the home
+* [X] Refresh Feature on home feed
 * Settings page where user can change their username
 * User can edit a post that they have made
 * User can delete their post
-* Refresh Feature on home feed
 * Infinite scroll on home feed
 * Use spinner for displaying condition of the bike
 * Relative distance

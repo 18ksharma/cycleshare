@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.cycleshare.EndlessRecyclerViewScrollListener;
 import com.example.cycleshare.PostsAdapter;
 import com.example.cycleshare.R;
 import com.example.cycleshare.models.Post;
@@ -40,6 +41,8 @@ public class HomeFragment extends Fragment {
     protected PostsAdapter adapter;
     protected List<Post> allposts;
     private SwipeRefreshLayout swipeContainer;
+    private EndlessRecyclerViewScrollListener scrollListener;
+    private int limit;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -81,6 +84,11 @@ public class HomeFragment extends Fragment {
         inflater.inflate(R.menu.menu_search, menu);
         final MenuItem searchItem = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        /*adapter.clear();
+        // 2. Notify the adapter of the update
+        adapter.notifyDataSetChanged(); // or notifyItemRangeRemoved
+        // 3. Reset endless scroll listener when performing a new search
+        scrollListener.resetState();*/
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() { //might need to check this
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -89,7 +97,7 @@ public class HomeFragment extends Fragment {
                 // workaround to avoid issues with some emulators and keyboard devices firing twice if a keyboard enter is used
                 // see https://code.google.com/p/android/issues/detail?id=24599
 
-                queryPosts(query);
+                queryPosts(query, 0);
                 searchView.clearFocus();
 
                 return true;
@@ -97,7 +105,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                queryPosts(newText);
+                queryPosts(newText, 0);
                 return false;
             }
         });
@@ -114,7 +122,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void onOptionsMenuClosed() {
-        queryPosts(null);
+        queryPosts(null, 0);
     }
 
     @Override
@@ -123,13 +131,25 @@ public class HomeFragment extends Fragment {
         rvPosts=view.findViewById(R.id.rvPosts);
         swipeContainer=view.findViewById(R.id.swipeContainer);
 
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+
         allposts= new ArrayList<>();
         adapter=new PostsAdapter(getContext(), allposts);
 
         rvPosts.setAdapter(adapter);
-        rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        queryPosts(null);
+        rvPosts.setLayoutManager(linearLayoutManager);
+        scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                // Triggered only when new data needs to be appended to the list
+                // Add whatever code is needed to append new items to the bottom of the list
+                loadNextData(page);
+            }
+        };
+
+
+        queryPosts(null, 0);
 
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -137,17 +157,26 @@ public class HomeFragment extends Fragment {
                 allposts.clear();
                 adapter.clear();
                 adapter.addAll(allposts);
-                queryPosts(null);
+                queryPosts(null, 0);
                 swipeContainer.setRefreshing(false);
             }
         });
+
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_blue_dark,
                 android.R.color.holo_green_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_red_light);
+                android.R.color.holo_blue_light);
+
+
+        rvPosts.addOnScrollListener(scrollListener);
     }
 
-    protected void queryPosts(String search){
+    private void loadNextData(int page) {
+        limit = (page)*20;
+        queryPosts(null, limit);
+    }
+
+    protected void queryPosts(String search, int skip){
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
         if(search!=null){
@@ -157,6 +186,9 @@ public class HomeFragment extends Fragment {
             query.whereContains(Post.KEY_DESCRIPTION, search);
         }
         query.setLimit(20);
+        if(skip!=0){
+            query.setSkip(limit);
+        }
         query.addDescendingOrder(Post.KEY_CREATEDAT);
         query.findInBackground(new FindCallback<Post>() {
             @Override
