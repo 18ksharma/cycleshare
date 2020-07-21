@@ -6,8 +6,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +22,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.cycleshare.InitialActivity;
 import com.example.cycleshare.PostsAdapter;
+import com.example.cycleshare.ProfileAdapter;
 import com.example.cycleshare.R;
 import com.example.cycleshare.models.Post;
 import com.parse.FindCallback;
@@ -45,7 +48,7 @@ public class ProfileFragment extends Fragment {
     private ParseFile img;
     private TextView tvUsername;
     private RecyclerView rvUserPosts;
-    private PostsAdapter adapter;
+    private ProfileAdapter adapter;
     private List<Post> allposts;
 
     public ProfileFragment() {
@@ -104,10 +107,12 @@ public class ProfileFragment extends Fragment {
         }
 
         allposts= new ArrayList<>();
-        adapter=new PostsAdapter(view.getContext(), allposts);
+        adapter= new ProfileAdapter(view.getContext(), allposts);
 
         rvUserPosts.setAdapter(adapter);
-        rvUserPosts.setLayoutManager(new LinearLayoutManager(getContext()));
+        StaggeredGridLayoutManager gridLayoutManager =
+                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        rvUserPosts.setLayoutManager(gridLayoutManager);
 
         queryPostsbyUser();
 
