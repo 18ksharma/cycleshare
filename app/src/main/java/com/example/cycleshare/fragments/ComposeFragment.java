@@ -32,9 +32,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.cycleshare.MainActivity;
@@ -96,6 +98,7 @@ public class ComposeFragment extends Fragment {
     private EditText etAvailability;
     private EditText etCondition;
     private Button btnChoose;
+    private Spinner sConditions;
 
     private LocationRequest mLocationRequest;
 
@@ -172,8 +175,17 @@ public class ComposeFragment extends Fragment {
         btnSubmit = view.findViewById(R.id.btnSubmit);
         etPrice = view.findViewById(R.id.etPrice);
         etAvailability = view.findViewById(R.id.etAvailability);
-        etCondition = view.findViewById(R.id.etCondition);
         btnChoose = view.findViewById(R.id.btnChoose);
+        sConditions = view.findViewById(R.id.sConditions);
+
+
+        String[] items = new String[]{"New", "Excellent", "Good", "Fair", "Poor"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_dropdown_item,
+                items);
+        sConditions.setAdapter(adapter);
+
 
         startLocationUpdates();
 
@@ -201,7 +213,7 @@ public class ComposeFragment extends Fragment {
                 String description = etDescription.getText().toString();
                 String price = etPrice.getText().toString();
                 String availability = etAvailability.getText().toString();
-                String condition = etCondition.getText().toString();
+                String condition = sConditions.getSelectedItem().toString();
 
                 //Description cannot be empty
                 if (description.isEmpty()) {
@@ -336,7 +348,7 @@ public class ComposeFragment extends Fragment {
                 etDescription.setText("");
                 etPrice.setText("");
                 etAvailability.setText("");
-                etCondition.setText("");
+                //etCondition.setText("");
                 ivPostImage.setImageResource(0);
                 Intent intent = new Intent(getContext(), MainActivity.class);
                 startActivity(intent);
@@ -370,9 +382,6 @@ public class ComposeFragment extends Fragment {
                     ivPreview.setImageBitmap(selectedImage);
 
                 }
-            }
-            else { // Result was a failure
-                Toast.makeText(getContext(), "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
     }
 

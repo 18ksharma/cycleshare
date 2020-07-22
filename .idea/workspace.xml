@@ -15,12 +15,18 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/SignupActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/SignupActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ComposeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ComposeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_compose.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_compose.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,38 +197,38 @@
       <screen x="0" y="23" width="1440" height="822" />
     </state>
     <state x="576" y="205" key="AndroidProcessChooserDialog/0.23.1440.822@0.23.1440.822" timestamp="1594829549031" />
-    <state width="1218" height="359" key="GridCell.Tab.0.bottom" timestamp="1595437458617">
+    <state width="1218" height="161" key="GridCell.Tab.0.bottom" timestamp="1595452927650">
       <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state width="1358" height="3" key="GridCell.Tab.0.bottom/0.23.1440.821@0.23.1440.821" timestamp="1594766243652" />
     <state width="1398" height="259" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1594829938269" />
     <state width="1218" height="47" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1595365638168" />
     <state width="1218" height="47" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1595432593759" />
-    <state width="1218" height="359" key="GridCell.Tab.0.bottom/0.23.1440.826@0.23.1440.826" timestamp="1595437458617" />
-    <state width="1218" height="359" key="GridCell.Tab.0.center" timestamp="1595437458617">
+    <state width="1218" height="161" key="GridCell.Tab.0.bottom/0.23.1440.826@0.23.1440.826" timestamp="1595452927650" />
+    <state width="1218" height="161" key="GridCell.Tab.0.center" timestamp="1595452927647">
       <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state width="1358" height="3" key="GridCell.Tab.0.center/0.23.1440.821@0.23.1440.821" timestamp="1594766243651" />
     <state width="1398" height="259" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1594829938268" />
     <state width="1218" height="47" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1595365638167" />
     <state width="1218" height="47" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1595432593758" />
-    <state width="1218" height="359" key="GridCell.Tab.0.center/0.23.1440.826@0.23.1440.826" timestamp="1595437458617" />
-    <state width="1218" height="359" key="GridCell.Tab.0.left" timestamp="1595437458617">
+    <state width="1218" height="161" key="GridCell.Tab.0.center/0.23.1440.826@0.23.1440.826" timestamp="1595452927647" />
+    <state width="1218" height="161" key="GridCell.Tab.0.left" timestamp="1595452927647">
       <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state width="1358" height="3" key="GridCell.Tab.0.left/0.23.1440.821@0.23.1440.821" timestamp="1594766243651" />
     <state width="1398" height="259" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1594829938268" />
     <state width="1218" height="47" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1595365638166" />
     <state width="1218" height="47" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1595432593758" />
-    <state width="1218" height="359" key="GridCell.Tab.0.left/0.23.1440.826@0.23.1440.826" timestamp="1595437458617" />
-    <state width="1218" height="359" key="GridCell.Tab.0.right" timestamp="1595437458617">
+    <state width="1218" height="161" key="GridCell.Tab.0.left/0.23.1440.826@0.23.1440.826" timestamp="1595452927647" />
+    <state width="1218" height="161" key="GridCell.Tab.0.right" timestamp="1595452927649">
       <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state width="1358" height="3" key="GridCell.Tab.0.right/0.23.1440.821@0.23.1440.821" timestamp="1594766243652" />
     <state width="1398" height="259" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1594829938269" />
     <state width="1218" height="47" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1595365638168" />
     <state width="1218" height="47" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1595432593759" />
-    <state width="1218" height="359" key="GridCell.Tab.0.right/0.23.1440.826@0.23.1440.826" timestamp="1595437458617" />
+    <state width="1218" height="161" key="GridCell.Tab.0.right/0.23.1440.826@0.23.1440.826" timestamp="1595452927649" />
     <state width="1218" height="359" key="GridCell.Tab.1.bottom" timestamp="1595437458618">
       <screen x="0" y="23" width="1440" height="826" />
     </state>
@@ -295,26 +301,6 @@
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/PostDetailsActivity.java</url>
           <line>128</line>
           <option name="timeStamp" value="48" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ComposeFragment.java</url>
-          <line>280</line>
-          <option name="timeStamp" value="69" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ComposeFragment.java</url>
-          <line>281</line>
-          <option name="timeStamp" value="70" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ComposeFragment.java</url>
-          <line>283</line>
-          <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ComposeFragment.java</url>
-          <line>284</line>
-          <option name="timeStamp" value="72" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

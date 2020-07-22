@@ -1,64 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragments.ComposeFragment">
 
-    <EditText
-        android:id="@+id/etCondition"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvCondition"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Bike condition" />
+        android:paddingLeft="8dp"
+        android:paddingTop="16dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="16dp"
+        android:text="Bike Condition" />
+
+    <Spinner
+        android:id="@+id/sConditions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tvCondition" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvCondition"
+        android:paddingRight="8dp"
+        android:paddingLeft="8dp"
+        android:text="Price" />
 
     <EditText
-    android:id="@+id/etPrice"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:ems="10"
-    android:hint="Bike price" />
+        android:id="@+id/etPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sConditions"
+        android:layout_toRightOf="@id/tvPrice"
+        android:ems="10"
+        android:hint="Hourly bike rental price"
+        android:paddingTop="16dp"
+        android:inputType="numberDecimal"/>
+
+    <TextView
+        android:id="@+id/tvAvailability"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvPrice"
+        android:paddingLeft="8dp"
+        android:paddingTop="16dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="16dp"
+        android:text="Availability" />
 
     <EditText
         android:id="@+id/etAvailability"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/etPrice"
+        android:layout_toRightOf="@id/tvAvailability"
         android:ems="10"
-        android:hint="Bike availability" />
+        android:hint="Days of the week and times bike is available for rent" />
 
     <EditText
         android:id="@+id/etDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/etAvailability"
         android:ems="10"
         android:hint="Describe your bike"
         android:lines="4" />
 
+
     <Button
-    android:id="@+id/btnCaptureImage"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Take a picture"
-    android:layout_gravity="center"/>
+        android:id="@+id/btnCaptureImage"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etDescription"
+        android:drawableLeft="@drawable/ic_baseline_camera_alt_24"
+        android:text=" Take picture" />
+
     <Button
         android:id="@+id/btnChoose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose from gallery"
-        android:layout_gravity="center"/>
+        android:layout_below="@id/etDescription"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/btnCaptureImage"
+        android:drawableLeft="@drawable/ic_baseline_photo_library_24"
+        android:text=" Choose from gallery" />
+
 
     <ImageView
         android:id="@+id/ivPostImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_below="@id/btnChoose"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        tools:src="@tools:sample/avatars"/>
+        tools:src="@tools:sample/avatars" />
 
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Share"/>
-</LinearLayout>
+        android:layout_below="@id/ivPostImage"
+        android:text="Share" />
+</RelativeLayout>
