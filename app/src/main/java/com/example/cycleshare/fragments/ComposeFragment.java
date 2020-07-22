@@ -96,7 +96,6 @@ public class ComposeFragment extends Fragment {
     private Button btnSubmit;
     private EditText etPrice;
     private EditText etAvailability;
-    private EditText etCondition;
     private Button btnChoose;
     private Spinner sConditions;
 
@@ -110,16 +109,11 @@ public class ComposeFragment extends Fragment {
     private Location mLocation;
     private LocationManager locationManager;
 
-    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-    private boolean permissionDenied = false;
-
     private GoogleMap map;
     private double lon;
     private double lat;
     private FusedLocationProviderClient fusedLocationClient;
     private LatLng latLng;
-
-    private LocationCallback locationCallback;
 
 
     private static final String MAPVIEW_BUNDLE_KEY = "MapViewBundleKey";
@@ -348,7 +342,6 @@ public class ComposeFragment extends Fragment {
                 etDescription.setText("");
                 etPrice.setText("");
                 etAvailability.setText("");
-                //etCondition.setText("");
                 ivPostImage.setImageResource(0);
                 Intent intent = new Intent(getContext(), MainActivity.class);
                 startActivity(intent);

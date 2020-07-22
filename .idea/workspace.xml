@@ -22,11 +22,14 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/SignupActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/SignupActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ComposeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ComposeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ProfileFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_compose.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_compose.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,14 +160,14 @@
       <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state x="458" y="195" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.23.1440.823@0.23.1440.823" timestamp="1594831027462" />
-    <state x="529" y="141" key="#com.intellij.ide.util.MemberChooser" timestamp="1595347083324">
-      <screen x="0" y="23" width="1440" height="823" />
+    <state x="529" y="141" key="#com.intellij.ide.util.MemberChooser" timestamp="1595457696065">
+      <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state x="529" y="140" key="#com.intellij.ide.util.MemberChooser/0.23.1440.816@0.23.1440.816" timestamp="1594741849370" />
     <state x="529" y="141" key="#com.intellij.ide.util.MemberChooser/0.23.1440.822@0.23.1440.822" timestamp="1594676706330" />
     <state x="529" y="141" key="#com.intellij.ide.util.MemberChooser/0.23.1440.823@0.23.1440.823" timestamp="1595347083324" />
     <state x="529" y="141" key="#com.intellij.ide.util.MemberChooser/0.23.1440.825@0.23.1440.825" timestamp="1595015828440" />
-    <state x="529" y="141" key="#com.intellij.ide.util.MemberChooser/0.23.1440.826@0.23.1440.826" timestamp="1594939982872" />
+    <state x="529" y="141" key="#com.intellij.ide.util.MemberChooser/0.23.1440.826@0.23.1440.826" timestamp="1595457696065" />
     <state x="454" y="181" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1595343250828">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
@@ -283,6 +286,10 @@
       <screen x="0" y="23" width="1440" height="816" />
     </state>
     <state width="600" height="738" key="javadoc.popup/0.23.1440.816@0.23.1440.816" timestamp="1594679619125" />
+    <state x="342" y="173" width="670" height="676" key="search.everywhere.popup" timestamp="1595457675266">
+      <screen x="0" y="23" width="1440" height="826" />
+    </state>
+    <state x="342" y="173" width="670" height="676" key="search.everywhere.popup/0.23.1440.826@0.23.1440.826" timestamp="1595457675266" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

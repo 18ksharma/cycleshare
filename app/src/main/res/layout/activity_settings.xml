@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity">
+
+    <ImageView
+        android:id="@+id/ivProfilePicture"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        tools:src="@tools:sample/avatars"
+        android:layout_margin="8dp" />
+
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="kanika22"
+        android:padding="8dp"
+        android:layout_toRightOf="@+id/ivProfilePicture"/>
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/logout" />
+
+
+    <Button
+        android:id="@+id/btnChangeUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btncamera"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="-3dp"
+        android:text="Change Username" />
+
+    <EditText
+        android:id="@+id/etnewuser"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnChangeUsername"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toStartOf="@+id/btnChangeUsername"
+        tools:text="New Username" />
+    <TextView
+        android:id="@+id/tvChange"
+        android:text="Change Profile picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUsername"
+        android:layout_toRightOf="@id/ivProfilePicture"
+        android:padding="8dp"/>
+    <Button
+        android:id="@+id/btncamera"
+        android:text="Take a picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvChange"
+        android:layout_toRightOf="@id/ivProfilePicture"/>
+    <Button
+        android:id="@+id/btngallery"
+        android:text="Choose from gallery"
+        android:layout_toRightOf="@id/btncamera"
+        android:layout_above="@id/btnChangeUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

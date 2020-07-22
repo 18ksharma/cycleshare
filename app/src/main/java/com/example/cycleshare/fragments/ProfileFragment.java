@@ -24,6 +24,7 @@ import com.example.cycleshare.InitialActivity;
 import com.example.cycleshare.PostsAdapter;
 import com.example.cycleshare.ProfileAdapter;
 import com.example.cycleshare.R;
+import com.example.cycleshare.SettingsActivity;
 import com.example.cycleshare.models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -122,7 +123,8 @@ public class ProfileFragment extends Fragment {
         btnChangeProfilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getContext(), SettingsActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -42,8 +42,9 @@
         android:id="@+id/btnChangeProfilePicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/change"
         android:layout_below="@id/tvUsername"
-        android:layout_toRightOf="@+id/ivProfilePicture"/>
+        android:layout_toRightOf="@+id/ivProfilePicture"
+        android:drawableLeft="@drawable/ic_baseline_settings_24"
+        android:text=" Settings" />
 
 </RelativeLayout>

@@ -48,9 +48,9 @@ public class SignupActivity extends AppCompatActivity {
     private ParseFile img;
 
     //Variable for image
-    private File photoFile;
+    private static File photoFile;
     public static final String TAG = "ComposeFragment";
-    public String photoFileName = "photo.jpg";
+    public static String photoFileName = "photo.jpg";
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
 
     public final static int PICK_PHOTO_CODE = 1046;
@@ -220,7 +220,7 @@ public class SignupActivity extends AppCompatActivity {
 
     }
 
-    private void launchcamera() {
+    public void launchcamera() {
 
         // Intent to open camera
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -228,7 +228,7 @@ public class SignupActivity extends AppCompatActivity {
         photoFile = getPhotoFileUri(photoFileName);
 
         // wrap File object into a content provider
-        Uri fileProvider = FileProvider.getUriForFile(SignupActivity.this, "com.example.fileprovider", photoFile);
+        Uri fileProvider = FileProvider.getUriForFile(this, "com.example.fileprovider", photoFile);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
 
         // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
@@ -239,7 +239,7 @@ public class SignupActivity extends AppCompatActivity {
         }
     }
 
-    private File getPhotoFileUri(String photoFileName) {
+    public  File getPhotoFileUri(String photoFileName) {
 
 
         // Get safe storage directory for photos
