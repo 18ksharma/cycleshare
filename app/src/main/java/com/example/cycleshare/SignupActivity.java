@@ -7,9 +7,11 @@ import androidx.core.content.FileProvider;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.ImageDecoder;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -20,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.cycleshare.fragments.ComposeFragment;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
@@ -28,6 +31,7 @@ import com.parse.SignUpCallback;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -48,6 +52,8 @@ public class SignupActivity extends AppCompatActivity {
     public String photoFileName = "photo.jpg";
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
 
+    public final static int PICK_PHOTO_CODE = 1046;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,9 +69,14 @@ public class SignupActivity extends AppCompatActivity {
         btnGallery = findViewById(R.id.btnGallery);
         ivPreview = findViewById(R.id.ivPreview);
 
+        btnGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchgallery();
+            }
+        });
 
 
-        //TODO: implement camera launch
         btnPicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,40 +116,59 @@ public class SignupActivity extends AppCompatActivity {
                 user.setUsername(username);
                 user.setPassword(password);
                 user.setEmail(email);
-                Drawable d = ivPreview.getDrawable();
-                Bitmap bitmap = ((BitmapDrawable) d).getBitmap();
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-                byte[] bitmapdata = stream.toByteArray();
-                final ParseFile img = new ParseFile(bitmapdata);
-                user.put("profilePic", img);
-                img.saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        // Invoke signUpInBackground
-                        user.signUpInBackground(new SignUpCallback() {
-                            public void done(ParseException e) {
-                                if (e == null) {
-                                    ParseUser currentUser = ParseUser.getCurrentUser();
-                                    Intent i = new Intent(SignupActivity.this, MainActivity.class);
-                                    startActivity(i);
-                                }
-                                else {
-                                    Toast.makeText(SignupActivity.this, "Failure to signup", Toast.LENGTH_SHORT).show();
-                                    Log.e("Signup", "error:"+e);
-                                }
-                            }
-                        });
-                    }
-                });
-
-
-
-
+                if(ivPreview.getDrawable()!=null){
+                    Drawable d = ivPreview.getDrawable();
+                    Bitmap bitmap = ((BitmapDrawable) d).getBitmap();
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                    byte[] bitmapdata = stream.toByteArray();
+                    final ParseFile img = new ParseFile(bitmapdata);
+                    user.put("profilePic", img);
+                    img.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            // Invoke signUpInBackground
+                            signup(user);
+                        }
+                    });
+                }
+                else {
+                    signup(user);
+                }
 
             }
         });
     }
+
+    private void signup(ParseUser user) {
+        user.signUpInBackground(new SignUpCallback() {
+            public void done(ParseException e) {
+                if (e == null) {
+                    ParseUser currentUser = ParseUser.getCurrentUser();
+                    Intent i = new Intent(SignupActivity.this, MainActivity.class);
+                    startActivity(i);
+                }
+                else {
+                    Toast.makeText(SignupActivity.this, "Failure to signup", Toast.LENGTH_SHORT).show();
+                    Log.e("Signup", "error:"+e);
+                }
+            }
+        });
+    }
+
+    private void launchgallery() {
+            Intent intent = new Intent(Intent.ACTION_PICK,
+                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+            // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
+            // So as long as the result is not null, it's safe to use the intent.
+            if (intent.resolveActivity(this.getPackageManager()) != null) {
+                // Bring up gallery to select a photo
+                startActivityForResult(intent, PICK_PHOTO_CODE);
+            }
+
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -149,10 +179,44 @@ public class SignupActivity extends AppCompatActivity {
                 // RESIZE BITMAP, see section below
                 // Load the taken image into a preview
                 ivPreview.setImageBitmap(takenImage);
-            } else { // Result was a failure
-                Toast.makeText(this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
         }
+            if ((data != null) && requestCode == PICK_PHOTO_CODE) {
+                if (resultCode == RESULT_OK) {
+                    Uri photoUri = data.getData();
+
+                    // Load the image located at photoUri into selectedImage
+                    Bitmap selectedImage = loadFromUri(photoUri);
+
+                    // Load the selected image into a preview
+                    ImageView ivPrev = (ImageView) findViewById(R.id.ivPreview);
+                    ivPreview.setImageBitmap(selectedImage);
+
+                }
+            }
+            else { // Result was a failure
+                Toast.makeText(this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
+            }
+    }
+
+    private Bitmap loadFromUri(Uri photoUri) {
+
+        Bitmap image = null;
+        try {
+            // check version of Android on device
+            if(Build.VERSION.SDK_INT > 27){
+                // on newer versions of Android, use the new decodeBitmap method
+                ImageDecoder.Source source = ImageDecoder.createSource(this.getContentResolver(), photoUri);
+                image = ImageDecoder.decodeBitmap(source);
+            } else {
+                // support older versions of Android by using getBitmap
+                image = MediaStore.Images.Media.getBitmap(this.getContentResolver(), photoUri);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return image;
+
     }
 
     private void launchcamera() {

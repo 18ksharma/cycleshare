@@ -274,9 +274,7 @@ public class ComposeFragment extends Fragment {
         lon=location.getLongitude();
     }
 
-    private void launchgallery() {
-        //TODO: Intent to open gallery
-        // Create intent for picking a photo from the gallery
+    public void launchgallery() {
         Intent intent = new Intent(Intent.ACTION_PICK,
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
@@ -378,7 +376,7 @@ public class ComposeFragment extends Fragment {
             }
     }
 
-    private Bitmap loadFromUri(Uri photoUri) {
+    public Bitmap loadFromUri(Uri photoUri) {
         Bitmap image = null;
         try {
             // check version of Android on device
@@ -397,7 +395,7 @@ public class ComposeFragment extends Fragment {
     }
 
     //Opens camera app on the phone
-    private void launchcamera() {
+    public void launchcamera() {
         // Intent to open camera
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Create a File reference for accessing the image

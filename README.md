@@ -58,8 +58,8 @@ Original App Design Project - README Template
 * [X] Infinite scroll on home feed
 * [X] User can take a profile picture with camera
 * [X] User can upload picture from gallery
+* [X] User can pick profile picture from gallery
 * Use spinner for displaying condition of the bike
-* User can pick profile picture from gallery
 * Settings page where user can change their username
 * User can edit a post that they have made
 * User can delete their post
