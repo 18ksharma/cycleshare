@@ -9,11 +9,13 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.ImageDecoder;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -63,6 +65,7 @@ import static com.google.android.gms.location.LocationServices.getFusedLocationP
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.PermissionUtils;
@@ -83,6 +86,7 @@ import static androidx.core.content.ContextCompat.getSystemService;
 @RuntimePermissions
 public class ComposeFragment extends Fragment {
     public static final String TAG = "ComposeFragment";
+    public final static int PICK_PHOTO_CODE = 1046;
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
     private EditText etDescription;
     private Button btnCaptureImage;
@@ -215,8 +219,9 @@ public class ComposeFragment extends Fragment {
                     return;
                 }
 
-                if (photoFile == null || ivPostImage.getDrawable() == null) {
+                if (ivPostImage.getDrawable() == null) {
                     Toast.makeText(getContext(), "There is no image!", Toast.LENGTH_SHORT).show();
+                    Log.i(TAG, String.valueOf(photoFile));
                     return;
                 }
 
@@ -271,6 +276,17 @@ public class ComposeFragment extends Fragment {
 
     private void launchgallery() {
         //TODO: Intent to open gallery
+        // Create intent for picking a photo from the gallery
+        Intent intent = new Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+        // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
+        // So as long as the result is not null, it's safe to use the intent.
+        if (intent.resolveActivity(getContext().getPackageManager()) != null) {
+            // Bring up gallery to select a photo
+            startActivityForResult(intent, PICK_PHOTO_CODE);
+        }
+
     }
 
     private boolean checkPermissions() {
@@ -293,13 +309,12 @@ public class ComposeFragment extends Fragment {
 
     private void savePost(final String condition, final String price, final String availability, final String description, final ParseUser currentUser,
                           File photoFile, double lat, double lon) {
-        /*Drawable d = ivPostImage.getDrawable();
+        Drawable d = ivPostImage.getDrawable();
         Bitmap bitmap = ((BitmapDrawable) d).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
         byte[] bitmapdata = stream.toByteArray();
-        final ParseFile img = new ParseFile(bitmapdata);*/
-        final ParseFile img = new ParseFile(photoFile);
+        final ParseFile img = new ParseFile(bitmapdata);
 
         Post post = new Post();
         post.setDescription(description);
@@ -343,10 +358,42 @@ public class ComposeFragment extends Fragment {
                 // RESIZE BITMAP, see section below
                 // Load the taken image into a preview
                 ivPostImage.setImageBitmap(takenImage);
-            } else { // Result was a failure
-                Toast.makeText(getContext(), "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
         }
+            if ((data != null) && requestCode == PICK_PHOTO_CODE) {
+                if (resultCode == RESULT_OK) {
+                    Uri photoUri = data.getData();
+
+                    // Load the image located at photoUri into selectedImage
+                    Bitmap selectedImage = loadFromUri(photoUri);
+
+                    // Load the selected image into a preview
+                    ImageView ivPreview = (ImageView) getView().findViewById(R.id.ivPostImage);
+                    ivPreview.setImageBitmap(selectedImage);
+
+                }
+            }
+            else { // Result was a failure
+                Toast.makeText(getContext(), "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
+            }
+    }
+
+    private Bitmap loadFromUri(Uri photoUri) {
+        Bitmap image = null;
+        try {
+            // check version of Android on device
+            if(Build.VERSION.SDK_INT > 27){
+                // on newer versions of Android, use the new decodeBitmap method
+                ImageDecoder.Source source = ImageDecoder.createSource(getContext().getContentResolver(), photoUri);
+                image = ImageDecoder.decodeBitmap(source);
+            } else {
+                // support older versions of Android by using getBitmap
+                image = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), photoUri);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return image;
     }
 
     //Opens camera app on the phone

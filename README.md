@@ -55,11 +55,14 @@ Original App Design Project - README Template
     * [X] User wont see their username and profile in each individual post in recyclerview
 * [X] get rid of searchfragment and add it into the home
 * [X] Refresh Feature on home feed
+* [X] Infinite scroll on home feed
+* [X] User can take a profile picture with camera
+* [X] User can upload picture from gallery
+* Use spinner for displaying condition of the bike
+* User can pick profile picture from gallery
 * Settings page where user can change their username
 * User can edit a post that they have made
 * User can delete their post
-* Infinite scroll on home feed
-* Use spinner for displaying condition of the bike
 * Relative distance
 * Swipe to switch views
 * Swipe up to open GoogleMaps displaying location of bike
