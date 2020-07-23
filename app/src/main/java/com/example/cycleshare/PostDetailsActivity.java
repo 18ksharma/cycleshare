@@ -30,6 +30,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.example.cycleshare.fragments.ComposeFragment;
 import com.example.cycleshare.fragments.HomeFragment;
+import com.example.cycleshare.fragments.ProfileFragment;
 import com.example.cycleshare.models.Post;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
@@ -126,11 +127,11 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         lon = getIntent().getExtras().getDouble("longitude");
         user = (ParseUser) getIntent().getExtras().get("user");
         post = (Post) getIntent().getExtras().get("post");
+        String parent = getIntent().getStringExtra("parent");
 
-        if(username.equals(ParseUser.getCurrentUser().getUsername())){
+        if(username.equals(ParseUser.getCurrentUser().getUsername()) && (parent == "home")){
             ivDelete.setVisibility(View.VISIBLE);
             ivEdit.setVisibility(View.VISIBLE);
-
         }
         else{
             ivDelete.setVisibility(View.GONE);
@@ -167,11 +168,8 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
             @Override
             public void onClick(View view) {
                 //Intent to open mail app
-                //Intent intent = new Intent(Intent.ACTION_MAIN);
-                //intent.addCategory(Intent.CATEGORY_APP_EMAIL);
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("mailto:" + email));
                 intent.putExtra(Intent.EXTRA_SUBJECT, "CycleShare Bike Inquiry");
-                //intent.putExtra(Intent.EXTRA_TEXT, "your_text");
                 startActivity(intent);
                 finish();
             }
@@ -198,7 +196,7 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
                             Toast.makeText(PostDetailsActivity.this, "Post deleted.", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(PostDetailsActivity.this, MainActivity.class);
                             startActivity(i);
-                            //finish();
+                            finish();
                         }
                     });
                 } catch (com.parse.ParseException e) {

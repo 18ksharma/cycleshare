@@ -110,6 +110,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                 intent.putExtra("user", post.getUser());
                 intent.putExtra("post", post);
 
+                intent.putExtra("parent", "home");
+
                 // shows activity
                 context.startActivity(intent);
             }

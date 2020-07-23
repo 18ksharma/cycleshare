@@ -117,6 +117,12 @@ public class ProfileFragment extends Fragment {
 
         queryPostsbyUser();
 
+        //Update after post deleted
+
+        allposts.clear();
+        adapter.clear();
+        adapter.addAll(allposts);
+
         //TODO: Set profile picture
 
         //TODO: open camera/photo gallery to change profile picture

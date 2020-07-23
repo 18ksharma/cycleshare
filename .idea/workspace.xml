@@ -15,16 +15,17 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/PostDetailsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/PostDetailsActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/PostsAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/PostsAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/ProfileAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/ProfileAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/HomeFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ProfileFragment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,13 +169,14 @@
     </state>
     <state x="454" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.814@0.23.1440.814" timestamp="1594673184373" />
     <state x="454" y="181" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.825@0.23.1440.825" timestamp="1595343250828" />
-    <state x="889" y="269" key="#xdebugger.evaluate" timestamp="1595363225707">
-      <screen x="0" y="23" width="1440" height="825" />
+    <state x="889" y="269" key="#xdebugger.evaluate" timestamp="1595523585168">
+      <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state x="887" y="265" key="#xdebugger.evaluate/0.23.1440.821@0.23.1440.821" timestamp="1594763317153" />
     <state x="913" y="23" key="#xdebugger.evaluate/0.23.1440.822@0.23.1440.822" timestamp="1594827568417" />
     <state x="929" y="216" key="#xdebugger.evaluate/0.23.1440.823@0.23.1440.823" timestamp="1594843216985" />
     <state x="889" y="269" key="#xdebugger.evaluate/0.23.1440.825@0.23.1440.825" timestamp="1595363225707" />
+    <state x="889" y="269" key="#xdebugger.evaluate/0.23.1440.826@0.23.1440.826" timestamp="1595523585168" />
     <state x="304" y="189" key="AndroidCreateResourceDirectoryDialog" timestamp="1594753282654">
       <screen x="0" y="23" width="1440" height="821" />
     </state>
@@ -195,70 +197,70 @@
       <screen x="0" y="23" width="1440" height="822" />
     </state>
     <state x="576" y="205" key="AndroidProcessChooserDialog/0.23.1440.822@0.23.1440.822" timestamp="1594829549031" />
-    <state width="1218" height="161" key="GridCell.Tab.0.bottom" timestamp="1595452927650">
+    <state width="1218" height="193" key="GridCell.Tab.0.bottom" timestamp="1595523538421">
       <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state width="1358" height="3" key="GridCell.Tab.0.bottom/0.23.1440.821@0.23.1440.821" timestamp="1594766243652" />
     <state width="1398" height="259" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1594829938269" />
     <state width="1218" height="47" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1595365638168" />
     <state width="1218" height="47" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1595432593759" />
-    <state width="1218" height="161" key="GridCell.Tab.0.bottom/0.23.1440.826@0.23.1440.826" timestamp="1595452927650" />
-    <state width="1218" height="161" key="GridCell.Tab.0.center" timestamp="1595452927647">
+    <state width="1218" height="193" key="GridCell.Tab.0.bottom/0.23.1440.826@0.23.1440.826" timestamp="1595523538421" />
+    <state width="1218" height="193" key="GridCell.Tab.0.center" timestamp="1595523538421">
       <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state width="1358" height="3" key="GridCell.Tab.0.center/0.23.1440.821@0.23.1440.821" timestamp="1594766243651" />
     <state width="1398" height="259" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1594829938268" />
     <state width="1218" height="47" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1595365638167" />
     <state width="1218" height="47" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1595432593758" />
-    <state width="1218" height="161" key="GridCell.Tab.0.center/0.23.1440.826@0.23.1440.826" timestamp="1595452927647" />
-    <state width="1218" height="161" key="GridCell.Tab.0.left" timestamp="1595452927647">
+    <state width="1218" height="193" key="GridCell.Tab.0.center/0.23.1440.826@0.23.1440.826" timestamp="1595523538421" />
+    <state width="1218" height="193" key="GridCell.Tab.0.left" timestamp="1595523538421">
       <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state width="1358" height="3" key="GridCell.Tab.0.left/0.23.1440.821@0.23.1440.821" timestamp="1594766243651" />
     <state width="1398" height="259" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1594829938268" />
     <state width="1218" height="47" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1595365638166" />
     <state width="1218" height="47" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1595432593758" />
-    <state width="1218" height="161" key="GridCell.Tab.0.left/0.23.1440.826@0.23.1440.826" timestamp="1595452927647" />
-    <state width="1218" height="161" key="GridCell.Tab.0.right" timestamp="1595452927649">
+    <state width="1218" height="193" key="GridCell.Tab.0.left/0.23.1440.826@0.23.1440.826" timestamp="1595523538421" />
+    <state width="1218" height="193" key="GridCell.Tab.0.right" timestamp="1595523538421">
       <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state width="1358" height="3" key="GridCell.Tab.0.right/0.23.1440.821@0.23.1440.821" timestamp="1594766243652" />
     <state width="1398" height="259" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1594829938269" />
     <state width="1218" height="47" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1595365638168" />
     <state width="1218" height="47" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1595432593759" />
-    <state width="1218" height="161" key="GridCell.Tab.0.right/0.23.1440.826@0.23.1440.826" timestamp="1595452927649" />
-    <state width="1218" height="359" key="GridCell.Tab.1.bottom" timestamp="1595437458618">
+    <state width="1218" height="193" key="GridCell.Tab.0.right/0.23.1440.826@0.23.1440.826" timestamp="1595523538421" />
+    <state width="1218" height="359" key="GridCell.Tab.1.bottom" timestamp="1595523510772">
       <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state width="1358" height="192" key="GridCell.Tab.1.bottom/0.23.1440.821@0.23.1440.821" timestamp="1594763466634" />
     <state width="1398" height="259" key="GridCell.Tab.1.bottom/0.23.1440.822@0.23.1440.822" timestamp="1594829938270" />
     <state width="1218" height="47" key="GridCell.Tab.1.bottom/0.23.1440.823@0.23.1440.823" timestamp="1595365638169" />
     <state width="1218" height="47" key="GridCell.Tab.1.bottom/0.23.1440.825@0.23.1440.825" timestamp="1595432593761" />
-    <state width="1218" height="359" key="GridCell.Tab.1.bottom/0.23.1440.826@0.23.1440.826" timestamp="1595437458618" />
-    <state width="1218" height="359" key="GridCell.Tab.1.center" timestamp="1595437458618">
+    <state width="1218" height="359" key="GridCell.Tab.1.bottom/0.23.1440.826@0.23.1440.826" timestamp="1595523510772" />
+    <state width="1218" height="359" key="GridCell.Tab.1.center" timestamp="1595523510772">
       <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state width="1358" height="192" key="GridCell.Tab.1.center/0.23.1440.821@0.23.1440.821" timestamp="1594763466634" />
     <state width="1398" height="259" key="GridCell.Tab.1.center/0.23.1440.822@0.23.1440.822" timestamp="1594829938270" />
     <state width="1218" height="47" key="GridCell.Tab.1.center/0.23.1440.823@0.23.1440.823" timestamp="1595365638169" />
     <state width="1218" height="47" key="GridCell.Tab.1.center/0.23.1440.825@0.23.1440.825" timestamp="1595432593760" />
-    <state width="1218" height="359" key="GridCell.Tab.1.center/0.23.1440.826@0.23.1440.826" timestamp="1595437458618" />
-    <state width="1218" height="359" key="GridCell.Tab.1.left" timestamp="1595437458618">
+    <state width="1218" height="359" key="GridCell.Tab.1.center/0.23.1440.826@0.23.1440.826" timestamp="1595523510772" />
+    <state width="1218" height="359" key="GridCell.Tab.1.left" timestamp="1595523510772">
       <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state width="1358" height="192" key="GridCell.Tab.1.left/0.23.1440.821@0.23.1440.821" timestamp="1594763466634" />
     <state width="1398" height="259" key="GridCell.Tab.1.left/0.23.1440.822@0.23.1440.822" timestamp="1594829938269" />
     <state width="1218" height="47" key="GridCell.Tab.1.left/0.23.1440.823@0.23.1440.823" timestamp="1595365638168" />
     <state width="1218" height="47" key="GridCell.Tab.1.left/0.23.1440.825@0.23.1440.825" timestamp="1595432593759" />
-    <state width="1218" height="359" key="GridCell.Tab.1.left/0.23.1440.826@0.23.1440.826" timestamp="1595437458618" />
-    <state width="1218" height="359" key="GridCell.Tab.1.right" timestamp="1595437458618">
+    <state width="1218" height="359" key="GridCell.Tab.1.left/0.23.1440.826@0.23.1440.826" timestamp="1595523510772" />
+    <state width="1218" height="359" key="GridCell.Tab.1.right" timestamp="1595523510772">
       <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state width="1358" height="192" key="GridCell.Tab.1.right/0.23.1440.821@0.23.1440.821" timestamp="1594763466634" />
     <state width="1398" height="259" key="GridCell.Tab.1.right/0.23.1440.822@0.23.1440.822" timestamp="1594829938270" />
     <state width="1218" height="47" key="GridCell.Tab.1.right/0.23.1440.823@0.23.1440.823" timestamp="1595365638169" />
     <state width="1218" height="47" key="GridCell.Tab.1.right/0.23.1440.825@0.23.1440.825" timestamp="1595432593760" />
-    <state width="1218" height="359" key="GridCell.Tab.1.right/0.23.1440.826@0.23.1440.826" timestamp="1595437458618" />
+    <state width="1218" height="359" key="GridCell.Tab.1.right/0.23.1440.826@0.23.1440.826" timestamp="1595523510772" />
     <state width="720" height="410" key="XDebugger.FullValuePopup" timestamp="1594829573953">
       <screen x="0" y="23" width="1440" height="822" />
     </state>
@@ -294,19 +296,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/PostDetailsActivity.java</url>
-          <line>129</line>
-          <option name="timeStamp" value="46" />
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ProfileFragment.java</url>
+          <line>121</line>
+          <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/PostDetailsActivity.java</url>
-          <line>130</line>
-          <option name="timeStamp" value="47" />
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ProfileFragment.java</url>
+          <line>122</line>
+          <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/PostDetailsActivity.java</url>
-          <line>131</line>
-          <option name="timeStamp" value="48" />
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ProfileFragment.java</url>
+          <line>123</line>
+          <option name="timeStamp" value="77" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

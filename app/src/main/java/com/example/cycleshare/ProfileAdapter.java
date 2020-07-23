@@ -42,6 +42,16 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
         return posts.size();
     }
 
+    public void clear() {
+        posts.clear();
+        notifyDataSetChanged();
+    }
+
+    public void addAll(List<Post> allposts) {
+        posts.addAll(allposts);
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private ImageView ivPostImg;
 
@@ -82,6 +92,8 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
                 intent.putExtra("latitude", post.getLatitude());
                 intent.putExtra("longitude", post.getLongitude());
                 intent.putExtra("user", post.getUser());
+
+                intent.putExtra("parent", "profile");
 
                 // shows activity
                 context.startActivity(intent);

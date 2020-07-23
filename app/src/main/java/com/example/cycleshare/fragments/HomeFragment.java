@@ -151,7 +151,8 @@ public class HomeFragment extends Fragment {
 
 
         queryPosts(null, 0);
-        
+
+        //Updates adapter for when posts are deleted
         allposts.clear();
         adapter.clear();
         adapter.addAll(allposts);
