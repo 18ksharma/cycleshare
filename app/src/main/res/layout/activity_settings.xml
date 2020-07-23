@@ -37,16 +37,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btncamera"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="-3dp"
         android:text="Change Username" />
 
     <EditText
         android:id="@+id/etnewuser"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/btnChangeUsername"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="8dp"
+        android:layout_below="@id/btngallery"
         android:layout_toStartOf="@+id/btnChangeUsername"
         tools:text="New Username" />
     <TextView
@@ -71,5 +70,19 @@
         android:layout_above="@id/btnChangeUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btnDelete"
+        android:text="Delete my Account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnChangeUsername"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        android:layout_below="@id/btngallery"
+        android:padding="8dp"/>
 
 </RelativeLayout>

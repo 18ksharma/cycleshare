@@ -24,10 +24,12 @@ import android.view.animation.BounceInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.example.cycleshare.fragments.ComposeFragment;
+import com.example.cycleshare.fragments.HomeFragment;
 import com.example.cycleshare.models.Post;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
@@ -42,6 +44,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -187,7 +190,21 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         ivDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                try {
+                    post.delete();
+                    post.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(com.parse.ParseException e) {
+                            Toast.makeText(PostDetailsActivity.this, "Post deleted.", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(PostDetailsActivity.this, MainActivity.class);
+                            startActivity(i);
+                            //finish();
+                        }
+                    });
+                } catch (com.parse.ParseException e) {
+                    e.printStackTrace();
+                    Toast.makeText(PostDetailsActivity.this, "Post could not be deleted", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

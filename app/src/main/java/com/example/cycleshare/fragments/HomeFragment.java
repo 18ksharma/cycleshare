@@ -136,6 +136,7 @@ public class HomeFragment extends Fragment {
         allposts= new ArrayList<>();
         adapter=new PostsAdapter(getContext(), allposts);
 
+
         rvPosts.setAdapter(adapter);
 
         rvPosts.setLayoutManager(linearLayoutManager);
@@ -150,6 +151,10 @@ public class HomeFragment extends Fragment {
 
 
         queryPosts(null, 0);
+        
+        allposts.clear();
+        adapter.clear();
+        adapter.addAll(allposts);
 
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
