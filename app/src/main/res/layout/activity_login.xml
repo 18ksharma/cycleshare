@@ -31,9 +31,14 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:text="@string/login" />
+    <EditText
+        android:id="@+id/etEmail"
+        android:hint="Email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <Button
-        android:id="@+id/btnSignup"
+        android:id="@+id/btnForgot"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:text="@string/forgot" />

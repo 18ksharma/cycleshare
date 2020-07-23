@@ -13,12 +13,15 @@ import android.widget.Toast;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.RequestPasswordResetCallback;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private EditText etUsername;
     private EditText etPassword;
     private Button btnLogin;
+    private Button btnForgot;
+    private EditText etEmail;
 
 
     @Override
@@ -30,6 +33,10 @@ public class LoginActivity extends AppCompatActivity {
         etUsername=findViewById(R.id.etUsername);
         etPassword=findViewById(R.id.etPassword);
         btnLogin=findViewById(R.id.btnLogin);
+        btnForgot=findViewById(R.id.btnForgot);
+        etEmail=findViewById(R.id.etEmail);
+
+        etEmail.setVisibility(View.GONE);
 
         //Sets an onclicklistener on the login button
         btnLogin.setOnClickListener(new View.OnClickListener(){
@@ -41,6 +48,32 @@ public class LoginActivity extends AppCompatActivity {
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
                 loginUser(username, password);
+            }
+        });
+
+        btnForgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                etEmail.setVisibility(View.VISIBLE);
+
+                if(etEmail.getText().equals("")){
+                    Toast.makeText(LoginActivity.this, "Email cannot be blank", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                ParseUser.requestPasswordResetInBackground(etEmail.getText().toString(),
+                        new RequestPasswordResetCallback() {
+                            public void done(ParseException e) {
+                                if (e == null) {
+                                    // An email was successfully sent with reset instructions.
+                                    Toast.makeText(LoginActivity.this, "An email was sent with reset instructions", Toast.LENGTH_SHORT).show();
+                                    etEmail.setText("");
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "Error sending email", Toast.LENGTH_SHORT).show();
+                                    // Something went wrong. Look at the ParseException to see what's up.
+                                }
+                            }
+                        });
             }
         });
     }
