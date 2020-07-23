@@ -195,9 +195,6 @@ public class SignupActivity extends AppCompatActivity {
 
                 }
             }
-            else { // Result was a failure
-                Toast.makeText(this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
-            }
     }
 
     private Bitmap loadFromUri(Uri photoUri) {

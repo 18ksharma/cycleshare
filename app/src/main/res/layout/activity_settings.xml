@@ -35,54 +35,60 @@
         android:id="@+id/btnChangeUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btncamera"
+        android:layout_below="@+id/btnLogout"
         android:layout_alignParentRight="true"
-        android:text="Change Username" />
+        android:text="Change Username"
+        android:layout_toRightOf="@id/etnewuser"/>
 
     <EditText
         android:id="@+id/etnewuser"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_width="174dp"
+        android:layout_height="87dp"
+        android:layout_below="@id/tvUsername"
+        android:layout_alignBottom="@id/ivProfilePicture"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="8dp"
-        android:layout_below="@id/btngallery"
-        android:layout_toStartOf="@+id/btnChangeUsername"
+        android:layout_marginBottom="-14dp"
+        android:layout_toRightOf="@id/ivProfilePicture"
         tools:text="New Username" />
     <TextView
         android:id="@+id/tvChange"
         android:text="Change Profile picture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvUsername"
-        android:layout_toRightOf="@id/ivProfilePicture"
+        android:layout_below="@id/ivProfilePicture"
         android:padding="8dp"/>
+
     <Button
         android:id="@+id/btncamera"
-        android:text="Take a picture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvChange"
-        android:layout_toRightOf="@id/ivProfilePicture"/>
+        android:layout_alignParentLeft="true"
+        android:layout_toStartOf="@+id/btngallery"
+        android:text="Take a picture"/>
     <Button
         android:id="@+id/btngallery"
         android:text="Choose from gallery"
-        android:layout_toRightOf="@id/btncamera"
-        android:layout_above="@id/btnChangeUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_below="@id/tvChange"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"/>
+
     <Button
         android:id="@+id/btnDelete"
-        android:text="Delete my Account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btnChangeUsername"/>
+        android:layout_below="@id/btnupdate"
+        android:backgroundTint="#A3FF0000"
+        android:drawableLeft="@drawable/ic_baseline_delete_24"
+        android:text="Delete my Account" />
 
-    <View
-        android:id="@+id/divider"
+    <Button
+        android:id="@+id/btnupdate"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
+        android:layout_height="wrap_content"
         android:layout_below="@id/btngallery"
-        android:padding="8dp"/>
+        android:text="Update Changes"/>
 
 </RelativeLayout>

@@ -59,11 +59,12 @@ Original App Design Project - README Template
 * [X] User can take a profile picture with camera
 * [X] User can upload picture from gallery
 * [X] User can pick profile picture from gallery
+* [X]User can delete their post
+* [X] Use spinner for displaying condition of the bike
+* [X] Settings page where user can change their username and profile picture
+* User can delete their account
 * Open venmo app to complete transaction
-* Use spinner for displaying condition of the bike
-* Settings page where user can change their username
 * User can edit a post that they have made
-* User can delete their post
 * Relative distance
 * Swipe to switch views
 * Swipe up to open GoogleMaps displaying location of bike
@@ -72,8 +73,10 @@ Original App Design Project - README Template
 * Users can add ratings for people who have posts
 * Implement Likes on a specific bike
 * Add rating to other users
-* Show posts only a certain distance away
+* Show posts only a certain distance away (filtering)
 * display location of bike in a range
+* Adding comments to posts
+* Press and hold to delete posts on the profilefragment
 
 ### 2. Screen Archetypes
 
