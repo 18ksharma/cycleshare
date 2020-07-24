@@ -113,6 +113,7 @@ public class ProfileFragment extends Fragment {
         rvUserPosts.setAdapter(adapter);
         StaggeredGridLayoutManager gridLayoutManager =
                 new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        gridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         rvUserPosts.setLayoutManager(gridLayoutManager);
 
         queryPostsbyUser();

@@ -36,7 +36,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".EditActivity"></activity>
+        <activity android:name=".SettingsActivity" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"

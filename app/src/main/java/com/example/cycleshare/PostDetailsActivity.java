@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import android.Manifest;
 import android.content.Context;
@@ -129,7 +130,7 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         post = (Post) getIntent().getExtras().get("post");
         String parent = getIntent().getStringExtra("parent");
 
-        if(username.equals(ParseUser.getCurrentUser().getUsername()) && (parent == "home")){
+        if(username.equals(ParseUser.getCurrentUser().getUsername()) && (parent != "post")){
             ivDelete.setVisibility(View.VISIBLE);
             ivEdit.setVisibility(View.VISIBLE);
         }
@@ -178,9 +179,11 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         ivEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent intent = new Intent(PostDetailsActivity.this, ComposeFragment.class);
+                Fragment fragment =new ComposeFragment();
+                Intent intent = new Intent(PostDetailsActivity.this, EditActivity.class);
+                intent.putExtra("edit", "edit");
                 intent.putExtra("post", post);
-                startActivity(intent);*/
+                startActivity(intent);
 
             }
         });
