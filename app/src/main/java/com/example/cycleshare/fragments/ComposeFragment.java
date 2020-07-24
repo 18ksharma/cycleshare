@@ -41,6 +41,7 @@ import android.widget.Toast;
 
 import com.example.cycleshare.MainActivity;
 import com.example.cycleshare.R;
+import com.example.cycleshare.ShakeListener;
 import com.example.cycleshare.models.Post;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -56,6 +57,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.parse.LocationCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -86,7 +88,7 @@ import static androidx.core.content.ContextCompat.getSystemService;
  */
 
 @RuntimePermissions
-public class ComposeFragment extends Fragment {
+public class ComposeFragment extends Fragment implements ShakeListener.Callback {
     public static final String TAG = "ComposeFragment";
     public final static int PICK_PHOTO_CODE = 1046;
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
@@ -114,6 +116,8 @@ public class ComposeFragment extends Fragment {
     private double lat;
     private FusedLocationProviderClient fusedLocationClient;
     private LatLng latLng;
+
+    private boolean shaking;
 
 
     private static final String MAPVIEW_BUNDLE_KEY = "MapViewBundleKey";
@@ -163,6 +167,7 @@ public class ComposeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Snackbar.make(view, "Shake to clear all fields", Snackbar.LENGTH_LONG).show();
         etDescription = view.findViewById(R.id.etDescription);
         btnCaptureImage = view.findViewById(R.id.btnCaptureImage);
         ivPostImage = view.findViewById(R.id.ivPostImage);
@@ -182,6 +187,13 @@ public class ComposeFragment extends Fragment {
 
 
         startLocationUpdates();
+
+        if(shaking==true){
+            etDescription.setText("");
+            etPrice.setText("");
+            etAvailability.setText("");
+            ivPostImage.setImageResource(0);
+        }
 
 
         //onclicklistener on btnCaptureImage
@@ -433,4 +445,19 @@ public class ComposeFragment extends Fragment {
         return file;
     }
 
+    @Override
+    public void shakingStarted() {
+
+        etDescription.setText("");
+        etPrice.setText("");
+        etAvailability.setText("");
+        ivPostImage.setImageResource(0);
+        shaking = true;
+    }
+
+    @Override
+    public void shakingStopped() {
+        shaking = false;
+
+    }
 }

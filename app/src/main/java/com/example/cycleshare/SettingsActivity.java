@@ -10,11 +10,12 @@ import android.graphics.BitmapFactory;
 import android.graphics.ImageDecoder;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +27,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.cycleshare.models.Post;
+import com.google.android.gms.common.util.concurrent.HandlerExecutor;
 import com.google.android.material.snackbar.Snackbar;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -38,6 +40,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class SettingsActivity extends AppCompatActivity {
     private Button btnCamera;
@@ -52,6 +55,7 @@ public class SettingsActivity extends AppCompatActivity {
     private Button btnDelete;
 
     private ParseFile img;
+    private boolean shaking;
 
     //Variable for image
     private File photoFile;
@@ -144,7 +148,7 @@ public class SettingsActivity extends AppCompatActivity {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view,"Deleted account.", Snackbar.LENGTH_LONG);
+                Snackbar.make(view, "Shake to complete deletion of account", Snackbar.LENGTH_LONG).show();
                 querypostsbyuser();
                 try {
                     user.delete();
@@ -209,6 +213,18 @@ public class SettingsActivity extends AppCompatActivity {
         if (intent.resolveActivity(this.getPackageManager()) != null) {
             // Bring up gallery to select a photo
             startActivityForResult(intent, PICK_PHOTO_CODE);
+        }
+    }
+
+    public static void wait(int ms)
+    {
+        try
+        {
+            Thread.sleep(ms);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
         }
     }
 

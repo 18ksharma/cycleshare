@@ -62,7 +62,7 @@ Original App Design Project - README Template
 * [X]User can delete their post
 * [X] Use spinner for displaying condition of the bike
 * [X] Settings page where user can change their username and profile picture
-* User can delete their account
+* [X] User can delete their account
 * Open venmo app to complete transaction
 * User can edit a post that they have made
 * Relative distance
