@@ -1,10 +1,12 @@
 package com.example.cycleshare.fragments;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -71,6 +73,32 @@ public class ProfileFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
+    /*public static AlertDialog AskOption() {
+            AlertDialog myQuittingDialogBox = new AlertDialog.Builder(this)
+                    // set message, title, and icon
+                    .setTitle("Delete")
+                    .setMessage("Are you sure you want to delete this post?")
+                    .setIcon(R.drawable.ic_baseline_delete_24)
+
+                    .setPositiveButton("Delete this Post", new DialogInterface.OnClickListener(){
+
+                        public void onClick(DialogInterface dialog, int whichButton) {
+
+                            dialog.dismiss();
+                        }
+
+                    })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+
+                        }
+                    })
+                    .create();
+
+            return myQuittingDialogBox;
+    }*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

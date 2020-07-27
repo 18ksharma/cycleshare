@@ -20,6 +20,7 @@ public class Post extends ParseObject {
     public static final String KEY_AVAILABILITY = "availability";
     public static final String KEY_LATITUDE = "latitude";
     public static final String KEY_LONGITUDE = "longitude";
+    public static final String KEY_POINT = "point";
 
     public String getAvailability() {
         return getString(KEY_AVAILABILITY);
@@ -77,4 +78,8 @@ public class Post extends ParseObject {
     public void setLongitude(double lon){ put(KEY_LONGITUDE, lon);}
 
     public double getLongitude(){ return getDouble(KEY_LONGITUDE);}
+
+    public ParseGeoPoint getPoint(){ return getParseGeoPoint(KEY_POINT);}
+
+    public void setPoint(ParseGeoPoint point){ put(KEY_POINT, point);}
 }

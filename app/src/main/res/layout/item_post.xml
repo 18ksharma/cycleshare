@@ -50,8 +50,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvUser"
         android:layout_toRightOf="@id/ivProfilePic"
-        android:padding="8dp"
+        android:paddingLeft="8dp"
         android:text="Description"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp" />
+    <TextView
+        android:id="@+id/tvRelativeDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 mi away"
+        android:paddingRight="8dp"
+        android:layout_below="@id/tvTimestamp"
+        android:layout_alignParentRight="true"/>
 </RelativeLayout>

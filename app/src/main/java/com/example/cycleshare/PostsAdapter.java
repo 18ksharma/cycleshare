@@ -72,6 +72,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private ImageView ivPicture;
         private TextView tvDescription;
         private TextView tvTimestamp;
+        private TextView tvRelativeDistance;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

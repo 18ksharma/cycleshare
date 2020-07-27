@@ -293,7 +293,7 @@ public class ComposeFragment extends Fragment implements ShakeListener.Callback 
         lat=location.getLatitude();
         lon=location.getLongitude();
 
-        //point= new ParseGeoPoint(lat, lon);
+        point= new ParseGeoPoint(lat, lon);
 
     }
 
@@ -346,6 +346,7 @@ public class ComposeFragment extends Fragment implements ShakeListener.Callback 
         post.setUser(currentUser);
         post.setLatitude(lat);
         post.setLongitude(lon);
+        post.setPoint(point);
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
@@ -368,32 +369,7 @@ public class ComposeFragment extends Fragment implements ShakeListener.Callback 
 
 
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-                // by this point we have the camera photo on disk
-                Bitmap takenImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
-                // RESIZE BITMAP, see section below
-                // Load the taken image into a preview
-                ivPostImage.setImageBitmap(takenImage);
-            }
-        }
-            if ((data != null) && requestCode == PICK_PHOTO_CODE) {
-                if (resultCode == RESULT_OK) {
-                    Uri photoUri = data.getData();
 
-                    // Load the image located at photoUri into selectedImage
-                    Bitmap selectedImage = loadFromUri(photoUri);
-
-                    // Load the selected image into a preview
-                    ImageView ivPreview = (ImageView) getView().findViewById(R.id.ivPostImage);
-                    ivPreview.setImageBitmap(selectedImage);
-
-                }
-            }
-    }
 
     public Bitmap loadFromUri(Uri photoUri) {
         Bitmap image = null;

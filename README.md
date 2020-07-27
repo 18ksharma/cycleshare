@@ -59,12 +59,12 @@ Original App Design Project - README Template
 * [X] User can take a profile picture with camera
 * [X] User can upload picture from gallery
 * [X] User can pick profile picture from gallery
-* [X]User can delete their post
+* [X] User can delete their post
 * [X] Use spinner for displaying condition of the bike
 * [X] Settings page where user can change their username and profile picture
 * [X] User can delete their account
+* [X] User can edit a post that they have made
 * Open venmo app to complete transaction
-* User can edit a post that they have made
 * Relative distance
 * Swipe to switch views
 * Swipe up to open GoogleMaps displaying location of bike

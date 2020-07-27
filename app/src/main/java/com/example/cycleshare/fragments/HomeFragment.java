@@ -43,6 +43,7 @@ public class HomeFragment extends Fragment {
     private SwipeRefreshLayout swipeContainer;
     private EndlessRecyclerViewScrollListener scrollListener;
     private int limit;
+    private boolean searching;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -84,11 +85,11 @@ public class HomeFragment extends Fragment {
         inflater.inflate(R.menu.menu_search, menu);
         final MenuItem searchItem = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        adapter.clear();
+        /*adapter.clear();
         // 2. Notify the adapter of the update
         adapter.notifyDataSetChanged(); // or notifyItemRangeRemoved
         // 3. Reset endless scroll listener when performing a new search
-        scrollListener.resetState();
+        scrollListener.resetState();*/
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() { //might need to check this
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -96,17 +97,28 @@ public class HomeFragment extends Fragment {
 
                 // workaround to avoid issues with some emulators and keyboard devices firing twice if a keyboard enter is used
                 // see https://code.google.com/p/android/issues/detail?id=24599
-                adapter.clear();
+                allposts.clear();
+                // 2. Notify the adapter of the update
+                adapter.notifyDataSetChanged(); // or notifyItemRangeRemoved
+                // 3. Reset endless scroll listener when performing a new search
+                scrollListener.resetState();
 
                 queryPosts(query, 0);
                 searchView.clearFocus();
+                searching=true;
 
                 return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                allposts.clear();
+                // 2. Notify the adapter of the update
+                adapter.notifyDataSetChanged(); // or notifyItemRangeRemoved
+                // 3. Reset endless scroll listener when performing a new search
+                scrollListener.resetState();
                 queryPosts(newText, 0);
+                searching=true;
                 return false;
             }
         });
@@ -115,6 +127,7 @@ public class HomeFragment extends Fragment {
             @Override
             public boolean onClose() {
                 onOptionsMenuClosed();
+                searching=false;
                 return false;
             }
         });
@@ -147,8 +160,10 @@ public class HomeFragment extends Fragment {
                 // Triggered only when new data needs to be appended to the list
                 // Add whatever code is needed to append new items to the bottom of the list
                 loadNextData(page);
+                Log.i(TAG, "onLoadMore called");
             }
         };
+        rvPosts.addOnScrollListener(scrollListener);
 
 
         queryPosts(null, 0);
@@ -163,8 +178,9 @@ public class HomeFragment extends Fragment {
             public void onRefresh() {
                 allposts.clear();
                 adapter.clear();
-                adapter.addAll(allposts);
+                //might have to switch with queryposts and adapter.addAll
                 queryPosts(null, 0);
+                adapter.addAll(allposts);
                 swipeContainer.setRefreshing(false);
             }
         });
@@ -175,12 +191,15 @@ public class HomeFragment extends Fragment {
                 android.R.color.holo_blue_light);
 
 
-        rvPosts.addOnScrollListener(scrollListener);
+        //rvPosts.addOnScrollListener(scrollListener);
     }
 
     private void loadNextData(int page) {
-        limit = (page)*20;
-        queryPosts(null, limit);
+        if(searching==false){
+            limit = (page)*20;
+            queryPosts(null, limit);
+
+        }
     }
 
     protected void queryPosts(String search, int skip){
@@ -188,20 +207,32 @@ public class HomeFragment extends Fragment {
         query.include(Post.KEY_USER);
         if(search!=null){
             adapter.clear();
-            adapter.notifyDataSetChanged();
+            allposts.clear();
+            // 2. Notify the adapter of the update
+            adapter.notifyDataSetChanged(); // or notifyItemRangeRemoved
+            // 3. Reset endless scroll listener when performing a new search
+            scrollListener.resetState();
             //query.include(Post.KEY_USER);
             query.whereContains(Post.KEY_DESCRIPTION, search);
+
         }
-        if(skip!=0){
+        else if(skip!=0){
             query.setSkip(limit);
         }
+        query.setLimit(20);
+
+
         query.addDescendingOrder(Post.KEY_CREATEDAT);
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
+                //posts.clear();
                 if(e!=null){
                     Log.e(TAG, "Issue with getting posts", e);
                     return ;
+                }
+                for (Post post: posts){
+                    Log.i(TAG, post.getDescription());
                 }
                 allposts.addAll(posts);
                 adapter.notifyDataSetChanged();
