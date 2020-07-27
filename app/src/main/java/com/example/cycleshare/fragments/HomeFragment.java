@@ -187,8 +187,9 @@ public class HomeFragment extends Fragment {
         query.include(Post.KEY_USER);
         if(search!=null){
             adapter.clear();
+            allposts.clear();
             adapter.notifyDataSetChanged();
-            query.include(Post.KEY_USER);
+            //query.include(Post.KEY_USER);
             query.whereContains(Post.KEY_DESCRIPTION, search);
         }
         query.setLimit(20);
