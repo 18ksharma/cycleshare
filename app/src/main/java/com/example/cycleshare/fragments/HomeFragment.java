@@ -84,11 +84,11 @@ public class HomeFragment extends Fragment {
         inflater.inflate(R.menu.menu_search, menu);
         final MenuItem searchItem = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        /*adapter.clear();
+        adapter.clear();
         // 2. Notify the adapter of the update
         adapter.notifyDataSetChanged(); // or notifyItemRangeRemoved
         // 3. Reset endless scroll listener when performing a new search
-        scrollListener.resetState();*/
+        scrollListener.resetState();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() { //might need to check this
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -96,6 +96,7 @@ public class HomeFragment extends Fragment {
 
                 // workaround to avoid issues with some emulators and keyboard devices firing twice if a keyboard enter is used
                 // see https://code.google.com/p/android/issues/detail?id=24599
+                adapter.clear();
 
                 queryPosts(query, 0);
                 searchView.clearFocus();
@@ -187,12 +188,10 @@ public class HomeFragment extends Fragment {
         query.include(Post.KEY_USER);
         if(search!=null){
             adapter.clear();
-            allposts.clear();
             adapter.notifyDataSetChanged();
             //query.include(Post.KEY_USER);
             query.whereContains(Post.KEY_DESCRIPTION, search);
         }
-        query.setLimit(20);
         if(skip!=0){
             query.setSkip(limit);
         }

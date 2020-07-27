@@ -15,13 +15,20 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/PostDetailsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/PostDetailsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/SettingsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/SettingsActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/ProfileAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/ProfileAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ComposeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ComposeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/HomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ProfileFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/profile_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/profile_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_search.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,6 +174,10 @@
     </state>
     <state x="454" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.814@0.23.1440.814" timestamp="1594673184373" />
     <state x="454" y="181" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.825@0.23.1440.825" timestamp="1595343250828" />
+    <state x="422" y="187" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1595879253423">
+      <screen x="0" y="23" width="1440" height="825" />
+    </state>
+    <state x="422" y="187" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.23.1440.825@0.23.1440.825" timestamp="1595879253423" />
     <state x="889" y="269" key="#xdebugger.evaluate" timestamp="1595523585168">
       <screen x="0" y="23" width="1440" height="826" />
     </state>
@@ -195,36 +206,36 @@
       <screen x="0" y="23" width="1440" height="822" />
     </state>
     <state x="576" y="205" key="AndroidProcessChooserDialog/0.23.1440.822@0.23.1440.822" timestamp="1594829549031" />
-    <state width="1218" height="51" key="GridCell.Tab.0.bottom" timestamp="1595618629291">
-      <screen x="0" y="23" width="1440" height="825" />
+    <state width="1218" height="58" key="GridCell.Tab.0.bottom" timestamp="1595877780082">
+      <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state width="1358" height="3" key="GridCell.Tab.0.bottom/0.23.1440.821@0.23.1440.821" timestamp="1594766243652" />
     <state width="1398" height="259" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1594829938269" />
-    <state width="1218" height="47" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1595365638168" />
+    <state width="1218" height="58" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1595877780082" />
     <state width="1218" height="51" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1595618629291" />
     <state width="1218" height="210" key="GridCell.Tab.0.bottom/0.23.1440.826@0.23.1440.826" timestamp="1595609388314" />
-    <state width="1218" height="51" key="GridCell.Tab.0.center" timestamp="1595618629290">
-      <screen x="0" y="23" width="1440" height="825" />
+    <state width="1218" height="58" key="GridCell.Tab.0.center" timestamp="1595877780080">
+      <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state width="1358" height="3" key="GridCell.Tab.0.center/0.23.1440.821@0.23.1440.821" timestamp="1594766243651" />
     <state width="1398" height="259" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1594829938268" />
-    <state width="1218" height="47" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1595365638167" />
+    <state width="1218" height="58" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1595877780080" />
     <state width="1218" height="51" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1595618629290" />
     <state width="1218" height="210" key="GridCell.Tab.0.center/0.23.1440.826@0.23.1440.826" timestamp="1595609388314" />
-    <state width="1218" height="51" key="GridCell.Tab.0.left" timestamp="1595618629288">
-      <screen x="0" y="23" width="1440" height="825" />
+    <state width="1218" height="58" key="GridCell.Tab.0.left" timestamp="1595877780080">
+      <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state width="1358" height="3" key="GridCell.Tab.0.left/0.23.1440.821@0.23.1440.821" timestamp="1594766243651" />
     <state width="1398" height="259" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1594829938268" />
-    <state width="1218" height="47" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1595365638166" />
+    <state width="1218" height="58" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1595877780080" />
     <state width="1218" height="51" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1595618629288" />
     <state width="1218" height="210" key="GridCell.Tab.0.left/0.23.1440.826@0.23.1440.826" timestamp="1595609388313" />
-    <state width="1218" height="51" key="GridCell.Tab.0.right" timestamp="1595618629290">
-      <screen x="0" y="23" width="1440" height="825" />
+    <state width="1218" height="58" key="GridCell.Tab.0.right" timestamp="1595877780081">
+      <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state width="1358" height="3" key="GridCell.Tab.0.right/0.23.1440.821@0.23.1440.821" timestamp="1594766243652" />
     <state width="1398" height="259" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1594829938269" />
-    <state width="1218" height="47" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1595365638168" />
+    <state width="1218" height="58" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1595877780081" />
     <state width="1218" height="51" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1595618629290" />
     <state width="1218" height="210" key="GridCell.Tab.0.right/0.23.1440.826@0.23.1440.826" timestamp="1595609388314" />
     <state width="1218" height="227" key="GridCell.Tab.1.bottom" timestamp="1595542519166">
@@ -296,17 +307,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ProfileFragment.java</url>
-          <line>122</line>
+          <line>123</line>
           <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ProfileFragment.java</url>
-          <line>123</line>
+          <line>124</line>
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/cycleshare/fragments/ProfileFragment.java</url>
-          <line>124</line>
+          <line>125</line>
           <option name="timeStamp" value="77" />
         </line-breakpoint>
       </breakpoints>

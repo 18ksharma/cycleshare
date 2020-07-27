@@ -126,6 +126,8 @@ public class ComposeFragment extends Fragment implements ShakeListener.Callback 
     private File photoFile;
     public String photoFileName = "photo.jpg";
 
+    private ParseGeoPoint point;
+
 
     //private MapView map;
 
@@ -290,6 +292,9 @@ public class ComposeFragment extends Fragment implements ShakeListener.Callback 
         latLng = new LatLng(location.getLatitude(), location.getLongitude());
         lat=location.getLatitude();
         lon=location.getLongitude();
+
+        //point= new ParseGeoPoint(lat, lon);
+
     }
 
     public void launchgallery() {

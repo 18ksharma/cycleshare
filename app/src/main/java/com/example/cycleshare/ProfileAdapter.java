@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.cycleshare.models.Post;
 import com.parse.ParseFile;
 
@@ -63,7 +64,10 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
 
         public void bind(Post post) {
             String pic = post.getImage().getUrl();
-            Glide.with(context).load(pic).placeholder(R.drawable.ic_baseline_person_24).into(ivPostImg);
+            Glide.with(context).load(pic)
+                    .centerCrop()
+                    .fitCenter()
+                    .thumbnail(0.3f).placeholder(R.drawable.ic_baseline_person_24).into(ivPostImg);
 
         }
 
