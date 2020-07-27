@@ -1,9 +1,11 @@
 package com.example.cycleshare;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -148,28 +150,56 @@ public class SettingsActivity extends AppCompatActivity {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Shake to complete deletion of account", Snackbar.LENGTH_LONG).show();
-                querypostsbyuser();
-                try {
-                    user.delete();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                    Toast.makeText(SettingsActivity.this, "Error deleting account", Toast.LENGTH_SHORT).show();
-                }
-                user.saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        ParseUser.logOut();
-                        Toast.makeText(SettingsActivity.this, "Account Deleted", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(SettingsActivity.this, InitialActivity.class);
-                        startActivity(i);
-                        finish();
-                    }
-                });
 
+                AlertDialog diaBox = AskOption();
+                diaBox.show();
             }
         });
 
+    }
+
+    private AlertDialog AskOption() {
+        AlertDialog myQuittingDialogBox = new AlertDialog.Builder(this)
+                // set message, title, and icon
+                .setTitle("Delete")
+                .setMessage("Are you sure you want to delete this account? This action cannot be undone.")
+                .setIcon(R.drawable.ic_baseline_delete_24)
+
+                .setPositiveButton("Delete Account", new DialogInterface.OnClickListener(){
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                        querypostsbyuser();
+                        try {
+                            user.delete();
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                            Toast.makeText(SettingsActivity.this, "Error deleting account", Toast.LENGTH_SHORT).show();
+                        }
+                        user.saveInBackground(new SaveCallback() {
+                            @Override
+                            public void done(ParseException e) {
+                                ParseUser.logOut();
+                                Toast.makeText(SettingsActivity.this, "Account Deleted", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(SettingsActivity.this, InitialActivity.class);
+                                startActivity(i);
+                                finish();
+                            }
+                        });
+
+                        dialog.dismiss();
+                    }
+
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+
+                    }
+                })
+                .create();
+
+        return myQuittingDialogBox;
     }
 
     private void querypostsbyuser() {

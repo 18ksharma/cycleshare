@@ -1,6 +1,7 @@
 package com.example.cycleshare;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -191,23 +193,52 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         ivDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    post.delete();
-                    post.saveInBackground(new SaveCallback() {
-                        @Override
-                        public void done(com.parse.ParseException e) {
-                            Toast.makeText(PostDetailsActivity.this, "Post deleted.", Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(PostDetailsActivity.this, MainActivity.class);
-                            startActivity(i);
-                            finish();
-                        }
-                    });
-                } catch (com.parse.ParseException e) {
-                    e.printStackTrace();
-                    Toast.makeText(PostDetailsActivity.this, "Post could not be deleted", Toast.LENGTH_SHORT).show();
-                }
+                AlertDialog diaBox = AskOption();
+                diaBox.show();
             }
         });
+    }
+
+    public AlertDialog AskOption()
+    {
+        AlertDialog myQuittingDialogBox = new AlertDialog.Builder(this)
+                // set message, title, and icon
+                .setTitle("Delete")
+                .setMessage("Are you sure you want to delete this post?")
+                .setIcon(R.drawable.ic_baseline_delete_24)
+
+                .setPositiveButton("Delete this Post", new DialogInterface.OnClickListener(){
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                        try {
+                            post.delete();
+                            post.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(com.parse.ParseException e) {
+                                    Toast.makeText(PostDetailsActivity.this, "Post deleted.", Toast.LENGTH_SHORT).show();
+                                    Intent i = new Intent(PostDetailsActivity.this, MainActivity.class);
+                                    startActivity(i);
+                                    finish();
+                                }
+                            });
+                        } catch (com.parse.ParseException e) {
+                            e.printStackTrace();
+                            Toast.makeText(PostDetailsActivity.this, "Post could not be deleted", Toast.LENGTH_SHORT).show();
+                        }
+                        dialog.dismiss();
+                    }
+
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+
+                    }
+                })
+                .create();
+
+        return myQuittingDialogBox;
     }
 
     @Override
