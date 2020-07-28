@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsActivity">
+    tools:context=".activities.SettingsActivity">
 
     <ImageView
         android:id="@+id/ivProfilePicture"
@@ -28,9 +28,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:text="@string/logout"
+        android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"/>
+        android:drawableLeft="@drawable/ic_baseline_rotate_right_24"
+        android:text="@string/logout" />
 
 
     <EditText
@@ -56,40 +57,44 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvChange"
         android:layout_alignParentLeft="true"
-        android:layout_toStartOf="@+id/btngallery"
-        android:text="Take a picture"
-        android:padding="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"/>
+        android:layout_toStartOf="@+id/btngallery"
+        android:drawableLeft="@drawable/ic_baseline_camera_alt_24"
+        android:padding="8dp"
+        android:text="Take a picture" />
+
     <Button
         android:id="@+id/btngallery"
-        android:text="Choose from gallery"
-        android:layout_below="@id/tvChange"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tvChange"
         android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"
+        android:drawableLeft="@drawable/ic_baseline_photo_library_24"
         android:padding="8dp"
-        android:layout_marginRight="8dp"/>
+        android:text="Choose from gallery" />
 
     <Button
         android:id="@+id/btnDelete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnupdate"
-        android:backgroundTint="#A3FF0000"
-        android:drawableLeft="@drawable/ic_baseline_delete_24"
-        android:text="Delete my Account"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"/>
+        android:layout_marginRight="8dp"
+        android:backgroundTint="#A3FF3939"
+        android:drawableLeft="@drawable/ic_baseline_delete_24"
+        android:text="Delete my Account" />
 
     <Button
         android:id="@+id/btnupdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/etconfirmnewPass"
-        android:text="Update Changes"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"/>
+        android:layout_marginRight="8dp"
+        android:drawableLeft="@drawable/ic_baseline_update_24"
+        android:text="Update Changes" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

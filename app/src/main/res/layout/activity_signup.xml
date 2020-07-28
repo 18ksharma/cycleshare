@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:padding="8dp"
-    tools:context=".SignupActivity">
+    tools:context=".activities.SignupActivity">
 
 
     <EditText

@@ -1,15 +1,11 @@
 package com.example.cycleshare.fragments;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -23,11 +19,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
-import com.example.cycleshare.InitialActivity;
-import com.example.cycleshare.PostsAdapter;
+import com.example.cycleshare.activities.InitialActivity;
 import com.example.cycleshare.ProfileAdapter;
 import com.example.cycleshare.R;
-import com.example.cycleshare.SettingsActivity;
+import com.example.cycleshare.activities.SettingsActivity;
 import com.example.cycleshare.models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -155,9 +150,6 @@ public class ProfileFragment extends Fragment {
         adapter.clear();
         adapter.addAll(allposts);
 
-        //TODO: Set profile picture
-
-        //TODO: open camera/photo gallery to change profile picture
         btnChangeProfilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

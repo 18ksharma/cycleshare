@@ -1,4 +1,4 @@
-package com.example.cycleshare;
+package com.example.cycleshare.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.cycleshare.R;
 import com.example.cycleshare.models.Post;
 import com.parse.ParseException;
 import com.parse.ParseFile;

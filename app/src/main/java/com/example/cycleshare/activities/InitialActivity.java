@@ -1,4 +1,4 @@
-package com.example.cycleshare;
+package com.example.cycleshare.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.cycleshare.R;
 import com.parse.ParseUser;
 
 public class InitialActivity extends AppCompatActivity {

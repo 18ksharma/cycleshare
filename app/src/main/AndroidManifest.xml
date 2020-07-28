@@ -36,8 +36,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".EditActivity"></activity>
-        <activity android:name=".SettingsActivity" />
+        <activity android:name=".activities.EditActivity"></activity>
+        <activity android:name=".activities.SettingsActivity" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
@@ -51,9 +51,9 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".PostDetailsActivity" />
-        <activity android:name=".SignupActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".activities.PostDetailsActivity" />
+        <activity android:name=".activities.SignupActivity" />
+        <activity android:name=".activities.LoginActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -65,14 +65,14 @@
                 android:resource="@xml/fileprovider" />
         </provider>
 
-        <activity android:name=".InitialActivity">
+        <activity android:name=".activities.InitialActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".activities.MainActivity" />
     </application>
 
 </manifest>

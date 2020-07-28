@@ -3,31 +3,26 @@ package com.example.cycleshare;
 import android.content.Context;
 import android.content.Intent;
 import android.text.format.DateUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.example.cycleshare.activities.PostDetailsActivity;
 import com.example.cycleshare.models.Post;
 import com.parse.ParseFile;
-import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
-
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import static java.lang.Math.round;
 
@@ -128,7 +123,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvDescription.setText(post.getDescription());
             ParseFile pic = post.getImage();
             ParseFile profilePic = post.getUser().getParseFile("profilePic");
-            tvTimestamp.setText(getRelativeTimeAgo(post.getCreatedAt().toString()));
+            tvTimestamp.setText(Utils.getRelativeTimeAgo(post.getCreatedAt().toString()));
             if(post.getPoint()!=null){
                 double distance = post.getPoint().distanceInMilesTo(ParseUser.getCurrentUser().getParseGeoPoint("location"));
                 tvRelativeDistance.setText(String.valueOf(round(distance))+" miles");
@@ -149,21 +144,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             }
         }
 
-        public String getRelativeTimeAgo(String rawJsonDate) {
-            String twitterFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
-            SimpleDateFormat sf = new SimpleDateFormat(twitterFormat, Locale.ENGLISH);
-            sf.setLenient(true);
 
-            String relativeDate = "";
-            try {
-                long dateMillis = sf.parse(rawJsonDate).getTime();
-                relativeDate = DateUtils.getRelativeTimeSpanString(dateMillis,
-                        System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-
-            return relativeDate;
-        }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.cycleshare;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,18 +11,17 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.AlertDialogLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.example.cycleshare.fragments.ProfileFragment;
+import com.example.cycleshare.activities.PostDetailsActivity;
 import com.example.cycleshare.models.Post;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.parse.ParseFile;
-import com.parse.SaveCallback;
 
 import java.util.List;
+
+import static android.app.ProgressDialog.show;
 
 public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHolder> {
     private Context context;
@@ -115,10 +115,17 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
             Toast.makeText(context, "Post selected", Toast.LENGTH_SHORT).show();
             int position = getAdapterPosition();
             if(position != RecyclerView.NO_POSITION){
+
+                MaterialAlertDialogBuilder mDialog = new MaterialAlertDialogBuilder(context)
+                        .setTitle("Delete Post").setMessage("Are you sure you want to delete this post");
+
+                // Show Dialog
+                mDialog.show();
             }
             return false;
         }
     }
+
 
 
 }

@@ -16,13 +16,13 @@
 
     <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/ivPicture"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:padding="8dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:scaleType="fitCenter"
         tools:srcCompat="@tools:sample/avatars"
-        android:layout_below="@id/tvDescription" />
+        android:layout_below="@id/tvDescription"
+        android:padding="8dp"/>
 
     <ImageView
         android:id="@+id/ivProfilePic"
@@ -117,5 +117,30 @@
         android:layout_below="@id/tvTimestamp"
         android:layout_toLeftOf="@id/ivDelete"
         android:padding="8dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rvComments"
+        android:layout_below="@id/btnContact"
+        android:padding="8dp"
+        android:layout_above="@+id/etComment"
+        />
+
+    <ImageView
+        android:id="@+id/ivenlarge"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/btnContact"
+        android:layout_alignParentRight="true"
+        android:padding="8dp"
+        app:srcCompat="@drawable/ic_baseline_call_made_24" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Comment"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/etComment"/>
 
 </RelativeLayout>

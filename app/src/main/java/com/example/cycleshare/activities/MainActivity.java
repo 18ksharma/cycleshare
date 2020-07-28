@@ -1,4 +1,4 @@
-package com.example.cycleshare;
+package com.example.cycleshare.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.example.cycleshare.R;
 import com.example.cycleshare.fragments.ComposeFragment;
 import com.example.cycleshare.fragments.HomeFragment;
 import com.example.cycleshare.fragments.ProfileFragment;
