@@ -20,6 +20,7 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.example.cycleshare.models.Post;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,6 +28,8 @@ import java.util.List;
 import java.util.Locale;
 
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+
+import static java.lang.Math.round;
 
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
 
@@ -81,6 +84,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             ivProfilePic=itemView.findViewById(R.id.ivProfilePic);
             tvDescription=itemView.findViewById(R.id.tvDescription);
             tvTimestamp=itemView.findViewById(R.id.tvTimestamp);
+            tvRelativeDistance=itemView.findViewById(R.id.tvRelativeDistance);
             itemView.setOnClickListener(this);
         }
 
@@ -125,6 +129,13 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             ParseFile pic = post.getImage();
             ParseFile profilePic = post.getUser().getParseFile("profilePic");
             tvTimestamp.setText(getRelativeTimeAgo(post.getCreatedAt().toString()));
+            if(post.getPoint()!=null){
+                double distance = post.getPoint().distanceInMilesTo(ParseUser.getCurrentUser().getParseGeoPoint("location"));
+                tvRelativeDistance.setText(String.valueOf(round(distance))+" miles");
+            }
+            if(post.getPoint()==null){
+                tvRelativeDistance.setVisibility(View.GONE);
+            }
             Glide.with(context).load(pic.getUrl()).placeholder(R.drawable.ic_baseline_person_24).into(ivPicture);
             if(profilePic!=null) {
                 //Circle crops profile pic
