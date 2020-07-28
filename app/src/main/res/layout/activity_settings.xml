@@ -103,14 +103,16 @@
         android:padding="8dp"
         android:hint="Current password"
         android:layout_below="@id/tvChangePassword"
-        android:id="@+id/etcurPass"/>
+        android:id="@+id/etcurPass"
+        android:inputType="textPassword"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
         android:hint="Confirm current password"
         android:layout_below="@id/etcurPass"
-        android:id="@+id/etconfirmcurPass"/>
+        android:id="@+id/etconfirmcurPass"
+        android:inputType="textPassword"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -118,7 +120,8 @@
         android:padding="8dp"
         android:hint="New password"
         android:layout_below="@id/etconfirmcurPass"
-        android:id="@+id/etnewPass"/>
+        android:id="@+id/etnewPass"
+        android:inputType="textPassword"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -126,6 +129,7 @@
         android:padding="8dp"
         android:hint="Confirm current password"
         android:layout_below="@id/etnewPass"
-        android:id="@+id/etconfirmnewPass"/>
+        android:id="@+id/etconfirmnewPass"
+        android:inputType="textPassword"/>
 
 </RelativeLayout>

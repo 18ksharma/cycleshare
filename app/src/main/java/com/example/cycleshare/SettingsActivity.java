@@ -58,7 +58,11 @@ public class SettingsActivity extends AppCompatActivity {
     private Button btnDelete;
 
     private ParseFile img;
-    private boolean shaking;
+
+    private EditText etcurPass;
+    private EditText etcurPassConfirm;
+    private EditText etnewPass;
+    private EditText etnewPassConfirm;
 
     //Variable for image
     private File photoFile;
@@ -77,12 +81,15 @@ public class SettingsActivity extends AppCompatActivity {
         btnCamera=findViewById(R.id.btncamera);
         btnGallery=findViewById(R.id.btngallery);
         btnLogout=findViewById(R.id.btnLogout);
-        btnChangeUsername=findViewById(R.id.btnChangeUsername);
         etnewUser=findViewById(R.id.etnewuser);
         tvUsername=findViewById(R.id.tvUsername);
         ivProfilePicture=findViewById(R.id.ivProfilePicture);
         btnUpdate=findViewById(R.id.btnupdate);
         btnDelete=findViewById(R.id.btnDelete);
+        etcurPass=findViewById(R.id.etcurPass);
+        etcurPassConfirm=findViewById(R.id.etconfirmcurPass);
+        etnewPass=findViewById(R.id.etnewPass);
+        etnewPassConfirm=findViewById(R.id.etconfirmnewPass);
 
         tvUsername.setText(user.getUsername().toString());
 
@@ -123,7 +130,8 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        btnChangeUsername.setOnClickListener(new View.OnClickListener() {
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String newUser = etnewUser.getText().toString();
@@ -138,12 +146,24 @@ public class SettingsActivity extends AppCompatActivity {
                         }
                     });
                 }
-            }
-        });
+                if(etcurPass.getText().toString().equals(etcurPassConfirm.getText().toString())){
+                    Log.i(TAG, "Passwords match and matches user password");
 
-        btnUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                    if(!etnewPass.getText().toString().equals("")
+                            && etnewPass.getText().toString().equals(etnewPassConfirm.getText().toString())){
+                        user.setPassword(etnewPass.getText().toString());
+                        user.saveInBackground(new SaveCallback() {
+                            @Override
+                            public void done(ParseException e) {
+                                Log.i(TAG, "password changed");
+                            }
+                        });
+                    }
+                    if(etnewPass.getText().toString().isEmpty()){
+                        Toast.makeText(SettingsActivity.this,
+                                "Password cannot be empty", Toast.LENGTH_SHORT).show();
+                    }
+                }
                 Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
