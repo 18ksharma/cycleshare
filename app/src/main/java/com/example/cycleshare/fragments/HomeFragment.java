@@ -330,7 +330,6 @@ public class HomeFragment extends Fragment {
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
-                //posts.clear();
                 if(e!=null){
                     Log.e(TAG, "Issue with getting posts", e);
                     return ;

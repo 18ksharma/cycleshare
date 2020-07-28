@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.cycleshare.fragments.ProfileFragment;
 import com.example.cycleshare.models.Post;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.parse.ParseFile;
 import com.parse.SaveCallback;
 
@@ -112,10 +113,12 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
         @Override
         public boolean onLongClick(View view) {
             Toast.makeText(context, "Post selected", Toast.LENGTH_SHORT).show();
-            //AlertDialog box = ProfileFragment.AskOption();
-            //box.show();
+            int position = getAdapterPosition();
+            if(position != RecyclerView.NO_POSITION){
+            }
             return false;
         }
     }
+
 
 }
