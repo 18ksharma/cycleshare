@@ -27,9 +27,10 @@
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/logout"
         android:layout_below="@+id/btnChangeProfilePicture"
-        android:layout_toRightOf="@id/ivProfilePicture"/>
+        android:layout_toRightOf="@id/ivProfilePicture"
+        android:drawableLeft="@drawable/ic_baseline_rotate_right_24"
+        android:text="@string/logout" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvUserPoses"

@@ -156,6 +156,13 @@ public class SettingsActivity extends AppCompatActivity {
                             @Override
                             public void done(ParseException e) {
                                 Log.i(TAG, "password changed");
+                                ParseUser.logOut();
+                                ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
+                                if(currentUser == null){
+                                    Intent i = new Intent(SettingsActivity.this, InitialActivity.class);
+                                    startActivity(i);
+                                }
+
                             }
                         });
                     }
