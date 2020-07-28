@@ -28,6 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.example.cycleshare.models.Post;
 import com.google.android.gms.common.util.concurrent.HandlerExecutor;
 import com.google.android.material.snackbar.Snackbar;
@@ -87,10 +88,12 @@ public class SettingsActivity extends AppCompatActivity {
 
         if(user.getParseFile("profilePic")!=null) {
             Glide.with(this).load(user.getParseFile("profilePic").getUrl())
-                    .placeholder(R.drawable.ic_baseline_person_24).into(ivProfilePicture);
+                    .transform(new CircleCrop()).placeholder(R.drawable.ic_baseline_person_24).into(ivProfilePicture);
         }
         else{
-            Glide.with(this).load("http://img.freepik.com/free-vector/abstract-geometric-lines-seamless-pattern_144290-8.jpg?size=626&ext=jpg").into(ivProfilePicture);
+            Glide.with(this)
+                    .load("http://img.freepik.com/free-vector/abstract-geometric-lines-seamless-pattern_144290-8.jpg?size=626&ext=jpg")
+                    .transform(new CircleCrop()).placeholder(R.drawable.ic_baseline_person_24).into(ivProfilePicture);
         }
 
         btnCamera.setOnClickListener(new View.OnClickListener() {
@@ -243,18 +246,6 @@ public class SettingsActivity extends AppCompatActivity {
         if (intent.resolveActivity(this.getPackageManager()) != null) {
             // Bring up gallery to select a photo
             startActivityForResult(intent, PICK_PHOTO_CODE);
-        }
-    }
-
-    public static void wait(int ms)
-    {
-        try
-        {
-            Thread.sleep(ms);
-        }
-        catch(InterruptedException ex)
-        {
-            Thread.currentThread().interrupt();
         }
     }
 

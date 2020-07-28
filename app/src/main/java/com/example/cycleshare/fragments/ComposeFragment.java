@@ -101,10 +101,10 @@ public class ComposeFragment extends Fragment implements ShakeListener.Callback 
     private Button btnChoose;
     private Spinner sConditions;
 
-    private LocationRequest mLocationRequest;
+    private static LocationRequest mLocationRequest;
 
-    private long UPDATE_INTERVAL = 10 * 1000;  /* 10 secs */
-    private long FASTEST_INTERVAL = 2000; /* 2 sec */
+    private static long UPDATE_INTERVAL = 10 * 1000;  /* 10 secs */
+    private static long FASTEST_INTERVAL = 2000; /* 2 sec */
     public final static int REQUEST_FINE_LOCATION = 1;
 
     private GoogleApiClient mGoogleApiClient;
@@ -258,7 +258,7 @@ public class ComposeFragment extends Fragment implements ShakeListener.Callback 
     }
 
     //@NeedsPermission({Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
-    void startLocationUpdates() {
+    public void startLocationUpdates() {
 
         //Creates location request for receiving updates
         mLocationRequest = new LocationRequest();
@@ -346,7 +346,7 @@ public class ComposeFragment extends Fragment implements ShakeListener.Callback 
         post.setUser(currentUser);
         post.setLatitude(lat);
         post.setLongitude(lon);
-        post.setPoint(point);
+        post.setPoint(point); //change to currentUser.getParseGeoPoint("location")
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
@@ -428,7 +428,6 @@ public class ComposeFragment extends Fragment implements ShakeListener.Callback 
 
     @Override
     public void shakingStarted() {
-
         etDescription.setText("");
         etPrice.setText("");
         etAvailability.setText("");

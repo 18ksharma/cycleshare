@@ -1,16 +1,23 @@
 package com.example.cycleshare.fragments;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,12 +30,26 @@ import com.example.cycleshare.EndlessRecyclerViewScrollListener;
 import com.example.cycleshare.PostsAdapter;
 import com.example.cycleshare.R;
 import com.example.cycleshare.models.Post;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.SettingsClient;
+import com.google.android.gms.maps.model.LatLng;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import permissions.dispatcher.NeedsPermission;
+
+import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,6 +65,19 @@ public class HomeFragment extends Fragment {
     private EndlessRecyclerViewScrollListener scrollListener;
     private int limit;
     private boolean searching;
+
+    private static LocationRequest mLocationRequest;
+
+    private static long UPDATE_INTERVAL = 10 * 1000;  /* 10 secs */
+    private static long FASTEST_INTERVAL = 2000; /* 2 sec */
+    public final static int REQUEST_FINE_LOCATION = 1;
+
+
+    private double lon;
+    private double lat;
+    private FusedLocationProviderClient fusedLocationClient;
+    private LatLng latLng;
+    private ParseGeoPoint point;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -74,6 +108,7 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
+    @NeedsPermission({Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -85,6 +120,10 @@ public class HomeFragment extends Fragment {
         inflater.inflate(R.menu.menu_search, menu);
         final MenuItem searchItem = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        MenuItem filterDescription = menu.findItem(R.id.filter_description);
+        MenuItem filterCondition = menu.findItem(R.id.filter_condition);
+        MenuItem filterPrice = menu.findItem(R.id.filter_price);
+        MenuItem filterAvailability = menu.findItem(R.id.filter_availability);
         /*adapter.clear();
         // 2. Notify the adapter of the update
         adapter.notifyDataSetChanged(); // or notifyItemRangeRemoved
@@ -159,7 +198,10 @@ public class HomeFragment extends Fragment {
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 // Triggered only when new data needs to be appended to the list
                 // Add whatever code is needed to append new items to the bottom of the list
-                loadNextData(page);
+
+                if(searching!=true) {
+                    loadNextData(page);
+                }
                 Log.i(TAG, "onLoadMore called");
             }
         };
@@ -190,16 +232,79 @@ public class HomeFragment extends Fragment {
                 android.R.color.holo_green_light,
                 android.R.color.holo_blue_light);
 
+        if(checkPermissions()==false){
+            requestPermissions();
+        }
 
-        //rvPosts.addOnScrollListener(scrollListener);
+        startLocationUpdates();
     }
 
+    private void requestPermissions() {
+        ActivityCompat.requestPermissions((Activity) getContext(),
+                new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                REQUEST_FINE_LOCATION);
+    }
+
+    private boolean checkPermissions() {
+        if (ContextCompat.checkSelfPermission(getContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        } else {
+            requestPermissions();
+            return false;
+        }
+    }
+
+    private void startLocationUpdates() {
+        //Creates location request for receiving updates
+        mLocationRequest = new LocationRequest();
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        //mLocationRequest.setInterval(UPDATE_INTERVAL);
+        mLocationRequest.setFastestInterval(FASTEST_INTERVAL);
+
+        // Create LocationSettingsRequest object using location request
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder();
+        builder.addLocationRequest(mLocationRequest);
+        LocationSettingsRequest locationSettingsRequest = builder.build();
+
+        // Check whether location settings are satisfied
+        SettingsClient settingsClient = LocationServices.getSettingsClient(getContext());
+        settingsClient.checkLocationSettings(locationSettingsRequest);
+
+
+        getFusedLocationProviderClient(getContext()).requestLocationUpdates(mLocationRequest, new com.google.android.gms.location.LocationCallback() {
+                    @Override
+                    public void onLocationResult(LocationResult locationResult) {
+                        onLocationChanged(locationResult.getLastLocation());
+                    }
+                },
+                Looper.myLooper());
+    }
+
+    private void onLocationChanged(Location location) {
+
+        // New location has now been determined
+        // You can now create a LatLng Object for use with maps
+        lat = location.getLatitude();
+        lon=location.getLongitude();
+
+        point= new ParseGeoPoint(lat, lon);
+
+        ParseUser currentuser = ParseUser.getCurrentUser();
+        currentuser.put("location", point);
+        currentuser.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                Log.i(TAG, "got user location: "+ String.valueOf(point));
+            }
+        }
+        );
+    }
+
+    //Does not load more if it is searching
     private void loadNextData(int page) {
-        if(searching==false){
             limit = (page)*20;
             queryPosts(null, limit);
-
-        }
     }
 
     protected void queryPosts(String search, int skip){
@@ -221,7 +326,6 @@ public class HomeFragment extends Fragment {
         }
         query.setLimit(20);
 
-
         query.addDescendingOrder(Post.KEY_CREATEDAT);
         query.findInBackground(new FindCallback<Post>() {
             @Override
@@ -230,9 +334,6 @@ public class HomeFragment extends Fragment {
                 if(e!=null){
                     Log.e(TAG, "Issue with getting posts", e);
                     return ;
-                }
-                for (Post post: posts){
-                    Log.i(TAG, post.getDescription());
                 }
                 allposts.addAll(posts);
                 adapter.notifyDataSetChanged();

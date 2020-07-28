@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.example.cycleshare.InitialActivity;
 import com.example.cycleshare.PostsAdapter;
 import com.example.cycleshare.ProfileAdapter;
@@ -128,11 +129,12 @@ public class ProfileFragment extends Fragment {
         ParseUser user = ParseUser.getCurrentUser();
         tvUsername.setText(user.getUsername());
         if(user.getParseFile("profilePic")!=null) {
-            Glide.with(view.getContext()).load(user.getParseFile("profilePic").getUrl())
+            Glide.with(view.getContext()).load(user.getParseFile("profilePic").getUrl()).transform(new CircleCrop())
                     .placeholder(R.drawable.ic_baseline_person_24).into(ivProfilePicture);
         }
         else{
-            Glide.with(view.getContext()).load("http://img.freepik.com/free-vector/abstract-geometric-lines-seamless-pattern_144290-8.jpg?size=626&ext=jpg").into(ivProfilePicture);
+            Glide.with(view.getContext()).load("http://img.freepik.com/free-vector/abstract-geometric-lines-seamless-pattern_144290-8.jpg?size=626&ext=jpg")
+                    .transform(new CircleCrop()).placeholder(R.drawable.ic_baseline_person_24).into(ivProfilePicture);
         }
 
         allposts= new ArrayList<>();
