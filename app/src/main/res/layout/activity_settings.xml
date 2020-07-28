@@ -28,30 +28,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:text="@string/logout" />
+        android:text="@string/logout"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"/>
 
-
-    <Button
-        android:id="@+id/btnChangeUsername"
-        android:layout_width="143dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnLogout"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="-22dp"
-        android:layout_toRightOf="@id/etnewuser"
-        android:text="Change Username"
-        android:layout_alignBaseline="@id/etnewuser"/>
 
     <EditText
         android:id="@+id/etnewuser"
-        android:layout_width="174dp"
-        android:layout_height="87dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/tvUsername"
         android:layout_alignBottom="@id/ivProfilePicture"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="8dp"
         android:hint="New Username"
-        android:layout_marginBottom="-14dp"
         android:layout_toRightOf="@id/ivProfilePicture"
         tools:text="New Username" />
     <TextView
@@ -69,14 +57,19 @@
         android:layout_below="@id/tvChange"
         android:layout_alignParentLeft="true"
         android:layout_toStartOf="@+id/btngallery"
-        android:text="Take a picture"/>
+        android:text="Take a picture"
+        android:padding="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"/>
     <Button
         android:id="@+id/btngallery"
         android:text="Choose from gallery"
         android:layout_below="@id/tvChange"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:padding="8dp"
+        android:layout_marginRight="8dp"/>
 
     <Button
         android:id="@+id/btnDelete"
@@ -85,13 +78,54 @@
         android:layout_below="@id/btnupdate"
         android:backgroundTint="#A3FF0000"
         android:drawableLeft="@drawable/ic_baseline_delete_24"
-        android:text="Delete my Account" />
+        android:text="Delete my Account"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"/>
 
     <Button
         android:id="@+id/btnupdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btngallery"
-        android:text="Update Changes"/>
+        android:layout_below="@id/etconfirmnewPass"
+        android:text="Update Changes"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvChangePassword"
+        android:text="Change Password"
+        android:layout_below="@id/btncamera"
+        android:padding="8dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:hint="Current password"
+        android:layout_below="@id/tvChangePassword"
+        android:id="@+id/etcurPass"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:hint="Confirm current password"
+        android:layout_below="@id/etcurPass"
+        android:id="@+id/etconfirmcurPass"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:hint="New password"
+        android:layout_below="@id/etconfirmcurPass"
+        android:id="@+id/etnewPass"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:hint="Confirm current password"
+        android:layout_below="@id/etnewPass"
+        android:id="@+id/etconfirmnewPass"/>
 
 </RelativeLayout>

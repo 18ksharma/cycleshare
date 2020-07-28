@@ -136,7 +136,7 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
             ivDelete.setVisibility(View.VISIBLE);
             ivEdit.setVisibility(View.VISIBLE);
         }
-        if (parent == "profile"){
+        else{
             ivDelete.setVisibility(View.GONE);
             ivEdit.setVisibility(View.GONE);
         }
