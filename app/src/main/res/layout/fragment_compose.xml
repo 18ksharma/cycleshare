@@ -41,7 +41,7 @@
         android:layout_below="@id/sConditions"
         android:layout_toRightOf="@id/tvPrice"
         android:ems="10"
-        android:hint="Hourly bike rental price"
+        android:hint="Hourly bike rental price in USD"
         android:paddingTop="16dp"
         android:inputType="numberDecimal"/>
 

@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,6 +67,10 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
     private TextView tvTimestamp;
     private ImageView ivDelete;
     private ImageView ivEdit;
+    private EditText etComment;
+    private Button btnComment;
+    private ImageView ivExpand;
+    private ImageView ivCollapse;
 
     private String description;
     private ParseFile image;
@@ -107,6 +112,10 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         ivEdit = findViewById(R.id.ivEdit);
         ivDelete = findViewById(R.id.ivDelete);
         rvComments=findViewById(R.id.rvComments);
+        ivExpand=findViewById(R.id.ivenlarge);
+        btnComment=findViewById(R.id.btnpost);
+        etComment=findViewById(R.id.etComment);
+
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
 
@@ -210,12 +219,29 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
                 diaBox.show();
             }
         });
+
+        btnComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Comment comment = new Comment();
+                comment.setContents(etComment.getText().toString());
+                comment.setUser(ParseUser.getCurrentUser());
+                comment.setPost(post);
+                comment.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(com.parse.ParseException e) {
+                        Log.i("dets", "Comment saved");
+                        etComment.setText("");
+                    }
+                });
+            }
+        });
     }
 
     private void querycommentbypost(Post post) {
         ParseQuery<Comment> query = ParseQuery.getQuery(Comment.class);
         query.include(Comment.KEY_AUTHOR);
-        //gets posts that point
+        //gets posts
         query.whereEqualTo(Comment.KEY_POST, post);
         query.setLimit(20);
         query.addDescendingOrder(Comment.KEY_CREATEDAT);
