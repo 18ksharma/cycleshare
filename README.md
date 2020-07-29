@@ -65,6 +65,8 @@ Original App Design Project - README Template
 * [X] User can delete their account
 * [X] User can edit a post that they have made
 * [X] Relative distance
+* [X] Adding comments to posts
+* Delete comments
 * Open venmo app to complete transaction
 * Swipe to switch views
 * Swipe up to open GoogleMaps displaying location of bike
@@ -75,7 +77,6 @@ Original App Design Project - README Template
 * Add rating to other users
 * Show posts only a certain distance away (filtering)
 * display location of bike in a range bubble (like airbnb)
-* Adding comments to posts
 * Press and hold to delete posts on the profilefragment
 
 ### 2. Screen Archetypes

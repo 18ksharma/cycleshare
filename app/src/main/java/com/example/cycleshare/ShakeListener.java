@@ -9,15 +9,17 @@ import android.os.SystemClock;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 public class ShakeListener {
     private SensorManager mgr = null;
     private long lastShakeTimestamp = 0;
-    private double threshold = 1.0d;
+    private float threshold = 3.25f;
     private long gap = 0;
     private ShakeListener.Callback cb = null;
+    private Context context;
 
-    public ShakeListener(Context ctxt, double threshold, long gap, ShakeListener.Callback cb) {
+    public ShakeListener(Context ctxt, float threshold, long gap, ShakeListener.Callback cb) {
         this.threshold = threshold * threshold;
         this.threshold = this.threshold * SensorManager.GRAVITY_EARTH
                 * SensorManager.GRAVITY_EARTH;

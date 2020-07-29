@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.ImageDecoder;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -38,6 +39,7 @@ import android.widget.Toast;
 import com.example.cycleshare.activities.MainActivity;
 import com.example.cycleshare.R;
 import com.example.cycleshare.ShakeListener;
+import com.example.cycleshare.activities.SettingsActivity;
 import com.example.cycleshare.models.Post;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -54,7 +56,7 @@ import com.parse.ParseFile;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-
+import static android.app.Activity.RESULT_OK;
 import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
 
 import java.io.ByteArrayOutputStream;
@@ -373,6 +375,33 @@ public class ComposeFragment extends Fragment implements ShakeListener.Callback 
         return image;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                // by this point we have the camera photo on disk
+                Bitmap takenImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
+                // RESIZE BITMAP, see section below
+                // Load the taken image into a preview
+                ivPostImage.setImageBitmap(takenImage);
+            }
+        }
+        if ((data != null) && requestCode == PICK_PHOTO_CODE) {
+            if (resultCode == RESULT_OK) {
+                Uri photoUri = data.getData();
+
+                // Load the image located at photoUri into selectedImage
+                Bitmap selectedImage = loadFromUri(photoUri);
+
+                // Load the selected image into a preview
+                ImageView ivPreview = (ImageView) getView().findViewById(R.id.ivPostImage);
+                ivPreview.setImageBitmap(selectedImage);
+
+            }
+        }
+    }
+
     //Opens camera app on the phone
     public void launchcamera() {
         // Intent to open camera
@@ -412,6 +441,7 @@ public class ComposeFragment extends Fragment implements ShakeListener.Callback 
 
     @Override
     public void shakingStarted() {
+        Toast.makeText(getContext(), "SHAKING STARTED", Toast.LENGTH_SHORT).show();
         etDescription.setText("");
         etPrice.setText("");
         etAvailability.setText("");
