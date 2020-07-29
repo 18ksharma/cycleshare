@@ -46,6 +46,16 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
         return comments.size();
     }
 
+    public void clear() {
+        comments.clear();
+        notifyDataSetChanged();
+    }
+
+    public void addAll(List<Comment> listofcomments) {
+        comments.addAll(listofcomments);
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder{
         private ImageView ivprofilePic;
         private TextView tvUsername;

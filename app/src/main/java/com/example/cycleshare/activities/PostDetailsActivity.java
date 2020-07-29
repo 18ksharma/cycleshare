@@ -7,9 +7,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.inputmethodservice.Keyboard;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -17,6 +20,7 @@ import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -222,7 +226,7 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
 
         btnComment.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
                 Comment comment = new Comment();
                 comment.setContents(etComment.getText().toString());
                 comment.setUser(ParseUser.getCurrentUser());
@@ -232,10 +236,20 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
                     public void done(com.parse.ParseException e) {
                         Log.i("dets", "Comment saved");
                         etComment.setText("");
+                        adapter.clear();
+                        comments.clear();
+                        adapter.addAll(comments);
+                        querycommentbypost(post);
+                        hideKeyboardFrom(PostDetailsActivity.this, view);
                     }
                 });
             }
         });
+    }
+
+    public static void hideKeyboardFrom(Context context, View view) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     private void querycommentbypost(Post post) {
