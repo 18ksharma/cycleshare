@@ -64,8 +64,8 @@ Original App Design Project - README Template
 * [X] Settings page where user can change their username and profile picture
 * [X] User can delete their account
 * [X] User can edit a post that they have made
+* [X] Relative distance
 * Open venmo app to complete transaction
-* Relative distance
 * Swipe to switch views
 * Swipe up to open GoogleMaps displaying location of bike
 * Forget password button
@@ -74,7 +74,7 @@ Original App Design Project - README Template
 * Implement Likes on a specific bike
 * Add rating to other users
 * Show posts only a certain distance away (filtering)
-* display location of bike in a range
+* display location of bike in a range bubble (like airbnb)
 * Adding comments to posts
 * Press and hold to delete posts on the profilefragment
 

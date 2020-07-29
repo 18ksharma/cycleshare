@@ -88,7 +88,7 @@
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:padding="8dp"
-        android:layout_height="150dp"
+        android:layout_height="125dp"
         android:layout_below="@id/ivPicture"
         android:layout_centerHorizontal="true"/>
 
@@ -131,7 +131,7 @@
         android:id="@+id/ivenlarge"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_below="@id/btnContact"
+        android:layout_above="@id/rvComments"
         android:layout_alignParentRight="true"
         android:padding="8dp"
         app:srcCompat="@drawable/ic_baseline_call_made_24" />
@@ -141,6 +141,15 @@
         android:layout_height="wrap_content"
         android:hint="Comment"
         android:layout_alignParentBottom="true"
-        android:id="@+id/etComment"/>
+        android:id="@+id/etComment"
+        android:layout_toLeftOf="@id/btnpost"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnpost"
+        android:text="Post"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/rvComments"
+        android:layout_marginRight="8dp"/>
 
 </RelativeLayout>

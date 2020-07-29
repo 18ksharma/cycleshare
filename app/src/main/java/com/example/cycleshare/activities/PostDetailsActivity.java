@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
 import android.widget.Button;
@@ -21,8 +24,11 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.example.cycleshare.CommentsAdapter;
+import com.example.cycleshare.PostsAdapter;
 import com.example.cycleshare.R;
 import com.example.cycleshare.fragments.ComposeFragment;
+import com.example.cycleshare.models.Comment;
 import com.example.cycleshare.models.Post;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
@@ -33,13 +39,17 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.parse.FindCallback;
 import com.parse.ParseFile;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class PostDetailsActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -69,6 +79,8 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
     private ParseUser user;
     public Post post;
 
+    protected List<Comment> comments;
+
     private static final String MAPVIEW_BUNDLE_KEY = "MapViewBundleKey";
 
     private String relativeDate;
@@ -76,6 +88,8 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
     private double lat;
     private double lon;
 
+    private RecyclerView rvComments;
+    protected CommentsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +106,16 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         btnContact = findViewById(R.id.btnContact);
         ivEdit = findViewById(R.id.ivEdit);
         ivDelete = findViewById(R.id.ivDelete);
+        rvComments=findViewById(R.id.rvComments);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+
+        comments= new ArrayList<>();
+        adapter=new CommentsAdapter(this, comments);
+
+        rvComments.setAdapter(adapter);
+        rvComments.setLayoutManager(linearLayoutManager);
+
 
         Bundle mapViewBundle=null;
 
@@ -118,6 +142,8 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         user = (ParseUser) getIntent().getExtras().get("user");
         post = (Post) getIntent().getExtras().get("post");
         String parent = getIntent().getStringExtra("parent");
+
+        querycommentbypost(post);
 
         if(username.equals(ParseUser.getCurrentUser().getUsername()) && (parent != "post")){
             ivDelete.setVisibility(View.VISIBLE);
@@ -182,6 +208,29 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
             public void onClick(View view) {
                 AlertDialog diaBox = AskOption();
                 diaBox.show();
+            }
+        });
+    }
+
+    private void querycommentbypost(Post post) {
+        ParseQuery<Comment> query = ParseQuery.getQuery(Comment.class);
+        query.include(Comment.KEY_AUTHOR);
+        //gets posts that point
+        query.whereEqualTo(Comment.KEY_POST, post);
+        query.setLimit(20);
+        query.addDescendingOrder(Comment.KEY_CREATEDAT);
+        query.findInBackground(new FindCallback<Comment>() {
+            @Override
+            public void done(List<Comment> postcomments, com.parse.ParseException e) {
+                if(e!=null){
+                    Log.e("PostDetailsActivity", "Issue with getting posts", e);
+                    return ;
+                }
+                for(Comment comment: postcomments){
+                    Log.i("dets", comment.getContents());
+                }
+                comments.addAll(postcomments);
+                adapter.notifyDataSetChanged();
             }
         });
     }

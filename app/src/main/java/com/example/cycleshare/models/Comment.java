@@ -7,7 +7,7 @@ import com.parse.ParseUser;
 @ParseClassName("Comment")
 public class Comment extends ParseObject {
     public static final String KEY_CONTENTS = "contents";
-    public static final String KEY_USER = "author";
+    public static final String KEY_AUTHOR = "author";
     public static final String KEY_POST = "post";
     public static final String KEY_CREATEDAT = "createdAt";
 
@@ -20,11 +20,11 @@ public class Comment extends ParseObject {
     }
 
     public ParseUser getUser(){
-        return getParseUser(KEY_USER);
+        return getParseUser(KEY_AUTHOR);
     }
 
     public void setUser(ParseUser user){
-        put(KEY_USER, user);
+        put(KEY_AUTHOR, user);
     }
 
     public Post getPost(){
