@@ -103,6 +103,8 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
                 intent.putExtra("longitude", post.getLongitude());
                 intent.putExtra("user", post.getUser());
 
+                intent.putExtra("post", post);
+
                 intent.putExtra("parent", "profile");
 
                 // shows activity
