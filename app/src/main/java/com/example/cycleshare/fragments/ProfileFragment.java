@@ -70,32 +70,6 @@ public class ProfileFragment extends Fragment {
         return fragment;
     }
 
-    /*public static AlertDialog AskOption() {
-            AlertDialog myQuittingDialogBox = new AlertDialog.Builder(this)
-                    // set message, title, and icon
-                    .setTitle("Delete")
-                    .setMessage("Are you sure you want to delete this post?")
-                    .setIcon(R.drawable.ic_baseline_delete_24)
-
-                    .setPositiveButton("Delete this Post", new DialogInterface.OnClickListener(){
-
-                        public void onClick(DialogInterface dialog, int whichButton) {
-
-                            dialog.dismiss();
-                        }
-
-                    })
-                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-
-                        }
-                    })
-                    .create();
-
-            return myQuittingDialogBox;
-    }*/
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

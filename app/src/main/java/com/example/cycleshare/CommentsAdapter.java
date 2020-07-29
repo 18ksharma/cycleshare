@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,7 +15,10 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.example.cycleshare.models.Comment;
 import com.example.cycleshare.models.Post;
+import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.List;
 
@@ -61,6 +65,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
         private TextView tvUsername;
         private TextView tvContents;
         private TextView tvTimestamp;
+        private ImageView ivDelete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -68,9 +73,13 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
             tvUsername=itemView.findViewById(R.id.tvUsername);
             tvContents=itemView.findViewById(R.id.tvContent);
             tvTimestamp=itemView.findViewById(R.id.tvTimestamp);
+            ivDelete=itemView.findViewById(R.id.ivDelete);
         }
 
-        public void bind(Comment comment) {
+        public void bind(final Comment comment) {
+            if(!comment.getUser().equals(ParseUser.getCurrentUser()) ){
+                ivDelete.setVisibility(View.GONE);
+            }
             tvUsername.setText(comment.getUser().getUsername());
             tvContents.setText(comment.getContents());
             tvTimestamp.setText(Utils.getRelativeTimeAgo(comment.getCreatedAt().toString()));
@@ -85,6 +94,24 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
                         .placeholder(R.drawable.ic_baseline_person_24).transform(new CircleCrop()).into(ivprofilePic);
 
             }
+
+            /*ivDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    try {
+                        comment.delete();
+                        comment.saveInBackground(new SaveCallback() {
+                            @Override
+                            public void done(ParseException e) {
+                                Toast.makeText(context, "deleted comment", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            });*/
 
 
         }

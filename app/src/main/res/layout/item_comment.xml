@@ -34,4 +34,13 @@
         android:layout_alignParentRight="true"
         android:hint="22 minutes ago"
         android:padding="8dp"/>
+
+    <ImageView
+        android:id="@+id/ivDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_baseline_delete_24"
+        android:layout_below="@id/tvTimestamp"
+        android:layout_alignParentRight="true"
+        android:paddingRight="8dp"/>
 </RelativeLayout>

@@ -59,7 +59,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private ImageView ivPostImg;
 
         public ViewHolder(@NonNull View itemView) {
@@ -111,23 +111,5 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
                 context.startActivity(intent);
             }
         }
-
-        @Override
-        public boolean onLongClick(View view) {
-            Toast.makeText(context, "Post selected", Toast.LENGTH_SHORT).show();
-            int position = getAdapterPosition();
-            if(position != RecyclerView.NO_POSITION){
-
-                MaterialAlertDialogBuilder mDialog = new MaterialAlertDialogBuilder(context)
-                        .setTitle("Delete Post").setMessage("Are you sure you want to delete this post");
-
-                // Show Dialog
-                mDialog.show();
-            }
-            return false;
-        }
     }
-
-
-
 }

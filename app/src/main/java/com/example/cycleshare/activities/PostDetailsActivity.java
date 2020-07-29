@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -20,10 +22,12 @@ import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
+import android.view.animation.LayoutAnimationController;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -119,6 +123,7 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         ivExpand=findViewById(R.id.ivenlarge);
         btnComment=findViewById(R.id.btnpost);
         etComment=findViewById(R.id.etComment);
+        ivCollapse=findViewById(R.id.ivCollapse);
 
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -166,6 +171,7 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
             ivDelete.setVisibility(View.GONE);
             ivEdit.setVisibility(View.GONE);
         }
+        ivCollapse.setVisibility(View.INVISIBLE);
 
 
 
@@ -245,6 +251,45 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
                 });
             }
         });
+
+        ivExpand.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ObjectAnimator moveRV = ObjectAnimator.ofFloat(rvComments, "translationY", 400f);
+                moveRV.setDuration(1000);
+                moveRV.start();
+
+                RelativeLayout.LayoutParams lp =
+                        new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, 1400);
+                rvComments.setLayoutParams(lp);
+
+                ivPostImage.setVisibility(View.INVISIBLE);
+                map.setVisibility(View.INVISIBLE);
+                btnContact.setVisibility(View.INVISIBLE);
+                ivExpand.setVisibility(View.INVISIBLE);
+                ivCollapse.setVisibility(View.VISIBLE);
+            }
+        });
+        ivCollapse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ObjectAnimator moveRV = ObjectAnimator.ofFloat(rvComments, "translationY", 1300f);
+                moveRV.setDuration(1000);
+                moveRV.start();
+                RelativeLayout.LayoutParams lp =
+                        new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, 300);
+                rvComments.setLayoutParams(lp);
+
+                ivPostImage.setVisibility(View.VISIBLE);
+                map.setVisibility(View.VISIBLE);
+                btnContact.setVisibility(View.VISIBLE);
+                ivExpand.setVisibility(View.VISIBLE);
+                ivCollapse.setVisibility(View.INVISIBLE);
+
+            }
+        });
+        ivExpand.setVisibility(View.VISIBLE);
     }
 
     public static void hideKeyboardFrom(Context context, View view) {
