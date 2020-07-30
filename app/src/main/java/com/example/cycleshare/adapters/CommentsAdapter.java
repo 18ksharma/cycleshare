@@ -1,11 +1,13 @@
 package com.example.cycleshare.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,8 +17,10 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.example.cycleshare.R;
 import com.example.cycleshare.Utils;
 import com.example.cycleshare.models.Comment;
+import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.List;
 
@@ -75,8 +79,11 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
         }
 
         public void bind(final Comment comment) {
-            if(!comment.getUser().equals(ParseUser.getCurrentUser()) ){
-                ivDelete.setVisibility(View.GONE);
+            ivDelete.setVisibility(View.GONE);
+            Log.i("Comments", "comment author"+comment.getUser());
+            Log.i("Comments", "cur user"+ParseUser.getCurrentUser());
+            if(comment.getUser().getUsername().equals(ParseUser.getCurrentUser().getUsername()) ){
+                ivDelete.setVisibility(View.VISIBLE);
             }
             tvUsername.setText(comment.getUser().getUsername());
             tvContents.setText(comment.getContents());
@@ -93,7 +100,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
 
             }
 
-            /*ivDelete.setOnClickListener(new View.OnClickListener() {
+            ivDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     try {
@@ -109,7 +116,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
                     }
 
                 }
-            });*/
+            });
 
 
         }
