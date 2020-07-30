@@ -232,6 +232,9 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        startLocationUpdates();
+
         rvPosts=view.findViewById(R.id.rvPosts);
         swipeContainer=view.findViewById(R.id.swipeContainer);
 
@@ -287,7 +290,6 @@ public class HomeFragment extends Fragment {
             requestPermissions();
         }
 
-        startLocationUpdates();
     }
 
     private void requestPermissions() {
@@ -310,7 +312,7 @@ public class HomeFragment extends Fragment {
         //Creates location request for receiving updates
         mLocationRequest = new LocationRequest();
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        //mLocationRequest.setInterval(UPDATE_INTERVAL);
+        mLocationRequest.setInterval(UPDATE_INTERVAL);
         mLocationRequest.setFastestInterval(FASTEST_INTERVAL);
 
         // Create LocationSettingsRequest object using location request
@@ -379,8 +381,10 @@ public class HomeFragment extends Fragment {
             query.setSkip(limit);
         }
         query.setLimit(20);
+        query.whereNear(Post.KEY_POINT, ParseUser.getCurrentUser().getParseGeoPoint("location"));
+        Log.i(TAG, String.valueOf(point));
 
-        query.addDescendingOrder(Post.KEY_CREATEDAT);
+        //query.addDescendingOrder(Post.KEY_CREATEDAT);
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
