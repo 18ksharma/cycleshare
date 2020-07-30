@@ -1,6 +1,7 @@
 package com.example.cycleshare.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.example.cycleshare.R;
 import com.example.cycleshare.Utils;
+import com.example.cycleshare.activities.MainActivity;
 import com.example.cycleshare.models.Comment;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -108,7 +110,10 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
                         comment.saveInBackground(new SaveCallback() {
                             @Override
                             public void done(ParseException e) {
-                                Toast.makeText(context, "deleted comment", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(context, MainActivity.class);
+                                context.startActivity(intent);
+                                //addAll();
+                                Toast.makeText(context, "Comment deleted", Toast.LENGTH_SHORT).show();
                             }
                         });
                     } catch (ParseException e) {

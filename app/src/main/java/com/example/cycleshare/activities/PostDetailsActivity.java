@@ -288,7 +288,7 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    private void querycommentbypost(Post post) {
+    public void querycommentbypost(Post post) {
         ParseQuery<Comment> query = ParseQuery.getQuery(Comment.class);
         query.include(Comment.KEY_AUTHOR);
         //gets posts
