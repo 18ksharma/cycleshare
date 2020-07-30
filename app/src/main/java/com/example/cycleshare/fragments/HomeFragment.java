@@ -344,14 +344,17 @@ public class HomeFragment extends Fragment {
         point= new ParseGeoPoint(lat, lon);
 
         ParseUser currentuser = ParseUser.getCurrentUser();
-        currentuser.put("location", point);
-        currentuser.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                Log.i(TAG, "got user location: "+ String.valueOf(point));
+        if(currentuser!=null){
+
+            currentuser.put("location", point);
+            currentuser.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    Log.i(TAG, "got user location: "+ String.valueOf(point));
+                }
             }
+            );
         }
-        );
     }
 
     //Does not load more if it is searching

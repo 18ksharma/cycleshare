@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.example.cycleshare.Utils;
 import com.example.cycleshare.activities.InitialActivity;
 import com.example.cycleshare.adapters.ProfileAdapter;
 import com.example.cycleshare.R;
@@ -96,7 +97,7 @@ public class ProfileFragment extends Fragment {
         rvUserPosts=view.findViewById(R.id.rvUserPoses);
 
         ParseUser user = ParseUser.getCurrentUser();
-        tvUsername.setText(user.getUsername());
+        tvUsername.setText("@"+user.getUsername());
         if(user.getParseFile("profilePic")!=null) {
             Glide.with(view.getContext()).load(user.getParseFile("profilePic").getUrl()).transform(new CircleCrop())
                     .placeholder(R.drawable.ic_baseline_person_24).into(ivProfilePicture);
