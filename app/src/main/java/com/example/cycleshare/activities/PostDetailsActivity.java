@@ -114,7 +114,7 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         tvPrice = findViewById(R.id.tvPrice);
         tvAvailability = findViewById(R.id.tvAvailability);
         tvDescription = findViewById(R.id.tvDescription);
-        ivPostImage = (PhotoView) findViewById(R.id.ivPicture);
+        ivPostImage = (PhotoView)findViewById(R.id.ivPicture);
         tvTimestamp = findViewById(R.id.tvTimestamp);
         btnContact = findViewById(R.id.btnContact);
         ivEdit = findViewById(R.id.ivEdit);
@@ -188,7 +188,6 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
 
         Drawable d = ivPostImage.getDrawable();
         ivPostImage.setImageDrawable(d);
-        PhotoViewAttacher mAttacher = new PhotoViewAttacher(ivPostImage);
 
         if(profilePic!=null){
             Glide.with(this).load(profilePic.getUrl()).transform(new CircleCrop())
