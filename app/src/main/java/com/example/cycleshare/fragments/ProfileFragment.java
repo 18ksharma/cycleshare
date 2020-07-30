@@ -20,7 +20,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.example.cycleshare.activities.InitialActivity;
-import com.example.cycleshare.ProfileAdapter;
+import com.example.cycleshare.adapters.ProfileAdapter;
 import com.example.cycleshare.R;
 import com.example.cycleshare.activities.SettingsActivity;
 import com.example.cycleshare.models.Post;

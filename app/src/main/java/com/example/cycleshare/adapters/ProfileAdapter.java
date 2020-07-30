@@ -1,23 +1,19 @@
-package com.example.cycleshare;
+package com.example.cycleshare.adapters;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AlertDialogLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.cycleshare.R;
 import com.example.cycleshare.activities.PostDetailsActivity;
 import com.example.cycleshare.models.Post;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.List;
 

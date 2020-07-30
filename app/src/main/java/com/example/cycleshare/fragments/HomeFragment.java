@@ -25,9 +25,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.cycleshare.EndlessRecyclerViewScrollListener;
-import com.example.cycleshare.PostsAdapter;
+import com.example.cycleshare.adapters.PostsAdapter;
 import com.example.cycleshare.R;
 import com.example.cycleshare.models.Post;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -78,6 +79,7 @@ public class HomeFragment extends Fragment {
     private FusedLocationProviderClient fusedLocationClient;
     private LatLng latLng;
     private ParseGeoPoint point;
+    private String filter;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -121,9 +123,29 @@ public class HomeFragment extends Fragment {
         final MenuItem searchItem = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         MenuItem filterDescription = menu.findItem(R.id.filter_description);
-        MenuItem filterCondition = menu.findItem(R.id.filter_condition);
-        MenuItem filterPrice = menu.findItem(R.id.filter_price);
-        MenuItem filterAvailability = menu.findItem(R.id.filter_availability);
+        final MenuItem filterCondition = menu.findItem(R.id.filter_condition);
+        final MenuItem filterPrice = menu.findItem(R.id.filter_price);
+        final MenuItem filterAvailability = menu.findItem(R.id.filter_availability);
+        new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                if(menuItem.equals(filterCondition)){
+                    filter=Post.KEY_CONDITION;
+                    Log.i(TAG, "Filter set to condition");
+                }
+                else if(menuItem.equals(filterPrice)){
+                    filter=Post.KEY_PRICE;
+                    Log.i(TAG, "Filter set to price");
+                }
+                else if(menuItem.equals(filterAvailability)){
+                    filter=Post.KEY_AVAILABILITY;
+                    Log.i(TAG, "Filter set to availability");
+                }
+                filter=Post.KEY_DESCRIPTION;
+                Log.i(TAG, "Filter set to description");
+                return false;
+            }
+        };
         /*adapter.clear();
         // 2. Notify the adapter of the update
         adapter.notifyDataSetChanged(); // or notifyItemRangeRemoved
@@ -176,6 +198,35 @@ public class HomeFragment extends Fragment {
 
     private void onOptionsMenuClosed() {
         queryPosts(null, 0);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.filter_availability:
+                filter= Post.KEY_AVAILABILITY;
+                Log.i(TAG, "Filter set to availability");
+                return true;
+            case R.id.filter_condition:
+                filter=Post.KEY_CONDITION;
+                Log.i(TAG, "Filter set to condition");
+                return true;
+            case R.id.filter_price:
+                filter=Post.KEY_PRICE;
+                Log.i(TAG, "Filter set to price");
+                return true;
+            case R.id.filter_description:
+                filter=Post.KEY_DESCRIPTION;
+                Log.i(TAG, "Filter set to description");
+                return true;
+            case R.id.action_search:
+                return true;
+            default:
+                filter=Post.KEY_DESCRIPTION;
+                Log.i(TAG, "Filter set to des");
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -310,6 +361,9 @@ public class HomeFragment extends Fragment {
     protected void queryPosts(String search, int skip){
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
+        if(filter==null){
+            filter=Post.KEY_DESCRIPTION;
+        }
         if(search!=null){
             adapter.clear();
             allposts.clear();
@@ -318,7 +372,7 @@ public class HomeFragment extends Fragment {
             // 3. Reset endless scroll listener when performing a new search
             scrollListener.resetState();
             //query.include(Post.KEY_USER);
-            query.whereContains(Post.KEY_DESCRIPTION, search);
+            query.whereContains(filter, search);
 
         }
         else if(skip!=0){
