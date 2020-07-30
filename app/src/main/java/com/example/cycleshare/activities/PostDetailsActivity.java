@@ -294,7 +294,7 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         //gets posts
         query.whereEqualTo(Comment.KEY_POST, post);
         query.setLimit(20);
-        query.addDescendingOrder(Comment.KEY_CREATEDAT);
+        query.addAscendingOrder(Comment.KEY_CREATEDAT);
         query.findInBackground(new FindCallback<Comment>() {
             @Override
             public void done(List<Comment> postcomments, com.parse.ParseException e) {

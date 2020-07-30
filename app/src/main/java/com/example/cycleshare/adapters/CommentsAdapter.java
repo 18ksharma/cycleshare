@@ -112,7 +112,6 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
                             public void done(ParseException e) {
                                 Intent intent = new Intent(context, MainActivity.class);
                                 context.startActivity(intent);
-                                //addAll();
                                 Toast.makeText(context, "Comment deleted", Toast.LENGTH_SHORT).show();
                             }
                         });
