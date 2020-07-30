@@ -43,7 +43,6 @@ import android.widget.Toast;
 
 import com.example.cycleshare.activities.MainActivity;
 import com.example.cycleshare.R;
-import com.example.cycleshare.ShakeListener;
 import com.example.cycleshare.models.Post;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -80,7 +79,7 @@ import permissions.dispatcher.RuntimePermissions;
  */
 
 @RuntimePermissions
-public class ComposeFragment extends Fragment implements ShakeListener.Callback {
+public class ComposeFragment extends Fragment{
     public static final String TAG = "ComposeFragment";
     public final static int PICK_PHOTO_CODE = 1046;
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
@@ -167,6 +166,7 @@ public class ComposeFragment extends Fragment implements ShakeListener.Callback 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //Shake sensor
         mSensorManager = (SensorManager) this.getContext().getSystemService(Context.SENSOR_SERVICE);
         Objects.requireNonNull(mSensorManager).registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
                 SensorManager.SENSOR_DELAY_NORMAL);
@@ -290,6 +290,7 @@ public class ComposeFragment extends Fragment implements ShakeListener.Callback 
                 Looper.myLooper());
     }
 
+    //Shake sensor listener
     private final SensorEventListener mSensorListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
@@ -491,16 +492,5 @@ public class ComposeFragment extends Fragment implements ShakeListener.Callback 
         File file = new File(mediaStorageDir.getPath() + File.separator + fileName);
 
         return file;
-    }
-
-    @Override
-    public void shakingStarted() {
-        shaking = true;
-    }
-
-    @Override
-    public void shakingStopped() {
-        shaking = false;
-
     }
 }
