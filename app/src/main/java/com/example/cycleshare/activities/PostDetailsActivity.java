@@ -36,6 +36,7 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.example.cycleshare.CommentsAdapter;
 import com.example.cycleshare.PostsAdapter;
 import com.example.cycleshare.R;
+import com.example.cycleshare.Utils;
 import com.example.cycleshare.fragments.ComposeFragment;
 import com.example.cycleshare.models.Comment;
 import com.example.cycleshare.models.Post;
@@ -172,10 +173,11 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
             ivEdit.setVisibility(View.GONE);
         }
         ivCollapse.setVisibility(View.INVISIBLE);
+        ivExpand.setVisibility(View.VISIBLE);
 
 
 
-        relativeDate = getRelativeTimeAgo(createdAt.toString());
+        relativeDate = Utils.getRelativeTimeAgo(createdAt.toString());
 
         tvUser.setText("@"+username);
         tvDescription.setText(description);
@@ -288,7 +290,6 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
 
             }
         });
-        ivExpand.setVisibility(View.VISIBLE);
     }
 
     public static void hideKeyboardFrom(Context context, View view) {
@@ -371,24 +372,6 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         }
         map.onSaveInstanceState(mapViewBundle);
 
-    }
-
-    //Gets Relative time
-    public String getRelativeTimeAgo(String rawJsonDate) {
-        String twitterFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
-        SimpleDateFormat sf = new SimpleDateFormat(twitterFormat, Locale.ENGLISH);
-        sf.setLenient(true);
-
-        String relativeDate = "";
-        try {
-            long dateMillis = sf.parse(rawJsonDate).getTime();
-            relativeDate = DateUtils.getRelativeTimeSpanString(dateMillis,
-                    System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        return relativeDate;
     }
 
     @Override

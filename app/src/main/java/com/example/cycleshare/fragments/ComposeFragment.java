@@ -2,6 +2,7 @@ package com.example.cycleshare.fragments;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -9,6 +10,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.ImageDecoder;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
@@ -39,7 +44,6 @@ import android.widget.Toast;
 import com.example.cycleshare.activities.MainActivity;
 import com.example.cycleshare.R;
 import com.example.cycleshare.ShakeListener;
-import com.example.cycleshare.activities.SettingsActivity;
 import com.example.cycleshare.models.Post;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -58,10 +62,12 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import static android.app.Activity.RESULT_OK;
 import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
+import static com.parse.Parse.getApplicationContext;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
@@ -105,6 +111,11 @@ public class ComposeFragment extends Fragment implements ShakeListener.Callback 
 
     private boolean shaking;
 
+
+    private SensorManager mSensorManager;
+    private float mAccel;
+    private float mAccelCurrent;
+    private float mAccelLast;
 
     private static final String MAPVIEW_BUNDLE_KEY = "MapViewBundleKey";
 
@@ -155,6 +166,14 @@ public class ComposeFragment extends Fragment implements ShakeListener.Callback 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        mSensorManager = (SensorManager) this.getContext().getSystemService(Context.SENSOR_SERVICE);
+        Objects.requireNonNull(mSensorManager).registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+                SensorManager.SENSOR_DELAY_NORMAL);
+        mAccel = 10f;
+        mAccelCurrent = SensorManager.GRAVITY_EARTH;
+        mAccelLast = SensorManager.GRAVITY_EARTH;
+
         Snackbar.make(view, "Shake to clear all fields", Snackbar.LENGTH_LONG).show();
         etDescription = view.findViewById(R.id.etDescription);
         btnCaptureImage = view.findViewById(R.id.btnCaptureImage);
@@ -271,6 +290,41 @@ public class ComposeFragment extends Fragment implements ShakeListener.Callback 
                 Looper.myLooper());
     }
 
+    private final SensorEventListener mSensorListener = new SensorEventListener() {
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            float x = event.values[0];
+            float y = event.values[1];
+            float z = event.values[2];
+            mAccelLast = mAccelCurrent;
+            mAccelCurrent = (float) Math.sqrt((double) (x * x + y * y + z * z));
+            float delta = mAccelCurrent - mAccelLast;
+            mAccel = mAccel * 0.9f + delta;
+            if (mAccel > 12) {
+                Toast.makeText(getApplicationContext(), "Shake event detected", Toast.LENGTH_SHORT).show();
+                etDescription.setText("");
+                etPrice.setText("");
+                etAvailability.setText("");
+                ivPostImage.setImageResource(0);
+            }
+        }
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        }
+    };
+
+    @Override
+    public void onResume() {
+        mSensorManager.registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+                SensorManager.SENSOR_DELAY_NORMAL);
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        mSensorManager.unregisterListener(mSensorListener);
+        super.onPause();
+    }
 
     private void onLocationChanged(Location location) {
         // New location has now been determined
@@ -441,11 +495,6 @@ public class ComposeFragment extends Fragment implements ShakeListener.Callback 
 
     @Override
     public void shakingStarted() {
-        Toast.makeText(getContext(), "SHAKING STARTED", Toast.LENGTH_SHORT).show();
-        etDescription.setText("");
-        etPrice.setText("");
-        etAvailability.setText("");
-        ivPostImage.setImageResource(0);
         shaking = true;
     }
 

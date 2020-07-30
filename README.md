@@ -66,11 +66,11 @@ Original App Design Project - README Template
 * [X] User can edit a post that they have made
 * [X] Relative distance
 * [X] Adding comments to posts
+* [X] Forget password button Sends user an email
 * Delete comments
 * Open venmo app to complete transaction
 * Swipe to switch views
 * Swipe up to open GoogleMaps displaying location of bike
-* Forget password button
 * Internal Messaging Tool
 * Users can add ratings for people who have posts
 * Implement Likes on a specific bike
