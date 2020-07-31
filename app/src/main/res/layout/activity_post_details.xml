@@ -134,7 +134,7 @@
         android:id="@+id/ivenlarge"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_above="@id/rvComments"
+        android:layout_below="@id/mapView"
         android:layout_alignParentRight="true"
         android:padding="8dp"
         app:srcCompat="@drawable/ic_baseline_call_made_24"
