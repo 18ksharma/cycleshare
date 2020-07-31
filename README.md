@@ -64,7 +64,7 @@ Original App Design Project - README Template
 * [X] Settings page where user can change their username and profile picture
 * [X] User can delete their account
 * [X] User can edit a post that they have made
-* [X] Relative distance
+* [X] Relative distance from user to a post
 * [X] Adding comments to posts
 * [X] Forget password button Sends user an email
 * [X] Filter search

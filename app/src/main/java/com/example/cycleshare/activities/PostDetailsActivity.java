@@ -367,10 +367,10 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        Marker marker = googleMap.addMarker(new MarkerOptions().position(new LatLng(lat,lon)).title("marker"));
+        Marker marker = googleMap.addMarker(new MarkerOptions().position(new LatLng(lat,lon)).title("Bike location"));
         dropPinEffect(marker);
         LatLng latLng = new LatLng(lat, lon);
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
     }
 
     private void dropPinEffect(final Marker marker) {

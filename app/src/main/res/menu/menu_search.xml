@@ -9,6 +9,7 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
     <item
         android:id="@+id/filter_description"
+        android:icon="@drawable/ic_baseline_description_24"
         android:orderInCategory="5"
         android:title="Description"
         app:showAsAction="collapseActionView" />
