@@ -178,8 +178,13 @@ public class HomeFragment extends Fragment {
                 adapter.notifyDataSetChanged(); // or notifyItemRangeRemoved
                 // 3. Reset endless scroll listener when performing a new search
                 scrollListener.resetState();
-                queryPosts(newText, 0);
-                searching=true;
+                if(!newText.isEmpty()) {
+                    queryPosts(newText, 0);
+                    searching=true;
+                }
+                if(newText.isEmpty()){
+                    queryPosts(null,0);
+                }
                 return false;
             }
         });
@@ -378,7 +383,8 @@ public class HomeFragment extends Fragment {
             scrollListener.resetState();
             //query.include(Post.KEY_USER);
             if(filter==Post.KEY_PRICE){
-                query.whereLessThanOrEqualTo(filter, String.valueOf(search));
+                query.whereLessThanOrEqualTo(filter, Double.valueOf(search));
+                Log.i(TAG, "price filtering");
             }
             else{
                 query.whereContains(filter, search);
