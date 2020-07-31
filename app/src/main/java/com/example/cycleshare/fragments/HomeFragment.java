@@ -377,8 +377,12 @@ public class HomeFragment extends Fragment {
             // 3. Reset endless scroll listener when performing a new search
             scrollListener.resetState();
             //query.include(Post.KEY_USER);
-            query.whereContains(filter, search);
-
+            if(filter==Post.KEY_PRICE){
+                query.whereLessThanOrEqualTo(filter, String.valueOf(search));
+            }
+            else{
+                query.whereContains(filter, search);
+            }
         }
         else if(skip!=0){
             query.setSkip(limit);

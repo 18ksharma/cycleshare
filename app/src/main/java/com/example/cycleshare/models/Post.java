@@ -16,7 +16,7 @@ public class Post extends ParseObject {
     public static final String KEY_USER = "author";
     public static final String KEY_CREATEDAT = "createdAt";
     public static final String KEY_CONDITION = "condition";
-    public static final String KEY_PRICE = "price";
+    public static final String KEY_PRICE = "cost";
     public static final String KEY_AVAILABILITY = "availability";
     public static final String KEY_LATITUDE = "latitude";
     public static final String KEY_LONGITUDE = "longitude";
@@ -31,11 +31,11 @@ public class Post extends ParseObject {
     }
 
 
-    public String getPrice() {
-        return getString(KEY_PRICE);
+    public Double getPrice() {
+        return getDouble(KEY_PRICE);
     }
 
-    public void setPrice(String price){
+    public void setPrice(Double price){
         put(KEY_PRICE, price);
     }
 

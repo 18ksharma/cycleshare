@@ -78,7 +78,7 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
     private String username;
     private ParseFile profilePic;
     private String condition;
-    private String price;
+    private Double price;
     private String availability;
     private String email;
     private ParseUser user;
@@ -144,7 +144,7 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         username = getIntent().getStringExtra("username");
         profilePic = (ParseFile) getIntent().getExtras().get("profilePic");
         condition = getIntent().getStringExtra("condition");
-        price = getIntent().getStringExtra("price");
+        price = getIntent().getDoubleExtra("price", 0);
         availability = getIntent().getStringExtra("availability");
         email = getIntent().getStringExtra("email");
         lat = getIntent().getExtras().getDouble("latitude");
@@ -174,7 +174,7 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         tvDescription.setText(description);
         tvTimestamp.setText(relativeDate);
         tvCondition.setText("Condition: " + condition);
-        tvPrice.setText("Price: " + price);
+        tvPrice.setText("Price: $" +String.format("%.2f", price));
         tvAvailability.setText("Availability: " + availability);
         Glide.with(this).load(image.getUrl()).placeholder(R.drawable.ic_baseline_person_24).into(ivPostImage);
 

@@ -244,6 +244,7 @@ public class ComposeFragment extends Fragment{
                     return;
                 }
 
+
                 if (ivPostImage.getDrawable() == null) {
                     Toast.makeText(getContext(), "There is no image!", Toast.LENGTH_SHORT).show();
                     Log.i(TAG, String.valueOf(photoFile));
@@ -254,7 +255,7 @@ public class ComposeFragment extends Fragment{
                 //If description is valid
                 ParseUser currentUser = ParseUser.getCurrentUser();
 
-                savePost(condition, price, availability, description, currentUser, photoFile, lat, lon);
+                savePost(condition, Double.valueOf(price), availability, description, currentUser, photoFile, lat, lon);
             }
         });
         if(checkPermissions()==false){
@@ -290,7 +291,7 @@ public class ComposeFragment extends Fragment{
                 Looper.myLooper());
     }
 
-    //Shake sensor listener
+    //Shake listener
     private final SensorEventListener mSensorListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
@@ -369,7 +370,7 @@ public class ComposeFragment extends Fragment{
 
 
 
-    private void savePost(final String condition, final String price, final String availability, final String description, final ParseUser currentUser,
+    private void savePost(final String condition, final Double price, final String availability, final String description, final ParseUser currentUser,
                           File photoFile, double lat, double lon) {
         Drawable d = ivPostImage.getDrawable();
         Bitmap bitmap = ((BitmapDrawable) d).getBitmap();

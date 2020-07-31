@@ -54,7 +54,7 @@ public class EditActivity extends AppCompatActivity {
 
         etAvailability.setText(post.getAvailability());
         etDescription.setText(post.getDescription());
-        etPrice.setText(post.getPrice());
+        etPrice.setText(post.getPrice().toString());
         Glide.with(this).load(post.getImage().getUrl()).placeholder(R.drawable.ic_baseline_person_24).into(ivPostImage);
 
         String[] items = new String[]{"New", "Excellent", "Good", "Fair", "Poor"};
@@ -103,14 +103,14 @@ public class EditActivity extends AppCompatActivity {
                 //If description is valid
                 ParseUser currentUser = ParseUser.getCurrentUser();
 
-                savePost(post, price, availability, description, currentUser, img);
+                savePost(post, Double.valueOf(price), availability, description, currentUser, img);
             }
         });
 
 
     }
 
-    private void savePost(Post post, String price, String availability, String description, ParseUser currentUser, ParseFile img) {
+    private void savePost(Post post, Double price, String availability, String description, ParseUser currentUser, ParseFile img) {
         post.setDescription(description);
         post.setAvailability(availability);
         post.setPrice(price);

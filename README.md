@@ -68,7 +68,7 @@ Original App Design Project - README Template
 * [X] Adding comments to posts
 * [X] Forget password button Sends user an email
 * [X] Filter search
-* Delete comments
+* [X] Delete comments
 * Open venmo app to complete transaction
 * Internal Messaging Tool
 * Users can add ratings for people who have posts
