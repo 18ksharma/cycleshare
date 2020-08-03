@@ -370,6 +370,7 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         Marker marker = googleMap.addMarker(new MarkerOptions().position(new LatLng(lat,lon)).title("Bike location"));
         dropPinEffect(marker);
         LatLng latLng = new LatLng(lat, lon);
+        //Google maps animation
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
     }
 

@@ -72,6 +72,7 @@ import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
 
 
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ComposeFragment#newInstance} factory method to
