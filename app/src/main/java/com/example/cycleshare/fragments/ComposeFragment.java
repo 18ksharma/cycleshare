@@ -36,6 +36,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -44,7 +45,9 @@ import android.widget.Toast;
 import com.example.cycleshare.activities.MainActivity;
 import com.example.cycleshare.R;
 import com.example.cycleshare.models.Post;
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
@@ -53,6 +56,12 @@ import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.model.TypeFilter;
+import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -66,10 +75,12 @@ import static com.parse.Parse.getApplicationContext;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Objects;
 
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
+
 
 
 
@@ -80,7 +91,7 @@ import permissions.dispatcher.RuntimePermissions;
  */
 
 @RuntimePermissions
-public class ComposeFragment extends Fragment{
+public class ComposeFragment extends Fragment implements GoogleApiClient.OnConnectionFailedListener{
     public static final String TAG = "ComposeFragment";
     public final static int PICK_PHOTO_CODE = 1046;
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
@@ -92,6 +103,7 @@ public class ComposeFragment extends Fragment{
     private EditText etAvailability;
     private Button btnChoose;
     private Spinner sConditions;
+    private CheckBox cbLocation;
 
     private static LocationRequest mLocationRequest;
 
@@ -126,9 +138,12 @@ public class ComposeFragment extends Fragment{
     private ParseGeoPoint point;
 
 
+    GoogleApiClient googleApiClient;
+
+
     //private MapView map;
 
-    public ComposeFragment() {
+    public ComposeFragment(){
         // Required empty public constructor
     }
 
@@ -164,8 +179,34 @@ public class ComposeFragment extends Fragment{
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
+
+        //Initialize Places API
+        Places.initialize(getApplicationContext(), "AIzaSyDbLieeRqQznNitg0tC9f7AhwoudvKS7xk");
+        PlacesClient placesClient = Places.createClient(getContext());
+        AutocompleteSupportFragment autocompleteSupportFragment =
+                (AutocompleteSupportFragment) getChildFragmentManager().findFragmentById(R.id.autocomplete_fragment);
+
+        autocompleteSupportFragment.setTypeFilter(TypeFilter.ADDRESS);
+        autocompleteSupportFragment.setCountries("US");
+        autocompleteSupportFragment.setPlaceFields(Arrays.asList(Place.Field.NAME, Place.Field.LAT_LNG));
+
+        autocompleteSupportFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(@NonNull Place place) {
+                lat=place.getLatLng().latitude;
+                lon=place.getLatLng().longitude;
+                point=new ParseGeoPoint(lat, lon);
+
+            }
+
+            @Override
+            public void onError(@NonNull Status status) {
+                Log.i(TAG, "error occured: "+status);
+            }
+        });
+
 
         //Shake sensor
         mSensorManager = (SensorManager) this.getContext().getSystemService(Context.SENSOR_SERVICE);
@@ -184,6 +225,7 @@ public class ComposeFragment extends Fragment{
         etAvailability = view.findViewById(R.id.etAvailability);
         btnChoose = view.findViewById(R.id.btnChoose);
         sConditions = view.findViewById(R.id.sConditions);
+        cbLocation = view.findViewById(R.id.cbLocation);
 
 
         String[] items = new String[]{"New", "Excellent", "Good", "Fair", "Poor"};
@@ -332,11 +374,13 @@ public class ComposeFragment extends Fragment{
     private void onLocationChanged(Location location) {
         // New location has now been determined
         // You can now create a LatLng Object for use with maps
-        latLng = new LatLng(location.getLatitude(), location.getLongitude());
-        lat=location.getLatitude();
-        lon=location.getLongitude();
+        if(cbLocation.isChecked()){
+            latLng = new LatLng(location.getLatitude(), location.getLongitude());
+            lat=location.getLatitude();
+            lon=location.getLongitude();
 
-        point= new ParseGeoPoint(lat, lon);
+            point= new ParseGeoPoint(lat, lon);
+        }
 
     }
 
@@ -494,5 +538,10 @@ public class ComposeFragment extends Fragment{
         File file = new File(mediaStorageDir.getPath() + File.separator + fileName);
 
         return file;
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Log.i(TAG, "connectionfailed");
     }
 }

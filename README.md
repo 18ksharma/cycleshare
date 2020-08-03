@@ -37,38 +37,47 @@ Original App Design Project - README Template
 
 **Required Must-have Stories**
 
+* [X] Bottom navigation (multiple views)
+* [X] Uses Parse (database)
 * [X] User can create a new account
-    *  User can take a picture and set it as their profile picture
+    * User can take a picture or choose an image from their galleryand set it as their profile picture
+    * User has to confirm password upon creating account
 * [X] User can login
-    * [X] User is still logged in when they close app
-* [X] User can see a stream of bikes
-* [X] User can create a post for putting a bike for rent (bike price, details, availability, contact information, upload bike pic)
-* [X] User can logout and see their posts on the profile Fragment
-* [X] User can filter specific bikes using search Fragment (complex algo)
+    * [X] User is still logged in when they close app / turn off phone
+* [X] User can see a stream of bikes where bike posts are ordered by relative distance from current user
+* [X] User can create a post for putting a bike for rent with bike price, description, availability, condition, location, upload bike pic from camera or photo gallery
+* [X] User can logout
+* [X] User can see their own posts on the profile Fragment
+* [X] User can click on a post to see more details
+* [X] In detailed view, users can contact the bike owner where contact button opens email app with subject filled in and owner's email
+* [X] Integrates GoogleMaps SDK to display bike location in detailed view
+* [X] User can search specific bike descriptions using search Fragment (complex algo)
 * [X] User can click on a post to see a detail view)
-* [X] User can zoom in on bike images in PostDetails
+* [X] User can zoom in on bike images in PostDetails (Gesture feature)
 
 
 **Optional Nice-to-have Stories**
 
 * [X] ProfileFragment shows posts in grid format
-    * [X] User wont see their username and profile in each individual post in recyclerview
-* [X] get rid of searchfragment and add it into the home
+    * [X] User can click on post for detailed view
 * [X] Refresh Feature on home feed
 * [X] Infinite scroll on home feed
-* [X] User can take a profile picture with camera
-* [X] User can upload picture from gallery
-* [X] User can pick profile picture from gallery
-* [X] User can delete their post
+* [X] User can delete their post with popup that confirms if they want to delete post
 * [X] Use spinner for displaying condition of the bike
 * [X] Settings page where user can change their username and profile picture
-* [X] User can delete their account
+* [X] User can delete their account with popup that confirms if they want to delete account
 * [X] User can edit a post that they have made
 * [X] Relative distance from user to a post
 * [X] Adding comments to posts
 * [X] Forget password button Sends user an email
-* [X] Filter search
+* [X] Filter search by Condition, Price, Description, or Availability
 * [X] Delete comments
+* [X] User can shake phone to clear fields in ComposeFragment (gesture feature)
+* [X] User can expand and collapse recyclerview that displays comments (animation)
+* [X] Animation with dropping google maps marker in postdetails map fragment (animation)
+* [X] Animation with zooming in on marker in postdetails map fragment (animation)
+* [X] Will not let user sign up if they are missing username field, email field, password field, or confirm password
+* [X] Will not let user post if they are missing required attributes in their post.
 * Open venmo app to complete transaction
 * Internal Messaging Tool
 * Users can add ratings for people who have posts

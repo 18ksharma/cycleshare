@@ -104,7 +104,29 @@
         android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/cbLocation"
+        android:text="Share"
+        android:padding="8dp"/>
+    <TextView
+        android:id="@+id/tvLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/etDescription"
-        android:text="Share" />
+        android:text="Location"
+        android:padding="8dp"/>
+    <fragment
+        android:id="@+id/autocomplete_fragment"
+        android:layout_toRightOf="@id/tvLocation"
+        android:layout_below="@id/etDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Bike Location"
+        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"/>
+    <CheckBox
+        android:id="@+id/cbLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Use current Location"
+        android:layout_below="@id/autocomplete_fragment"/>
 
 </RelativeLayout>
