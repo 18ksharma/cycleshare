@@ -183,7 +183,7 @@ public class ComposeFragment extends Fragment implements GoogleApiClient.OnConne
         super.onViewCreated(view, savedInstanceState);
 
         //Initialize Places API
-        Places.initialize(getApplicationContext(), "AIzaSyDbLieeRqQznNitg0tC9f7AhwoudvKS7xk");
+        Places.initialize(getApplicationContext(), getString(R.string.apiKey));
         PlacesClient placesClient = Places.createClient(getContext());
         AutocompleteSupportFragment autocompleteSupportFragment =
                 (AutocompleteSupportFragment) getChildFragmentManager().findFragmentById(R.id.autocomplete_fragment);

@@ -1,5 +1,6 @@
 package com.example.cycleshare.activities;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
@@ -10,6 +11,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.ImageDecoder;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.location.Address;
+import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,14 +30,27 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.cycleshare.R;
 import com.example.cycleshare.models.Post;
+import com.google.android.gms.common.api.Status;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.model.TypeFilter;
+import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+
+import static com.parse.Parse.getApplicationContext;
 
 public class EditActivity extends AppCompatActivity {
     private EditText etDescription;
@@ -45,6 +61,7 @@ public class EditActivity extends AppCompatActivity {
     private EditText etAvailability;
     private Button btnChoose;
     private Spinner sConditions;
+    private AutocompleteSupportFragment autocompleteSupportFragment;
 
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
 
@@ -53,6 +70,10 @@ public class EditActivity extends AppCompatActivity {
     public String photoFileName = "photo.jpg";
 
     public final static int PICK_PHOTO_CODE = 1046;
+
+    private double lat;
+    private double lon;
+    private ParseGeoPoint point;
 
 
     @Override
@@ -67,6 +88,31 @@ public class EditActivity extends AppCompatActivity {
         etAvailability = findViewById(R.id.etAvailability);
         btnChoose = findViewById(R.id.btnChoose);
         sConditions = findViewById(R.id.sConditions);
+
+        //Initialize Places API
+        Places.initialize(getApplicationContext(), getString(R.string.apiKey));
+        PlacesClient placesClient = Places.createClient(this);
+        AutocompleteSupportFragment autocompleteSupportFragment =
+                (AutocompleteSupportFragment) getSupportFragmentManager().findFragmentById(R.id.autocomplete_fragment);
+
+        autocompleteSupportFragment.setTypeFilter(TypeFilter.ADDRESS);
+        autocompleteSupportFragment.setCountries("US");
+        autocompleteSupportFragment.setPlaceFields(Arrays.asList(Place.Field.NAME, Place.Field.LAT_LNG));
+
+        autocompleteSupportFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(@NonNull Place place) {
+                lat=place.getLatLng().latitude;
+                lon=place.getLatLng().longitude;
+                point=new ParseGeoPoint(lat, lon);
+
+            }
+
+            @Override
+            public void onError(@NonNull Status status) {
+                Log.i("EditActivity", "error occured: "+status);
+            }
+        });
 
         btnSubmit.setText("Update");
 
@@ -83,6 +129,23 @@ public class EditActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_dropdown_item,
                 items);
         sConditions.setAdapter(adapter);
+
+        if (post.getCondition() != null) {
+            int spinnerPosition = adapter.getPosition(post.getCondition());
+            sConditions.setSelection(spinnerPosition);
+        }
+
+        Geocoder geocoder;
+        List<Address> addresses;
+        geocoder = new Geocoder(this, Locale.getDefault());
+
+        /*try {
+            addresses = geocoder.getFromLocation(post.getLatitude(), post.getLongitude(), 1);
+            autocompleteSupportFragment.setText((CharSequence) addresses.get(0));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
 
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,7 +200,7 @@ public class EditActivity extends AppCompatActivity {
                 //If description is valid
                 ParseUser currentUser = ParseUser.getCurrentUser();
 
-                savePost(post, Double.valueOf(price), availability, description, currentUser, img);
+                savePost(post, Double.valueOf(price), availability, condition, description, currentUser, img);
             }
         });
 
@@ -156,11 +219,12 @@ public class EditActivity extends AppCompatActivity {
         }
     }
 
-    private void savePost(Post post, Double price, String availability, String description, ParseUser currentUser, ParseFile img) {
+    private void savePost(Post post, Double price, String availability, String condition, String description, ParseUser currentUser, ParseFile img) {
         post.setDescription(description);
         post.setAvailability(availability);
         post.setPrice(price);
         post.setImage(img);
+        post.setCondition(condition);
         post.setUser(currentUser);
         post.saveInBackground(new SaveCallback() {
             @Override

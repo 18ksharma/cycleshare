@@ -78,6 +78,7 @@ Original App Design Project - README Template
 * [X] Animation with zooming in on marker in postdetails map fragment (animation)
 * [X] Will not let user sign up if they are missing username field, email field, password field, or confirm password
 * [X] Will not let user post if they are missing required attributes in their post.
+* [X] Uses places API for user to search for location in compose fragment if the bike is located elsewhere
 * Open venmo app to complete transaction
 * Internal Messaging Tool
 * Users can add ratings for people who have posts
