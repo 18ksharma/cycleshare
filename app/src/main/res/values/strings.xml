@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Byke</string>
+    <string name="app_name">Cycler</string>
     <string name="login">Login</string>
     <string name="sign_up">Signup</string>
     <string name="username">Username</string>
@@ -10,6 +10,8 @@
     <string name="change">Change profile picture</string>
     <string name="logout">Log out</string>
     <string name="apiKey">AIzaSyDbLieeRqQznNitg0tC9f7AhwoudvKS7xk</string>
+    <string name="share">Share</string>
+    <string name="location">Location</string>
+
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

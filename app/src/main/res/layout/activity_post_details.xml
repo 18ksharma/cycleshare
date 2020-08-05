@@ -15,16 +15,6 @@
         android:padding="8dp"
         android:text="20 minutes ago" />
 
-    <com.github.chrisbanes.photoview.PhotoView
-        android:id="@+id/ivPicture"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@id/tvDescription"
-        android:layout_centerHorizontal="true"
-        android:padding="8dp"
-        android:scaleType="fitCenter"
-        tools:srcCompat="@tools:sample/avatars" />
-
     <ImageView
         android:id="@+id/ivProfilePic"
         android:layout_width="60dp"
@@ -99,7 +89,8 @@
         android:layout_height="wrap_content"
         android:text="Contact Seller"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/mapView"/>
+        android:layout_below="@id/mapView"
+        android:textColor="@color/backgroundColor"/>
 
     <ImageView
         android:id="@+id/ivDelete"
@@ -165,5 +156,15 @@
         android:layout_alignParentRight="true"
         android:layout_below="@id/tvDescription"
         android:padding="8dp"/>
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/ivPicture"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/tvDescription"
+        android:layout_centerHorizontal="true"
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        tools:srcCompat="@tools:sample/avatars" />
 
 </RelativeLayout>

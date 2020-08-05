@@ -13,7 +13,8 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         tools:src="@tools:sample/avatars"
-        android:layout_margin="8dp" />
+        android:layout_margin="8dp"
+        android:outlineAmbientShadowColor="#676767"/>
 
     <TextView
         android:id="@+id/tvUsername"
@@ -30,7 +31,8 @@
         android:layout_below="@+id/btnChangeProfilePicture"
         android:layout_toRightOf="@id/ivProfilePicture"
         android:drawableLeft="@drawable/ic_baseline_rotate_right_24"
-        android:text="@string/logout" />
+        android:text="@string/logout"
+        android:textColor="@color/backgroundColor"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvUserPoses"
@@ -46,6 +48,7 @@
         android:layout_below="@id/tvUsername"
         android:layout_toRightOf="@+id/ivProfilePicture"
         android:drawableLeft="@drawable/ic_baseline_settings_24"
-        android:text=" Settings" />
+        android:text="Settings"
+        android:textColor="@color/backgroundColor"/>
 
 </RelativeLayout>

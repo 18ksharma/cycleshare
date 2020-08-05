@@ -26,7 +26,9 @@
         android:text="This is my comment"
         android:layout_toRightOf="@id/ivProfilePicture"
         android:layout_below="@id/tvUsername"
-        android:paddingLeft="8dp"/>
+        android:paddingLeft="8dp"
+        android:layout_toLeftOf="@id/ivDelete"
+        android:paddingRight="8dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

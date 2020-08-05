@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.InitialActivity">
+    tools:context=".activities.InitialActivity"
+    android:background="@color/backgroundColor">
 
     <TextView
         android:id="@+id/tvTitle"
@@ -15,7 +16,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="32dp"
         android:layout_marginTop="224dp"
-        android:textSize="50dp"/>
+        android:textSize="50dp"
+        android:textColor="@color/textColor"/>
 
     <Button
         android:id="@+id/btnLogin"
@@ -23,7 +25,8 @@
         android:layout_height="wrap_content"
         android:text="@string/login"
         android:layout_below="@id/tvTitle"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/backgroundColor"/>
 
     <Button
         android:id="@+id/btnSignup"
@@ -31,5 +34,7 @@
         android:layout_height="wrap_content"
         android:text="@string/sign_up"
         android:layout_below="@id/btnLogin"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+
+        android:textColor="@color/backgroundColor"/>
 </RelativeLayout>

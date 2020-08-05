@@ -81,7 +81,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/ivPostImage"
         android:drawableLeft="@drawable/ic_baseline_camera_alt_24"
-        android:text=" Take picture" />
+        android:text=" Take picture"
+        android:textColor="@color/backgroundColor"/>
 
     <Button
         android:id="@+id/btnChoose"
@@ -90,7 +91,8 @@
         android:layout_below="@id/btnCaptureImage"
         android:layout_toRightOf="@id/ivPostImage"
         android:drawableLeft="@drawable/ic_baseline_photo_library_24"
-        android:text=" Choose from gallery" />
+        android:text=" Choose from gallery"
+        android:textColor="@color/backgroundColor" />
 
 
     <ImageView
@@ -105,14 +107,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/cbLocation"
-        android:text="Share"
-        android:padding="8dp"/>
+        android:text="@string/share"
+        android:padding="8dp"
+        android:textColor="@color/backgroundColor"/>
     <TextView
         android:id="@+id/tvLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/etDescription"
-        android:text="Location"
+        android:text="@string/location"
         android:padding="8dp"/>
     <fragment
         android:id="@+id/autocomplete_fragment"

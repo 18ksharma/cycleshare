@@ -1,8 +1,10 @@
 package com.example.cycleshare.activities;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.FileProvider;
 
 import android.content.DialogInterface;
@@ -18,18 +20,23 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.example.cycleshare.R;
 import com.example.cycleshare.Utils;
 import com.example.cycleshare.models.Post;
+import com.parse.DeleteCallback;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -68,6 +75,8 @@ public class SettingsActivity extends AppCompatActivity {
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
 
     public final static int PICK_PHOTO_CODE = 1046;
+
+    private ToggleButton darkmode;
 
 
     @Override
@@ -163,10 +172,6 @@ public class SettingsActivity extends AppCompatActivity {
                             }
                         });
                     }
-                    if(etnewPass.getText().toString().isEmpty()){
-                        Toast.makeText(SettingsActivity.this,
-                                "Password cannot be empty", Toast.LENGTH_SHORT).show();
-                    }
                 }
                 Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
                 startActivity(intent);
@@ -183,6 +188,44 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_darkmode, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.darkmode:
+
+                darkmode = (ToggleButton) findViewById(R.id.darkmode);
+                darkmode.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        if (((ToggleButton) v).isChecked()) {
+                            Log.i("Settings", "darkmode on");
+                            AppCompatDelegate
+                                    .setDefaultNightMode(
+                                            AppCompatDelegate
+                                                    .MODE_NIGHT_YES);
+                        }
+                        else {
+                            AppCompatDelegate
+                                    .setDefaultNightMode(
+                                            AppCompatDelegate
+                                                    .MODE_NIGHT_NO);
+                        }
+
+                    }
+                });
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private AlertDialog AskOption() {
@@ -245,7 +288,7 @@ public class SettingsActivity extends AppCompatActivity {
                     Log.i(TAG, post.getDescription());
                     try {
                         post.delete();
-                        post.saveInBackground(new SaveCallback() {
+                        post.deleteInBackground(new DeleteCallback() {
                             @Override
                             public void done(ParseException e) {
                                 Toast.makeText(SettingsActivity.this, "Posts deleted", Toast.LENGTH_SHORT).show();

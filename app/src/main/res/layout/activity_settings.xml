@@ -31,7 +31,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
         android:drawableLeft="@drawable/ic_baseline_rotate_right_24"
-        android:text="@string/logout" />
+        android:text="@string/logout"
+        android:textColor="@color/backgroundColor"/>
 
 
     <EditText
@@ -62,7 +63,8 @@
         android:layout_toStartOf="@+id/btngallery"
         android:drawableLeft="@drawable/ic_baseline_camera_alt_24"
         android:padding="8dp"
-        android:text="Take a picture" />
+        android:text="Take a picture"
+        android:textColor="@color/backgroundColor"/>
 
     <Button
         android:id="@+id/btngallery"
@@ -73,7 +75,8 @@
         android:layout_marginRight="8dp"
         android:drawableLeft="@drawable/ic_baseline_photo_library_24"
         android:padding="8dp"
-        android:text="Choose from gallery" />
+        android:text="Choose from gallery"
+        android:textColor="@color/backgroundColor"/>
 
     <Button
         android:id="@+id/btnDelete"
@@ -84,7 +87,8 @@
         android:layout_marginRight="8dp"
         android:backgroundTint="#A3FF3939"
         android:drawableLeft="@drawable/ic_baseline_delete_24"
-        android:text="Delete my Account" />
+        android:text="Delete my Account"
+        android:textColor="@color/backgroundColor"/>
 
     <Button
         android:id="@+id/btnupdate"
@@ -94,7 +98,8 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:drawableLeft="@drawable/ic_baseline_update_24"
-        android:text="Update Changes" />
+        android:text="Update Changes"
+        android:textColor="@color/backgroundColor"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
