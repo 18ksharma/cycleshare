@@ -22,6 +22,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -75,6 +76,8 @@ public class EditActivity extends AppCompatActivity {
     private double lon;
     private ParseGeoPoint point;
 
+    private CheckBox cbLocation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +91,7 @@ public class EditActivity extends AppCompatActivity {
         etAvailability = findViewById(R.id.etAvailability);
         btnChoose = findViewById(R.id.btnChoose);
         sConditions = findViewById(R.id.sConditions);
+        cbLocation = findViewById(R.id.cbLocation);
 
         //Initialize Places API
         Places.initialize(getApplicationContext(), getString(R.string.apiKey));
@@ -134,17 +138,7 @@ public class EditActivity extends AppCompatActivity {
             int spinnerPosition = adapter.getPosition(post.getCondition());
             sConditions.setSelection(spinnerPosition);
         }
-
-        Geocoder geocoder;
-        List<Address> addresses;
-        geocoder = new Geocoder(this, Locale.getDefault());
-
-        /*try {
-            addresses = geocoder.getFromLocation(post.getLatitude(), post.getLongitude(), 1);
-            autocompleteSupportFragment.setText((CharSequence) addresses.get(0));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
+        autocompleteSupportFragment.setText(post.getPoint().toString());
 
 
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
@@ -226,6 +220,17 @@ public class EditActivity extends AppCompatActivity {
         post.setImage(img);
         post.setCondition(condition);
         post.setUser(currentUser);
+        if(cbLocation.isChecked()){
+            post.setPoint(currentUser.getParseGeoPoint("location"));
+            post.setLatitude(currentUser.getParseGeoPoint("location").getLatitude());
+            post.setLongitude(currentUser.getParseGeoPoint("location").getLongitude());
+        }
+
+        if(!cbLocation.isChecked() && post.getPoint()!=point && point!=null){
+            post.setPoint(point);
+            post.setLongitude(lon);
+            post.setLatitude(lat);
+        }
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
