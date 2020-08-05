@@ -36,6 +36,7 @@ import com.example.cycleshare.fragments.ComposeFragment;
 import com.example.cycleshare.models.Comment;
 import com.example.cycleshare.models.Post;
 import com.github.chrisbanes.photoview.PhotoView;
+import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -48,6 +49,7 @@ import com.parse.ParseFile;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -176,11 +178,24 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
         tvCondition.setText("Condition: " + condition);
         tvPrice.setText("Price: $" +String.format("%.2f", price));
         tvAvailability.setText("Availability: " + availability);
-        Glide.with(this).load(image.getUrl()).placeholder(R.drawable.ic_baseline_person_24).into(ivPostImage);
 
 
         Drawable d = ivPostImage.getDrawable();
         ivPostImage.setImageDrawable(d);
+
+        new PhotoViewAttacher(ivPostImage);
+
+        Picasso.get()
+                .load(image.getUrl())
+                .placeholder(R.drawable.ic_baseline_person_24)
+                .into(ivPostImage);
+
+
+
+
+        //Glide.with(this).load(image.getUrl()).placeholder(R.drawable.ic_baseline_person_24).into(ivPostImage);
+
+
 
         if(profilePic!=null){
             Glide.with(this).load(profilePic.getUrl()).transform(new CircleCrop())
