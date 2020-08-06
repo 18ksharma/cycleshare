@@ -12,12 +12,14 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="32dp"
         android:layout_marginTop="224dp"
+        android:layout_marginBottom="32dp"
+        android:drawableRight="@mipmap/ic_logo_round"
+        android:text="Cycler "
+        android:textColor="@color/textColor"
         android:textSize="50dp"
-        android:textColor="@color/textColor"/>
+        />
 
     <Button
         android:id="@+id/btnLogin"
