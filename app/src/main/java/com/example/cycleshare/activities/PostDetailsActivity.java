@@ -102,6 +102,11 @@ public class PostDetailsActivity extends AppCompatActivity implements OnMapReady
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_details);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_logo_round);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         ivProfilePicture = findViewById(R.id.ivProfilePic);
         tvUser = findViewById(R.id.tvUser);
         tvCondition = findViewById(R.id.tvCondition);

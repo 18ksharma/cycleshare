@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_logo_round);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         bottomNavigationView=findViewById(R.id.bottomNavigation);
         final String origin = getIntent().getStringExtra("edit");

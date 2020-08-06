@@ -60,6 +60,10 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_logo_round);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         tvUsername = findViewById(R.id.tvUsername);
         tvPassword = findViewById(R.id.tvPassword);
         tvConfirm = findViewById(R.id.tvConfirm);
