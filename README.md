@@ -79,6 +79,7 @@ Original App Design Project - README Template
 * [X] Will not let user sign up if they are missing username field, email field, password field, or confirm password
 * [X] Will not let user post if they are missing required attributes in their post.
 * [X] Uses places API for user to search for location in compose fragment if the bike is located elsewhere
+* [X] Created logo that is shown in actionbar
 * Open venmo app to complete transaction
 * Internal Messaging Tool
 * Users can add ratings for people who have posts
@@ -98,14 +99,15 @@ Original App Design Project - README Template
    * User can register & create an account
 * Stream
     * User can see available bikes in their area
+    * Filter search
+    * Search for posts
 * Compose
     * User can create a post for putting a bike for rent (bike price, details, availability, contact information, upload bike pic)
 * Detail View
     * User can see bike details, bike picture, and bike location (from GoogleMaps API), and has a button in which user can click to contact owner
 * Profile View
     * User can logout
-* Search View
-    * User can filter posts
+* Setting page
 
 
 ### 3. Navigation
@@ -132,9 +134,17 @@ Original App Design Project - README Template
 * Compose
     * Stream
 * Profile
-    * None
-* Search
-    * None
+    * Settings
+    * Initial page
+* Settings
+    * Initial page
+    * Stream
+* Detail view
+    * Edit
+    * Stream
+* Edit
+    * Stream
+
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
@@ -173,6 +183,8 @@ User
 |password|String|password for login|
 |createdAt|DateTime|date when post is created (default field)|
 |updatedAt|DateTime|date when post is updated (default field)|
+
+Comment
 
 ### Networking
 

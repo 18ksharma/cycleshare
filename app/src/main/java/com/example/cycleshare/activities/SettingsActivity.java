@@ -88,7 +88,7 @@ public class SettingsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.mipmap.ic_logo_round);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
-        
+
         user=ParseUser.getCurrentUser();
         btnCamera=findViewById(R.id.btncamera);
         btnGallery=findViewById(R.id.btngallery);

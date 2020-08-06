@@ -26,6 +26,24 @@
     <string name="contact">Contact seller</string>
     <string name="post">Post</string>
     <string name="comment">Comment</string>
+    <string name="home">Home</string>
+    <string name="compose">Compose</string>
+    <string name="profile">Profile</string>
+    <string name="descriptionfilter">Search Filter: Description</string>
+    <string name="pricefilter">Search Filter: Price Less Than</string>
+    <string name="condiitonfilter">Search Filter: Condition</string>
+    <string name="availabilityfilter">Search Filter: Availability</string>
+    <string name="email">Email</string>
+    <string name="confirmpass">Confirm Password</string>
+    <string name="bikecontiion">Bike Condition</string>
+    <string name="price">Price</string>
+    <string name="availability">Availability</string>
+    <string name="pricedescription">Hourly bike rental price in USD</string>
+    <string name="availdescription">Days of the week and times bike is available for rent</string>
+    <string name="describe">Describe your bike (Color, targeted age group, items included with bike, etc.)</string>
+    <string name="curLocation">Use my current location</string>
+    <string name="settings">Settings</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

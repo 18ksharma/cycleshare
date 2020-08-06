@@ -48,7 +48,7 @@
         android:layout_below="@id/tvUsername"
         android:layout_toRightOf="@+id/ivProfilePicture"
         android:drawableLeft="@drawable/ic_baseline_settings_24"
-        android:text="Settings"
+        android:text="@string/settings"
         android:textColor="@color/backgroundColor"/>
 
 </RelativeLayout>

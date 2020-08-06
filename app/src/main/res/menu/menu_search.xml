@@ -11,21 +11,21 @@
         android:id="@+id/filter_description"
         android:icon="@drawable/ic_baseline_description_24"
         android:orderInCategory="5"
-        android:title="Search Filter: Description"
+        android:title="@string/descriptionfilter"
         app:showAsAction="collapseActionView" />
     <item
         android:id="@+id/filter_price"
         android:orderInCategory="5"
-        android:title="Search Filter: Price Less Than"
+        android:title="@string/pricefilter"
         app:showAsAction="collapseActionView" />
     <item
         android:id="@+id/filter_condition"
         android:orderInCategory="5"
-        android:title="Search Filter: Condition"
+        android:title="@string/condiitonfilter"
         app:showAsAction="collapseActionView" />
     <item
         android:id="@+id/filter_availability"
         android:orderInCategory="5"
-        android:title="Search Filter: Availability"
+        android:title="@string/availabilityfilter"
         app:showAsAction="collapseActionView" />
 </menu>

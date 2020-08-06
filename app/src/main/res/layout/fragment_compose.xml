@@ -14,7 +14,7 @@
         android:paddingTop="16dp"
         android:paddingRight="8dp"
         android:paddingBottom="16dp"
-        android:text="Bike Condition"
+        android:text="@string/bikecontiion"
         android:layout_below="@id/ivPostImage"/>
 
     <Spinner
@@ -32,7 +32,7 @@
         android:paddingRight="8dp"
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
-        android:text="Price" />
+        android:text="@string/price" />
 
     <EditText
         android:id="@+id/etPrice"
@@ -41,7 +41,7 @@
         android:layout_below="@id/sConditions"
         android:layout_toRightOf="@id/tvPrice"
         android:ems="10"
-        android:hint="Hourly bike rental price in USD"
+        android:hint="@string/pricedescription"
         android:paddingTop="16dp"
         android:inputType="numberDecimal"/>
 
@@ -54,7 +54,7 @@
         android:paddingTop="16dp"
         android:paddingRight="8dp"
         android:paddingBottom="16dp"
-        android:text="Availability" />
+        android:text="@string/availability" />
 
     <EditText
         android:id="@+id/etAvailability"
@@ -63,7 +63,7 @@
         android:layout_below="@id/etPrice"
         android:layout_toRightOf="@id/tvAvailability"
         android:ems="10"
-        android:hint="Days of the week and times bike is available for rent" />
+        android:hint="@string/availdescription" />
 
     <EditText
         android:id="@+id/etDescription"
@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/etAvailability"
         android:ems="10"
-        android:hint="Describe your bike"
+        android:hint="@string/describe"
         android:lines="4" />
 
 
@@ -81,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/ivPostImage"
         android:drawableLeft="@drawable/ic_baseline_camera_alt_24"
-        android:text=" Take picture"
+        android:text="@string/camera"
         android:textColor="@color/backgroundColor"/>
 
     <Button
@@ -91,7 +91,7 @@
         android:layout_below="@id/btnCaptureImage"
         android:layout_toRightOf="@id/ivPostImage"
         android:drawableLeft="@drawable/ic_baseline_photo_library_24"
-        android:text=" Choose from gallery"
+        android:text="@string/gallery"
         android:textColor="@color/backgroundColor" />
 
 
@@ -129,7 +129,7 @@
         android:id="@+id/cbLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Use current Location"
+        android:text="@string/curLocation"
         android:layout_below="@id/autocomplete_fragment"/>
 
 </RelativeLayout>
