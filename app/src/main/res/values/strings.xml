@@ -12,6 +12,20 @@
     <string name="apiKey">AIzaSyDbLieeRqQznNitg0tC9f7AhwoudvKS7xk</string>
     <string name="share">Share</string>
     <string name="location">Location</string>
+    <string name="camera">Take a picture</string>
+    <string name="gallery">Choose from gallery</string>
+    <string name="deleteAccount">Delete my account</string>
+    <string name="updateChanges">Update Changes</string>
+    <string name="changePassword">Change Password</string>
+    <string name="curPass">Current password</string>
+    <string name="confirmcurPass">Confirm current password</string>
+    <string name="newPass">New Password</string>
+    <string name="ConfirmnewPass">Confirm New Password</string>
+    <string name="Changepic">Change profile picture</string>
+    <string name="newusername">New Username</string>
+    <string name="contact">Contact seller</string>
+    <string name="post">Post</string>
+    <string name="comment">Comment</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

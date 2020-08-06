@@ -87,7 +87,7 @@
         android:id="@+id/btnContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Contact Seller"
+        android:text="@string/contact"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/mapView"
         android:textColor="@color/backgroundColor"/>
@@ -134,7 +134,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Comment"
+        android:hint="@string/comment"
         android:layout_alignParentBottom="true"
         android:id="@+id/etComment"
         android:layout_toLeftOf="@id/btnpost"/>
@@ -145,7 +145,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginRight="8dp"
-        android:text="Post"
+        android:text="@string/post"
         android:layout_alignParentBottom="true"/>
 
     <ImageView

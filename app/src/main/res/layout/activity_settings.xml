@@ -20,7 +20,8 @@
         android:layout_height="wrap_content"
         tools:text="kanika22"
         android:padding="8dp"
-        android:layout_toRightOf="@+id/ivProfilePicture"/>
+        android:layout_toRightOf="@+id/ivProfilePicture"
+        android:textSize="25dp"/>
 
     <Button
         android:id="@+id/btnLogout"
@@ -41,12 +42,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvUsername"
         android:layout_alignBottom="@id/ivProfilePicture"
-        android:hint="New Username"
+        android:hint="@string/newusername"
         android:layout_toRightOf="@id/ivProfilePicture"
-        tools:text="New Username" />
+        tools:text="@string/newusername" />
     <TextView
         android:id="@+id/tvChange"
-        android:text="Change Profile picture"
+        android:text="@string/Changepic"
+        android:textSize="18dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/ivProfilePicture"
@@ -63,7 +65,7 @@
         android:layout_toStartOf="@+id/btngallery"
         android:drawableLeft="@drawable/ic_baseline_camera_alt_24"
         android:padding="8dp"
-        android:text="Take a picture"
+        android:text="@string/camera"
         android:textColor="@color/backgroundColor"/>
 
     <Button
@@ -75,7 +77,7 @@
         android:layout_marginRight="8dp"
         android:drawableLeft="@drawable/ic_baseline_photo_library_24"
         android:padding="8dp"
-        android:text="Choose from gallery"
+        android:text="@string/gallery"
         android:textColor="@color/backgroundColor"/>
 
     <Button
@@ -87,7 +89,7 @@
         android:layout_marginRight="8dp"
         android:backgroundTint="#A3FF3939"
         android:drawableLeft="@drawable/ic_baseline_delete_24"
-        android:text="Delete my Account"
+        android:text="@string/deleteAccount"
         android:textColor="@color/backgroundColor"/>
 
     <Button
@@ -98,20 +100,21 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:drawableLeft="@drawable/ic_baseline_update_24"
-        android:text="Update Changes"
+        android:text="@string/updateChanges"
         android:textColor="@color/backgroundColor"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvChangePassword"
-        android:text="Change Password"
+        android:text="@string/changePassword"
+        android:textSize="18dp"
         android:layout_below="@id/btncamera"
         android:padding="8dp"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:hint="Current password"
+        android:hint="@string/curPass"
         android:layout_below="@id/tvChangePassword"
         android:id="@+id/etcurPass"
         android:inputType="textPassword"/>
@@ -119,7 +122,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:hint="Confirm current password"
+        android:hint="@string/confirmcurPass"
         android:layout_below="@id/etcurPass"
         android:id="@+id/etconfirmcurPass"
         android:inputType="textPassword"/>
@@ -128,7 +131,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:hint="New password"
+        android:hint="@string/newPass"
         android:layout_below="@id/etconfirmcurPass"
         android:id="@+id/etnewPass"
         android:inputType="textPassword"/>
@@ -137,7 +140,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:hint="Confirm current password"
+        android:hint="@string/ConfirmnewPass"
         android:layout_below="@id/etnewPass"
         android:id="@+id/etconfirmnewPass"
         android:inputType="textPassword"/>
