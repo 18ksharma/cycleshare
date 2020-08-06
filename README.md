@@ -116,7 +116,6 @@ Original App Design Project - README Template
 
 * Bottom Navigation
     * Home View
-    * Search View
     * Compose View
     * Profile View
 
@@ -166,7 +165,6 @@ Bike Post
 | -------- | -------- | -------- |
 | objectId| String| unique id for user post|
 |author | pointer to user|tells who created the post|
-|profilePicture |pointer to user|displays profile picture|
 |image |file | picture of the bike|
 |createdAt|DateTime|date when post is created (default field)|
 |updatedAt|DateTime|date when post is updated (default field)|
@@ -185,6 +183,10 @@ User
 |updatedAt|DateTime|date when post is updated (default field)|
 
 Comment
+| objectId| String| unique id for user post|
+|author | pointer to user|tells who created the comment|
+|post |pointer to the post | tells post on which comment was placed|
+| createdAt| Date| tells when the comment was created|
 
 ### Networking
 
