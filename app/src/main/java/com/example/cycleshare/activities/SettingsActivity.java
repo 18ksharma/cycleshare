@@ -35,6 +35,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.example.cycleshare.R;
 import com.example.cycleshare.Utils;
+import com.example.cycleshare.models.Comment;
 import com.example.cycleshare.models.Post;
 import com.parse.DeleteCallback;
 import com.parse.FindCallback;
@@ -244,6 +245,7 @@ public class SettingsActivity extends AppCompatActivity {
                 .setPositiveButton("Delete Account", new DialogInterface.OnClickListener(){
 
                     public void onClick(DialogInterface dialog, int whichButton) {
+                        querycommentsbyuser();
 
                         querypostsbyuser();
                         try {
@@ -276,6 +278,40 @@ public class SettingsActivity extends AppCompatActivity {
                 .create();
 
         return myQuittingDialogBox;
+    }
+
+    private void querycommentsbyuser() {
+        ParseQuery<Comment> query = ParseQuery.getQuery(Comment.class);
+        query.include(Comment.KEY_AUTHOR);
+        //gets posts
+        query.whereEqualTo(Comment.KEY_AUTHOR, ParseUser.getCurrentUser());
+        query.setLimit(20);
+        query.addAscendingOrder(Comment.KEY_CREATEDAT);
+        query.findInBackground(new FindCallback<Comment>() {
+            @Override
+            public void done(List<Comment> postcomments, com.parse.ParseException e) {
+                if(e!=null){
+                    Log.e("PostDetailsActivity", "Issue with getting posts", e);
+                    return ;
+                }
+                for(Comment comment: postcomments){
+                    try {
+                        comment.delete();
+                        comment.saveInBackground(new SaveCallback() {
+                            @Override
+                            public void done(ParseException e) {
+                                Toast.makeText(SettingsActivity.this, "Deleted comments", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                    catch (ParseException ex){
+                        ex.printStackTrace();
+                        Toast.makeText(SettingsActivity.this, "Error deleting comments", Toast.LENGTH_SHORT).show();
+                        Log.i(TAG, String.valueOf(ex));
+                    }
+                }
+            }
+        });
     }
 
     private void querypostsbyuser() {

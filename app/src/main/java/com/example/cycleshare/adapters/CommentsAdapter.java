@@ -84,8 +84,10 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
             ivDelete.setVisibility(View.GONE);
             Log.i("Comments", "comment author"+comment.getUser());
             Log.i("Comments", "cur user"+ParseUser.getCurrentUser());
-            if(comment.getUser().getUsername().equals(ParseUser.getCurrentUser().getUsername()) ){
-                ivDelete.setVisibility(View.VISIBLE);
+            if(comment.getUser().getUsername()!=null && ParseUser.getCurrentUser().getUsername()!=null) {
+                if (comment.getUser().getUsername().equals(ParseUser.getCurrentUser().getUsername())) {
+                    ivDelete.setVisibility(View.VISIBLE);
+                }
             }
             tvUsername.setText(comment.getUser().getUsername());
             tvContents.setText(comment.getContents());
